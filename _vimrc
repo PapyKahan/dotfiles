@@ -26,7 +26,7 @@ NeoBundle 'cream-showinvisibles'
 NeoBundle 'cmdline-completion'
 NeoBundle 'KabbAmine/vCoolor.vim'
 
-" Note: Dépendance de beaucoup de plugins
+" Note: Used into many following plugins
 NeoBundle 'Shougo/vimproc.vim', {
             \   'build' : {
             \       'windows' : 'tools\\update-dll-mingw',
@@ -49,7 +49,7 @@ NeoBundle 'kien/ctrlp.vim'
 " Use: vimproc
 NeoBundle 'Shougo/unite.vim', { 'augroup' : 'unitevim' }
 
-" Note: neconeocomplete doit être installé avant neosnippet
+" Note: neconeocomplete must be installed before neosnippet
 NeoBundle 'Shougo/neocomplete.vim', { 'augroup' : 'neocomplete' }
 
 NeoBundle 'Shougo/neosnippet.vim', {
@@ -90,7 +90,7 @@ NeoBundle 'cd01/poshcomplete-vim', {
             \   'disable': !(has("win32") || has("win64")),
             \ }
 
-" Note: Markdown reladrelated.
+" Note: Markdown related.
 NeoBundle 'tpope/vim-markdown', {
     \ 'autoload': {'filetypes': ['md']},
     \ }
@@ -282,24 +282,24 @@ if neobundle#is_installed('vim-airline')
     let g:airline_enable_syntastic = 1
     let g:airline_detect_modified=1
     let g:airline_detect_paste=1
-    
+
     " Airline buffer line configuration
     let g:airline#extensions#bufferline#enabled = 1
     let g:airline#extensions#bufferline#overwrite_variables = 1
-    
+
     " Airline tabbar configuration
     let g:airline#extensions#tabline#fnamecollapse = 1
     let g:airline#extensions#tabline#enabled = 1
-    
+
     let g:airline#extensions#tabline#left_sep = '⮀'
     let g:airline#extensions#tabline#left_alt_sep = '⮁'
     let g:airline#extensions#tabline#right_sep = '⮂'
     let g:airline#extensions#tabline#right_alt_sep = '⮃'
-    
+
     if !exists('g:airline_symbols')
         let g:airline_symbols = {}
     endif
-    
+
     "let g:airline_left_sep = "\u2b80" "use double quotes here
     "let g:airline_left_alt_sep = "\u2b81"
     "let g:airline_right_sep = "\u2b82"
@@ -307,7 +307,7 @@ if neobundle#is_installed('vim-airline')
     "let g:airline_symbols.branch = "\u2b60"
     "let g:airline_symbols.readonly = "\u2b64"
     "let g:airline_symbols.linenr = "\u2b61"
-    
+
     let g:airline_left_sep          = '⮀'
     let g:airline_left_alt_sep      = '⮁'
     let g:airline_right_sep         = '⮂'
@@ -500,25 +500,25 @@ if neobundle#is_installed('Omnisharp')
         " Run code actions with text selected in visual mode to extract method
         vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
     endif
-    
+
     " rename with dialog
     nnoremap <leader>nm :OmniSharpRename<cr>
-    nnoremap <F2> :OmniSharpRename<cr>      
+    nnoremap <F2> :OmniSharpRename<cr>
     " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
     command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-    
+
     " Force OmniSharp to reload the solution. Useful when switching branches etc.
     nnoremap <leader>rl :OmniSharpReloadSolution<cr>
     nnoremap <leader>cf :OmniSharpCodeFormat<cr>
     " Load the current .cs file to the nearest project
     nnoremap <leader>tp :OmniSharpAddToProject<cr>
-    
+
     if neobundle#is_installed('vimproc.vim') || neobundle#is_installed('vim-dispatch')
         " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
         nnoremap <leader>ss :OmniSharpStartServer<cr>
         nnoremap <leader>sp :OmniSharpStopServer<cr>
     end
-    
+
     " Add syntax highlighting for types and interfaces
     nnoremap <leader>th :OmniSharpHighlightTypes<cr>
     "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
