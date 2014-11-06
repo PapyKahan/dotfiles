@@ -456,7 +456,7 @@ if neobundle#is_installed('neocomplete.vim')
     endif
 
     let g:neocomplete#sources.cs = ['omni', 'member', 'syntax', 'buffer', 'dictionary', 'file', 'neosnippet']
-    if neobundle#is_installed('poshcomplete.vim')
+    if neobundle#is_installed('poshcomplete-vim')
         let g:neocomplete#sources.ps1 = ['omni', 'member', 'syntax', 'buffer', 'dictionary', 'file']
     endif
 
@@ -556,7 +556,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Poshcomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('poshcomplete.vim')
+if neobundle#is_installed('poshcomplete-vim')
     let g:PoshComplete_Port=1234
     autocmd FileType ps1 setl omnifunc=poshcomplete#CompleteCommand
     call poshcomplete#StartServer()
