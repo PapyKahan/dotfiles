@@ -17,6 +17,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Note: You don't set neobundle setting in .gvimrc!
 
 NeoBundle 'tomasr/molokai'
+NeoBundle 'cfajardo/Wombat'
 
 NeoBundle 'bling/vim-airline'
 NeoBundle 'bling/vim-bufferline'
