@@ -193,35 +193,16 @@ set visualbell t_vb=										" turn off error beep/flash
 set novisualbell											" turn off visual bell
 set noerrorbells											" ring the bell for error messages
 if has('gui_running')
-    " set guioptions=mtTig									" default gui options
-    set guioptions=ig										" remove gui menu and toolbar
-    " enable midle mouse insert
-    map <S-Insert> <MiddleMouse>
-    map! <S-Insert> <MiddleMouse>
-    "set background=dark										" set gui background
+    set guioptions=ig										" remove gui menu and toolbar. Default: mtTig
+    set background=dark										" set gui background
     colorscheme wombat									    " set color scheme for gui
     if (has("win16") || has("win32") || has("win64") || has("win95") || has("win32unix"))
-        " set guifont=Courier_New:h10:cANSI				    " set gui font
-        "set guifont=Consolas:h10:cANSI				    " set gui font
-        "set guifont=Inconsolata\ for\ Powerline:h11:cDEFAULT
         set guifont=Consolas_for_Powerline_FixedD:h10       " Set gui font
-
-        map <F10> :simalt ~n<CR>
-        imap <F10> :simalt ~n<CR>
-        vmap <F10> :simalt ~n<CR>
-
-        map <F11> :simalt ~R<CR>
-        imap <F11> :simalt ~R<CR>
-        vmap <F11> :simalt ~R<CR>
-
-        map <F12> :simalt ~x<CR>
-        imap <F12> :simalt ~x<CR>
-        vmap <F12> :simalt ~x<CR>
     endif
 else
     if &term =~ "xterm" || &term =~ "rxvt"
-        set t_Co=256									" set 256 colors
-        colorscheme lucius							" set color scheme
+        set t_Co=256									    " set 256 colors
+        colorscheme wombat							        " set color scheme
     endif
 endif
 
@@ -250,27 +231,10 @@ set completeopt=longest,menuone,preview						" A comma separated list of options
 nmap <silent> <F6> :set number!<CR>
 let mapleader=","
 
-" Previous buffer
-map <silent> <F2> :bp!<CR>
-imap <silent> <F2> <esc>:bp!<CR>
-vmap <silent> <F2> <esc>:bp!<CR>
-" Next buffer
-map <silent> <F3> :bn<CR>
-imap <silent> <F3> <esc>:bn<CR>
-vmap <silent> <F3> <esc>:bn<CR>
-" Close buffer
-map <silent> <C-F2> :bw!<CR>
-imap <silent> <C-F2> <esc>:bw!<CR>
-vmap <silent> <C-F2> <esc>:bw!<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tabbing related config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set showtabline=2
-" Create a new tab in normal mode, insert mode and visual mode.
-" map <silent> <C-W>tn :tabnew<CR>
-" imap <silent> <C-W>tn :tabnew<CR>
-" vmap <silent> <C-W>tn :tabnew<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files/Backups
@@ -291,101 +255,109 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <F5> :NERDTreeToggle<CR>
-imap <silent> <F5> :NERDTreeToggle<CR>
-vmap <silent> <F5> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=60
+if neobundle#is_installed('nerdtree')
+    map <silent> <F5> :NERDTreeToggle<CR>
+    imap <silent> <F5> :NERDTreeToggle<CR>
+    vmap <silent> <F5> :NERDTreeToggle<CR>
+    let g:NERDTreeWinSize=60
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bufferline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = '⮀'
-let g:bufferline_active_buffer_right = '⮀'
+if neobundle#is_installed('vim-bufferline')
+    let g:bufferline_echo = 0
+    let g:bufferline_active_buffer_left = '⮀'
+    let g:bufferline_active_buffer_right = '⮀'
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Air line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_powerline_fonts=1
-"let g:airline_theme = 'wombat'
-let g:airline_enable_branch = 1
-let g:airline_enable_syntastic = 1
-let g:airline_detect_modified=1
-let g:airline_detect_paste=1
-
-" Airline buffer line configuration
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#bufferline#overwrite_variables = 1
-
-" Airline tabbar configuration
-let g:airline#extensions#tabline#fnamecollapse = 1
-let g:airline#extensions#tabline#enabled = 1
-
-let g:airline#extensions#tabline#left_sep = '⮀'
-let g:airline#extensions#tabline#left_alt_sep = '⮁'
-let g:airline#extensions#tabline#right_sep = '⮂'
-let g:airline#extensions#tabline#right_alt_sep = '⮃'
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+if neobundle#is_installed('vim-airline')
+    let g:airline_powerline_fonts=1
+    "let g:airline_theme = 'wombat'
+    let g:airline_enable_branch = 1
+    let g:airline_enable_syntastic = 1
+    let g:airline_detect_modified=1
+    let g:airline_detect_paste=1
+    
+    " Airline buffer line configuration
+    let g:airline#extensions#bufferline#enabled = 1
+    let g:airline#extensions#bufferline#overwrite_variables = 1
+    
+    " Airline tabbar configuration
+    let g:airline#extensions#tabline#fnamecollapse = 1
+    let g:airline#extensions#tabline#enabled = 1
+    
+    let g:airline#extensions#tabline#left_sep = '⮀'
+    let g:airline#extensions#tabline#left_alt_sep = '⮁'
+    let g:airline#extensions#tabline#right_sep = '⮂'
+    let g:airline#extensions#tabline#right_alt_sep = '⮃'
+    
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    
+    "let g:airline_left_sep = "\u2b80" "use double quotes here
+    "let g:airline_left_alt_sep = "\u2b81"
+    "let g:airline_right_sep = "\u2b82"
+    "let g:airline_right_alt_sep = "\u2b83"
+    "let g:airline_symbols.branch = "\u2b60"
+    "let g:airline_symbols.readonly = "\u2b64"
+    "let g:airline_symbols.linenr = "\u2b61"
+    
+    let g:airline_left_sep          = '⮀'
+    let g:airline_left_alt_sep      = '⮁'
+    let g:airline_right_sep         = '⮂'
+    let g:airline_right_alt_sep     = '⮃'
+    let g:airline_branch_prefix     = '⭠'
+    let g:airline_readonly_symbol   = '⭤'
+    let g:airline_linecolumn_prefix = '⭡'
 endif
-
-"let g:airline_left_sep = "\u2b80" "use double quotes here
-"let g:airline_left_alt_sep = "\u2b81"
-"let g:airline_right_sep = "\u2b82"
-"let g:airline_right_alt_sep = "\u2b83"
-"let g:airline_symbols.branch = "\u2b60"
-"let g:airline_symbols.readonly = "\u2b64"
-"let g:airline_symbols.linenr = "\u2b61"
-
-let g:airline_left_sep          = '⮀'
-let g:airline_left_alt_sep      = '⮁'
-let g:airline_right_sep         = '⮂'
-let g:airline_right_alt_sep     = '⮃'
-let g:airline_branch_prefix     = '⭠'
-let g:airline_readonly_symbol   = '⭤'
-let g:airline_linecolumn_prefix = '⭡'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_source_menu_menus = {}
-let g:unite_source_menu_menus.git = {
-            \ 'description' : '            source manager git
-            \                            ⌘ [menu]g',
-            \}
-let g:unite_source_menu_menus.git.command_candidates = [
-            \['▷ tig                                                        ⌘ ,gt',
-            \'normal ,gt'],
-            \['▷ git status       (Fugitive)                                ⌘ ,gs',
-            \'Gstatus'],
-            \['▷ git diff         (Fugitive)                                ⌘ ,gd',
-            \'Gdiff'],
-            \['▷ git commit       (Fugitive)                                ⌘ ,gc',
-            \'Gcommit'],
-            \['▷ git log          (Fugitive)                                ⌘ ,gl',
-            \'exe "silent Glog | Unite quickfix"'],
-            \['▷ git blame        (Fugitive)                                ⌘ ,gb',
-            \'Gblame'],
-            \['▷ git stage        (Fugitive)                                ⌘ ,gw',
-            \'Gwrite'],
-            \['▷ git checkout     (Fugitive)                                ⌘ ,go',
-            \'Gread'],
-            \['▷ git rm           (Fugitive)                                ⌘ ,gr',
-            \'Gremove'],
-            \['▷ git mv           (Fugitive)                                ⌘ ,gm',
-            \'exe "Gmove " input("destino: ")'],
-            \['▷ git push         (Fugitive, only for buffer)               ⌘ ,gp',
-            \'Git! push'],
-            \['▷ git pull         (Fugitive, only for buffer)               ⌘ ,gP',
-            \'Git! pull'],
-            \['▷ git prompt       (Fugitive, only for buffer)               ⌘ ,gi',
-            \'exe "Git! " input("command git: ")'],
-            \['▷ git cd           (Fugitive)',
-            \'Gcd'],
-            \]
-nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
+if neobundle#is_installed('unite.vim')
+    let g:unite_source_menu_menus = {}
+    let g:unite_source_menu_menus.git = {
+                \ 'description' : '            source manager git
+                \                            ⌘ [menu]g',
+                \}
+    let g:unite_source_menu_menus.git.command_candidates = [
+                \['▷ tig                                                        ⌘ ,gt',
+                \'normal ,gt'],
+                \['▷ git status       (Fugitive)                                ⌘ ,gs',
+                \'Gstatus'],
+                \['▷ git diff         (Fugitive)                                ⌘ ,gd',
+                \'Gdiff'],
+                \['▷ git commit       (Fugitive)                                ⌘ ,gc',
+                \'Gcommit'],
+                \['▷ git log          (Fugitive)                                ⌘ ,gl',
+                \'exe "silent Glog | Unite quickfix"'],
+                \['▷ git blame        (Fugitive)                                ⌘ ,gb',
+                \'Gblame'],
+                \['▷ git stage        (Fugitive)                                ⌘ ,gw',
+                \'Gwrite'],
+                \['▷ git checkout     (Fugitive)                                ⌘ ,go',
+                \'Gread'],
+                \['▷ git rm           (Fugitive)                                ⌘ ,gr',
+                \'Gremove'],
+                \['▷ git mv           (Fugitive)                                ⌘ ,gm',
+                \'exe "Gmove " input("destino: ")'],
+                \['▷ git push         (Fugitive, only for buffer)               ⌘ ,gp',
+                \'Git! push'],
+                \['▷ git pull         (Fugitive, only for buffer)               ⌘ ,gP',
+                \'Git! pull'],
+                \['▷ git prompt       (Fugitive, only for buffer)               ⌘ ,gi',
+                \'exe "Git! " input("command git: ")'],
+                \['▷ git cd           (Fugitive)',
+                \'Gcd'],
+                \]
+    nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neocomplete
