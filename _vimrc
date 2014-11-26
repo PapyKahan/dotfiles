@@ -27,6 +27,8 @@ NeoBundle 'cream-showinvisibles'
 NeoBundle 'cmdline-completion'
 NeoBundle 'KabbAmine/vCoolor.vim'
 
+NeoBundle 'haya14busa/incsearch.vim', { 'augroup' : 'incsearchvim'}
+
 " Note: Used into many following plugins
 NeoBundle 'Shougo/vimproc.vim', {
             \   'build' : {
@@ -111,7 +113,9 @@ NeoBundle 'marijnh/tern_for_vim', {
             \       'unix': 'npm install ; npm update'
             \   }
             \ }
-NeoBundle 'digitaltoad/vim-jade'
+NeoBundle 'digitaltoad/vim-jade', {
+            \ 'autoload': {'filetypes':['jade']},
+            \ }
 
 " Note: Web
 NeoBundle 'genoma/vim-less', { 'depends': [ 'JulesWang/css.vim' ]}
@@ -532,7 +536,7 @@ endif
 if neobundle#is_installed('poshcomplete-vim')
     let g:PoshComplete_Port=1234
     autocmd FileType ps1 setl omnifunc=poshcomplete#CompleteCommand
-    call poshcomplete#StartServer()
+    autocmd FileType ps1 call poshcomplete#StartServer()
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -562,3 +566,13 @@ endif
 if neobundle#is_installed('SyntaxRange')
     autocmd Syntax *.org call SyntaxRange#Include(...)
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" incsearch.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if neobundle#is_installed('incsearch.vim')
+    map /  <Plug>(incsearch-forward)
+    map ?  <Plug>(incsearch-backward)
+    map g/ <Plug>(incsearch-stay)
+endif
+
