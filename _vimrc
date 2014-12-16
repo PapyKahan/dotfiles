@@ -97,6 +97,10 @@ NeoBundle 'cd01/poshcomplete-vim', {
 NeoBundle 'tpope/vim-markdown', {
     \ 'autoload': {'filetypes': ['md']},
     \ }
+NeoBundle 'shime/vim-livedown', {
+    \ 'autoload': {'filetypes': ['md']},
+    \ }
+
 
 " Note: SQL
 NeoBundle 'sqlserver.vim' " 1.0.0 Syntax file for SQL Server 2005/2008
@@ -558,6 +562,20 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if neobundle#is_installed('vim-markdown')
     autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-livedown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if neobundle#is_installed('vim-livedown')
+    " should markdown preview get shown automatically upon opening markdown buffer
+    let g:livedown_autorun = 1
+
+    " should the browser window pop-up upon previewing
+    let g:livedown_open = 1 
+
+    " the port on which Livedown server will run
+    let g:livedown_port = 13337
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
