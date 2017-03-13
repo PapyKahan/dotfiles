@@ -1,143 +1,51 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NeoBundle
+" Dein
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('vim_starting')
-    set nocompatible											" Use vim defaults
-    set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+    if &compatible
+        set nocompatible
+    endif											" Use vim defaults
+    set runtimepath+=~/vimfiles/bundle/dein.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('~/vimfiles/bundle'))
+if dein#load_state(expand('~/vimfiles/bundle/'))
+    call dein#begin(expand('~/vimfiles/bundle/'))
+    call dein#add(expand('~/vimfiles/bundle/dein.vim/'))
+    
+    call dein#add('fatih/molokai')
+    call dein#add('cfajardo/Wombat')
 
-" Required: Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('bling/vim-bufferline')
+    call dein#add('vim-airline/vim-airline-themes')
+    call dein#add('scrooloose/nerdtree', { 'augroup' : 'NERDTreeHijackNetrw'})
 
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
+    call dein#add('cream-showinvisibles')
+    call dein#add('cmdline-completion')
+    call dein#add('haya14busa/incsearch.vim') ", { 'augroup' : 'incsearchvim'})
 
-NeoBundle 'tomasr/molokai'
-NeoBundle 'cfajardo/Wombat'
+    " Required: git commandline
+    call dein#add('tpope/vim-fugitive') ", { 'augroup' : 'fugitive'})
 
-NeoBundle 'bling/vim-airline'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'scrooloose/nerdtree', { 'augroup' : 'NERDTreeHijackNetrw'}
+    " Note: Syntastic
+    call dein#add('scrooloose/syntastic')
 
-NeoBundle 'cream-showinvisibles'
-NeoBundle 'cmdline-completion'
-NeoBundle 'KabbAmine/vCoolor.vim'
+    " Note: Golang
+    call dein#add('fatih/vim-go')
+    call dein#add('garyburd/go-explorer')
 
-NeoBundle 'haya14busa/incsearch.vim', { 'augroup' : 'incsearchvim'}
+    " Note: Tagbar
+    call dein#add('majutsushi/tagbar')
 
-" Note: Used into many following plugins
-NeoBundle 'Shougo/vimproc.vim', {
-            \   'build' : {
-            \       'windows' : 'tools\\update-dll-mingw',
-            \       'cygwin' : 'make -f make_cygwin.mak',
-            \       'mac' : 'make -f make_mac.mak',
-            \       'unix' : 'make -f make_unix.mak',
-            \    }
-            \ }
+    call dein#add('Shougo/neocomplete.vim')
 
-NeoBundle 'mattn/webapi-vim'
-
-" Required: git commandline
-NeoBundle 'tpope/vim-fugitive', { 'augroup' : 'fugitive'}
-NeoBundle 'tpope/vim-dispatch', { 'augroup' : 'vimdispatch' }
-
-" Note: Syntastic
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'kien/ctrlp.vim'
-
-" Use: vimproc
-NeoBundle 'Shougo/unite.vim', { 'augroup' : 'unitevim' }
-
-" Note: neconeocomplete must be installed before neosnippet
-NeoBundle 'Shougo/neocomplete.vim', { 'augroup' : 'neocomplete' }
-
-NeoBundle 'Shougo/neosnippet.vim', {
-            \ 'augroup' : 'neosnippet',
-            \ 'depends' : [ 'Shougo/context_filetype.vim' ]
-            \ }
-"NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'honza/vim-snippets'
-
-" Note: C# related.
-NeoBundle 'OrangeT/vim-csharp', {
-            \   'autoload':{ 'filetypes': ['cs'], }
-            \ }
-
-NeoBundle 'nosami/Omnisharp', {
-            \   'autoload': {'filetypes': ['cs']},
-            \   'build': {
-            \       'windows' : 'C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU" /verbosity:quiet',
-            \       'mac'     : 'xbuild server/OmniSharp.sln',
-            \       'unix'    : 'xbuild server/OmniSharp.sln',
-            \   },
-            \   'disable': !(has("win16") || has("win32") || has("win64") || has("win95")),
-            \   'augroup': 'omnisharp_commands'
-            \ }
-
-" Note: Powershell related.
-NeoBundle 'PProvost/vim-ps1', {
-            \ 'autoload': {'filetypes': ['ps1']},
-            \ 'disable': !(has("win32") || has("win64")),
-            \ }
-
-NeoBundle 'cd01/poshcomplete-vim', {
-            \   'autoload': {'filetypes': ['ps1']},
-            \   'build' : {
-            \       'windows' : 'nuget restore server/PoshComplete.sln ; C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\MSBuild.exe server/PoshComplete.sln /p:Platform="Any CPU" /p:Configuration=Release /verbosity:quiet'
-            \   },
-            \   'depends': ['Shougo/vimproc.vim', 'mattn/webapi-vim' ],
-            \   'disable': !(has("win32") || has("win64")),
-            \ }
-
-" Note: Markdown related.
-NeoBundle 'tpope/vim-markdown', {
-    \ 'autoload': {'filetypes': ['md']},
-    \ }
-NeoBundle 'shime/vim-livedown', {
-    \ 'autoload': {'filetypes': ['md']},
-    \ }
-
-
-" Note: SQL
-NeoBundle 'sqlserver.vim' " 1.0.0 Syntax file for SQL Server 2005/2008
-
-" Note: Node.js related.
-NeoBundle 'moll/vim-node'
-NeoBundle 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'JavaScript-Indent', {'autoload':{'filetypes':['javascript']}}
-NeoBundle 'marijnh/tern_for_vim', {
-            \ 'autoload': {'filetypes':['javascript']},
-            \   'build' : {
-            \       'windows': 'npm install ; npm update',
-            \       'mac': 'npm install ; npm update',
-            \       'unix': 'npm install ; npm update'
-            \   }
-            \ }
-NeoBundle 'digitaltoad/vim-jade', {
-            \ 'autoload': {'filetypes':['jade']},
-            \ }
-
-" Note: Web
-NeoBundle 'genoma/vim-less', { 'depends': [ 'JulesWang/css.vim' ]}
-
-" Note: TODO lists management
-NeoBundle 'jceb/vim-orgmode', {
-    \ 'autoload': {'filetypes': ['org']},
-    \ 'depends' : ['mattn/calendar-vim', 'chrisbra/NrrwRgn', 'utl.vim', 'SyntaxRange', 'tpope/vim-speeddating']
-    \ }
-
-call neobundle#end()
+    call dein#end()
+    call dein#save_state()
+endif
 
 " Required:
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
@@ -191,7 +99,7 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syn on														" enable syntax highlighting
+syntax enable												" enable syntax highlighting
 set stal=1													" show tabulation line
 set ttyfast													" smoother changes
 set showcmd													" When inserting a bracket, briefly jump to its match
@@ -264,7 +172,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('nerdtree')
+if dein#tap('nerdtree')
     map <silent> <F5> :NERDTreeToggle<CR>
     imap <silent> <F5> :NERDTreeToggle<CR>
     vmap <silent> <F5> :NERDTreeToggle<CR>
@@ -274,7 +182,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bufferline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('vim-bufferline')
+if dein#tap('vim-bufferline')
     let g:bufferline_echo = 0
     let g:bufferline_active_buffer_left = '⮀'
     let g:bufferline_active_buffer_right = '⮀'
@@ -284,21 +192,26 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Air line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('vim-airline')
+if dein#tap('vim-airline')
     let g:airline_powerline_fonts=1
-    "let g:airline_theme = 'wombat'
-    let g:airline_enable_branch = 1
-    let g:airline_enable_syntastic = 1
+    let g:airline_theme = 'wombat'
     let g:airline_detect_modified=1
     let g:airline_detect_paste=1
+
+    let g:airline_extensions = ['branch', 'tabline', 'syntastic']
+
+    let g:airline#extensions#syntastic#enabled = 1
+
+    " Airline branch extention
+    let g:airline#extensions#branch#enabled = 1
 
     " Airline buffer line configuration
     let g:airline#extensions#bufferline#enabled = 1
     let g:airline#extensions#bufferline#overwrite_variables = 1
 
-    " Airline tabbar configuration
-    let g:airline#extensions#tabline#fnamecollapse = 1
+    " Airline tabline configuration
     let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#fnamecollapse = 1
 
     let g:airline#extensions#tabline#left_sep = '⮀'
     let g:airline#extensions#tabline#left_alt_sep = '⮁'
@@ -309,27 +222,19 @@ if neobundle#is_installed('vim-airline')
         let g:airline_symbols = {}
     endif
 
-    "let g:airline_left_sep = "\u2b80" "use double quotes here
-    "let g:airline_left_alt_sep = "\u2b81"
-    "let g:airline_right_sep = "\u2b82"
-    "let g:airline_right_alt_sep = "\u2b83"
-    "let g:airline_symbols.branch = "\u2b60"
-    "let g:airline_symbols.readonly = "\u2b64"
-    "let g:airline_symbols.linenr = "\u2b61"
-
     let g:airline_left_sep          = '⮀'
     let g:airline_left_alt_sep      = '⮁'
     let g:airline_right_sep         = '⮂'
     let g:airline_right_alt_sep     = '⮃'
-    let g:airline_branch_prefix     = '⭠'
-    let g:airline_readonly_symbol   = '⭤'
-    let g:airline_linecolumn_prefix = '⭡'
+    let g:airline_symbols.branch    = '⭠'
+    let g:airline_symbols.readonly  = '⭤'
+    let g:airline_symbols.linenr    = '⭡'
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('unite.vim')
+if dein#tap('unite.vim')
     let g:unite_source_menu_menus = {}
     let g:unite_source_menu_menus.git = {
                 \ 'description' : '            source manager git
@@ -371,7 +276,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neocomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('neocomplete.vim')
+if dein#tap('neocomplete.vim')
     "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
@@ -437,9 +342,6 @@ if neobundle#is_installed('neocomplete.vim')
     endif
 
     let g:neocomplete#sources.cs = ['omni', 'member', 'syntax', 'buffer', 'dictionary', 'file', 'neosnippet']
-    if neobundle#is_installed('poshcomplete-vim')
-        let g:neocomplete#sources.ps1 = ['omni', 'member', 'syntax', 'buffer', 'dictionary', 'file']
-    endif
 
     if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
@@ -454,143 +356,87 @@ if neobundle#is_installed('neocomplete.vim')
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Omnisharp
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('Omnisharp')
-
-    if neobundle#is_installed('syntastic')
-        " Get Code Issues and syntax errors
-        let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
-    endif
-
-    augroup omnisharp_commands
-        autocmd!
-
-        "Set autocomplete function to OmniSharp (if not using YouCompleteMe completion plugin)
-        autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-
-        " Synchronous build (blocks Vim)
-        "autocmd FileType cs nnoremap <F5> :wa!<cr>:OmniSharpBuild<cr>
-        " Builds can also run asynchronously with vim-dispatch installed
-        autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
-        "autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-
-        " Automatically add new cs files to the nearest project on save
-        autocmd BufWritePost *.cs call OmniSharp#AddToProject()
-
-        "show type information automatically when the cursor stops moving
-        autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-
-        "The following commands are contextual, based on the current cursor position.
-
-        autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
-        autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-        autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
-        autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-        autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
-        autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr> "finds members in the current buffer
-        " cursor can be anywhere on the line containing an issue
-        autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
-        autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
-        autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-        autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
-        autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
-        autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
-    augroup END
-
-    " this setting controls how long to wait (in ms) before fetching type / symbol information.
-    set updatetime=500
-    " Remove 'Press Enter to continue' message when type information is longer than one line.
-    "set cmdheight=2
-
-    if neobundle#is_installed('ctrlp.vim')
-        " Contextual code actions (requires CtrlP)
-        nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
-        " Run code actions with text selected in visual mode to extract method
-        vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
-    endif
-
-    " rename with dialog
-    nnoremap <leader>nm :OmniSharpRename<cr>
-    nnoremap <F2> :OmniSharpRename<cr>
-    " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
-    command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-
-    " Force OmniSharp to reload the solution. Useful when switching branches etc.
-    nnoremap <leader>rl :OmniSharpReloadSolution<cr>
-    nnoremap <leader>cf :OmniSharpCodeFormat<cr>
-    " Load the current .cs file to the nearest project
-    nnoremap <leader>tp :OmniSharpAddToProject<cr>
-
-    if neobundle#is_installed('vimproc.vim') || neobundle#is_installed('vim-dispatch')
-        " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
-        nnoremap <leader>ss :OmniSharpStartServer<cr>
-        nnoremap <leader>sp :OmniSharpStopServer<cr>
-    end
-
-    " Add syntax highlighting for types and interfaces
-    nnoremap <leader>th :OmniSharpHighlightTypes<cr>
-    "Don't ask to save when changing buffers (i.e. when jumping to a type definition)
-    set hidden
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Poshcomplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('poshcomplete-vim')
-    let g:PoshComplete_Port=1234
-    autocmd FileType ps1 setl omnifunc=poshcomplete#CompleteCommand
-    autocmd FileType ps1 call poshcomplete#StartServer()
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neosnippet
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('neosnippet.vim')
-    let g:neosnippet#enable_snipmate_compatibility = 1
-    let g:neosnippet#snippets_directory=$HOME.'/vimfiles/bundle/vim-snippets/snippets'
-	let g:neosnippet#disable_runtime_snippets = { '_' : 1, }
-
-    " Plugin key-mappings.
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k>     <Plug>(neosnippet_expand_target)
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-markdown
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('vim-markdown')
-    autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-livedown
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('vim-livedown')
-    " should markdown preview get shown automatically upon opening markdown buffer
-    let g:livedown_autorun = 1
-
-    " should the browser window pop-up upon previewing
-    let g:livedown_open = 1 
-
-    " the port on which Livedown server will run
-    let g:livedown_port = 13337
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" SyntaxRange
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('SyntaxRange')
-    autocmd Syntax *.org call SyntaxRange#Include(...)
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " incsearch.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if neobundle#is_installed('incsearch.vim')
+if dein#tap('incsearch.vim')
     map /  <Plug>(incsearch-forward)
     map ?  <Plug>(incsearch-backward)
     map g/ <Plug>(incsearch-stay)
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('syntastic')
+    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if dein#tap('vim-go')
+    if dein#tap('syntastic')
+        let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+        let g:go_list_type = "quickfix"
+    endif
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+    let g:go_highlight_interfaces = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_build_constraints = 1
+
+    let g:go_fmt_command = "goimports"
+    let g:go_fmt_fail_silently = 1
+
+    " Mapping
+    au FileType go nmap <leader>r <Plug>(go-run)
+    au FileType go nmap <leader>b <Plug>(go-build)
+    au FileType go nmap <leader>t <Plug>(go-test)
+    au FileType go nmap <leader>c <Plug>(go-coverage)
+
+    au FileType go nmap <Leader>ds <Plug>(go-def-split)
+    au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+    au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+    au FileType go nmap <Leader>gd <Plug>(go-doc)
+    au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+    au FileType go nmap <Leader>s <Plug>(go-implements)
+
+    au FileType go nmap <Leader>i <Plug>(go-info)
+
+    au FileType go nmap <Leader>e <Plug>(go-rename)
+endif
+
+" Tagbar
+if dein#tap('tagbar')
+    if dein#tap('vim-go')
+        let g:tagbar_type_go = {
+        \ 'ctagstype' : 'go',
+        \ 'kinds'     : [
+            \ 'p:package',
+            \ 'i:imports:1',
+            \ 'c:constants',
+            \ 'v:variables',
+            \ 't:types',
+            \ 'n:interfaces',
+            \ 'w:fields',
+            \ 'e:embedded',
+            \ 'm:methods',
+            \ 'r:constructor',
+            \ 'f:functions'
+        \ ],
+        \ 'sro' : '.',
+        \ 'kind2scope' : {
+            \ 't' : 'ctype',
+            \ 'n' : 'ntype'
+        \ },
+        \ 'scope2kind' : {
+            \ 'ctype' : 't',
+            \ 'ntype' : 'n'
+        \ },
+        \ 'ctagsbin'  : 'gotags',
+        \ 'ctagsargs' : '-sort -silent'
+    \ }
+    endif
+endif
