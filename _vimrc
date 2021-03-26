@@ -1,48 +1,48 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Dein
+" VimPlug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('vim_starting')
     if &compatible
         set nocompatible
     endif											" Use vim defaults
-    set runtimepath+=~/vimfiles/bundle/dein.vim/
+endif
+
+" Install vim-plug if not found
+if empty(glob('~/vimfiles/autoload/plug.vim'))
+    silent !curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 " Required:
-if dein#load_state(expand('~/vimfiles/bundle/'))
-    call dein#begin(expand('~/vimfiles/bundle/'))
-    call dein#add(expand('~/vimfiles/bundle/dein.vim/'))
-    
-    call dein#add('fatih/molokai')
-    call dein#add('cfajardo/Wombat')
+call plug#begin('~/vimfiles/plugged')
+Plug 'fatih/molokai'
+Plug 'cfajardo/Wombat'
 
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('bling/vim-bufferline')
-    call dein#add('vim-airline/vim-airline-themes')
-    call dein#add('scrooloose/nerdtree', { 'augroup' : 'NERDTreeHijackNetrw'})
+Plug 'vim-airline/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree', {'augroup' : 'NERDTreeHijackNetrw'}
 
-    call dein#add('cream-showinvisibles')
-    call dein#add('cmdline-completion')
-    call dein#add('haya14busa/incsearch.vim') ", { 'augroup' : 'incsearchvim'})
+Plug 'vim-scripts/cream-showinvisibles'
+Plug 'vim-scripts/cmdline-completion'
+Plug 'haya14busa/incsearch.vim', {'augroup' : 'incsearchvim'}
 
-    " Required: git commandline
-    call dein#add('tpope/vim-fugitive') ", { 'augroup' : 'fugitive'})
+" Required: git commandline
+Plug 'tpope/vim-fugitive', {'augroup' : 'fugitive'}
 
-    " Note: Syntastic
-    call dein#add('scrooloose/syntastic')
+" Note: Syntastic
+Plug 'scrooloose/syntastic'
 
-    " Note: Golang
-    call dein#add('fatih/vim-go')
-    call dein#add('garyburd/go-explorer')
+" Note: Golang
+Plug 'fatih/vim-go'
+Plug 'akavel/go-explorer'
 
-    " Note: Tagbar
-    call dein#add('majutsushi/tagbar')
+" Note: Tagbar
+Plug 'majutsushi/tagbar'
 
-    call dein#add('Shougo/neocomplete.vim')
+Plug 'Shougo/neocomplete.vim'
 
-    call dein#end()
-    call dein#save_state()
-endif
+call plug#end()
 
 " Required:
 filetype plugin indent on
@@ -172,271 +172,249 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('nerdtree')
-    map <silent> <F5> :NERDTreeToggle<CR>
-    imap <silent> <F5> :NERDTreeToggle<CR>
-    vmap <silent> <F5> :NERDTreeToggle<CR>
-    let g:NERDTreeWinSize=60
-endif
+map <silent> <F5> :NERDTreeToggle<CR>
+imap <silent> <F5> :NERDTreeToggle<CR>
+vmap <silent> <F5> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=60
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Bufferline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('vim-bufferline')
-    let g:bufferline_echo = 0
-    let g:bufferline_active_buffer_left = '⮀'
-    let g:bufferline_active_buffer_right = '⮀'
-endif
+let g:bufferline_echo = 0
+let g:bufferline_active_buffer_left = '⮀'
+let g:bufferline_active_buffer_right = '⮀'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Air line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('vim-airline')
-    let g:airline_powerline_fonts=1
-    let g:airline_theme = 'wombat'
-    let g:airline_detect_modified=1
-    let g:airline_detect_paste=1
+let g:airline_powerline_fonts=1
+let g:airline_theme = 'wombat'
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
 
-    let g:airline_extensions = ['branch', 'tabline', 'syntastic']
+let g:airline_extensions = ['branch', 'tabline', 'syntastic']
 
-    let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 
-    " Airline branch extention
-    let g:airline#extensions#branch#enabled = 1
+" Airline branch extention
+let g:airline#extensions#branch#enabled = 1
 
-    " Airline buffer line configuration
-    let g:airline#extensions#bufferline#enabled = 1
-    let g:airline#extensions#bufferline#overwrite_variables = 1
+" Airline buffer line configuration
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#bufferline#overwrite_variables = 1
 
-    " Airline tabline configuration
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#fnamecollapse = 1
+" Airline tabline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamecollapse = 1
 
-    let g:airline#extensions#tabline#left_sep = '⮀'
-    let g:airline#extensions#tabline#left_alt_sep = '⮁'
-    let g:airline#extensions#tabline#right_sep = '⮂'
-    let g:airline#extensions#tabline#right_alt_sep = '⮃'
+let g:airline#extensions#tabline#left_sep = '⮀'
+let g:airline#extensions#tabline#left_alt_sep = '⮁'
+let g:airline#extensions#tabline#right_sep = '⮂'
+let g:airline#extensions#tabline#right_alt_sep = '⮃'
 
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
-
-    let g:airline_left_sep          = '⮀'
-    let g:airline_left_alt_sep      = '⮁'
-    let g:airline_right_sep         = '⮂'
-    let g:airline_right_alt_sep     = '⮃'
-    let g:airline_symbols.branch    = '⭠'
-    let g:airline_symbols.readonly  = '⭤'
-    let g:airline_symbols.linenr    = '⭡'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
 endif
+
+let g:airline_left_sep          = '⮀'
+let g:airline_left_alt_sep      = '⮁'
+let g:airline_right_sep         = '⮂'
+let g:airline_right_alt_sep     = '⮃'
+let g:airline_symbols.branch    = '⭠'
+let g:airline_symbols.readonly  = '⭤'
+let g:airline_symbols.linenr    = '⭡'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('unite.vim')
-    let g:unite_source_menu_menus = {}
-    let g:unite_source_menu_menus.git = {
-                \ 'description' : '            source manager git
-                \                            ⌘ [menu]g',
-                \}
-    let g:unite_source_menu_menus.git.command_candidates = [
-                \['▷ tig                                                        ⌘ ,gt',
-                \'normal ,gt'],
-                \['▷ git status       (Fugitive)                                ⌘ ,gs',
-                \'Gstatus'],
-                \['▷ git diff         (Fugitive)                                ⌘ ,gd',
-                \'Gdiff'],
-                \['▷ git commit       (Fugitive)                                ⌘ ,gc',
-                \'Gcommit'],
-                \['▷ git log          (Fugitive)                                ⌘ ,gl',
-                \'exe "silent Glog | Unite quickfix"'],
-                \['▷ git blame        (Fugitive)                                ⌘ ,gb',
-                \'Gblame'],
-                \['▷ git stage        (Fugitive)                                ⌘ ,gw',
-                \'Gwrite'],
-                \['▷ git checkout     (Fugitive)                                ⌘ ,go',
-                \'Gread'],
-                \['▷ git rm           (Fugitive)                                ⌘ ,gr',
-                \'Gremove'],
-                \['▷ git mv           (Fugitive)                                ⌘ ,gm',
-                \'exe "Gmove " input("destino: ")'],
-                \['▷ git push         (Fugitive, only for buffer)               ⌘ ,gp',
-                \'Git! push'],
-                \['▷ git pull         (Fugitive, only for buffer)               ⌘ ,gP',
-                \'Git! pull'],
-                \['▷ git prompt       (Fugitive, only for buffer)               ⌘ ,gi',
-                \'exe "Git! " input("command git: ")'],
-                \['▷ git cd           (Fugitive)',
-                \'Gcd'],
-                \]
-    nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
-endif
+let g:unite_source_menu_menus = {}
+let g:unite_source_menu_menus.git = {
+            \ 'description' : '            source manager git
+            \                            ⌘ [menu]g',
+            \}
+let g:unite_source_menu_menus.git.command_candidates = [
+            \['▷ tig                                                        ⌘ ,gt',
+            \'normal ,gt'],
+            \['▷ git status       (Fugitive)                                ⌘ ,gs',
+            \'Gstatus'],
+            \['▷ git diff         (Fugitive)                                ⌘ ,gd',
+            \'Gdiff'],
+            \['▷ git commit       (Fugitive)                                ⌘ ,gc',
+            \'Gcommit'],
+            \['▷ git log          (Fugitive)                                ⌘ ,gl',
+            \'exe "silent Glog | Unite quickfix"'],
+            \['▷ git blame        (Fugitive)                                ⌘ ,gb',
+            \'Gblame'],
+            \['▷ git stage        (Fugitive)                                ⌘ ,gw',
+            \'Gwrite'],
+            \['▷ git checkout     (Fugitive)                                ⌘ ,go',
+            \'Gread'],
+            \['▷ git rm           (Fugitive)                                ⌘ ,gr',
+            \'Gremove'],
+            \['▷ git mv           (Fugitive)                                ⌘ ,gm',
+            \'exe "Gmove " input("destino: ")'],
+            \['▷ git push         (Fugitive, only for buffer)               ⌘ ,gp',
+            \'Git! push'],
+            \['▷ git pull         (Fugitive, only for buffer)               ⌘ ,gP',
+            \'Git! pull'],
+            \['▷ git prompt       (Fugitive, only for buffer)               ⌘ ,gi',
+            \'exe "Git! " input("command git: ")'],
+            \['▷ git cd           (Fugitive)',
+            \'Gcd'],
+            \]
+nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " neocomplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('neocomplete.vim')
-    "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplete.
-    let g:neocomplete#enable_at_startup = 1
-    " Don't Use smartcase.
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#enable_ignore_case = 1
-    let g:neocomplete#enable_fuzzy_completion = 1
-    let g:neocomplete#enable_auto_close_preview = 0
-    " Define dictionary.
-    let g:neocomplete#sources#dictionary#dictionaries = {
-                \ 'default' : '',
-                \ 'vimshell' : $HOME.'/.vimshell_hist'
-                \ }
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Don't Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_ignore_case = 1
+let g:neocomplete#enable_fuzzy_completion = 1
+let g:neocomplete#enable_auto_close_preview = 0
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist'
+            \ }
 
-    " Define Keyword
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-	let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-    " Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-        "return neocomplete#close_popup() . "\<CR>"
-        " For no inserting <CR> key.
-        return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-    endfunction
-    " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplete#close_popup()
-    inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-    " let g:neocomplete#enable_auto_select = 0
-    " let g:neocomplete#disable_auto_complete = 0
-
-    " Enable omnicompletion
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    "autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-    " Enable heavy omni completion.
-
-    "call neocomplete#custom#source('_', 'sorters', [])
-	call neocomplete#custom#source('_', 'matchers', ['matcher_head', 'matcher_length'])
-
-
-    if !exists('g:neocomplete#sources')
-        let g:neocomplete#sources = {}
-    endif
-
-    let g:neocomplete#sources.cs = ['omni', 'member', 'syntax', 'buffer', 'dictionary', 'file', 'neosnippet']
-
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-
-    let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);"]'
-	let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
-
-    "let g:neocomplete#enable_refresh_always = 0
-    let g:echodoc_enable_at_startup = 1
-    let g:neocomplete#enable_insert_char_pre = 1
+" Define Keyword
+if !exists('g:neocomplete#keyword_patterns')
+	let g:neocomplete#keyword_patterns = {}
 endif
+let g:neocomplete#keyword_patterns._ = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+    "return neocomplete#close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" let g:neocomplete#enable_auto_select = 0
+" let g:neocomplete#disable_auto_complete = 0
+
+" Enable omnicompletion
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+
+"call neocomplete#custom#source('_', 'sorters', [])
+call neocomplete#custom#source('_', 'matchers', ['matcher_head', 'matcher_length'])
+
+
+if !exists('g:neocomplete#sources')
+    let g:neocomplete#sources = {}
+endif
+
+let g:neocomplete#sources.cs = ['omni', 'member', 'syntax', 'buffer', 'dictionary', 'file', 'neosnippet']
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);"]'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+
+"let g:neocomplete#enable_refresh_always = 0
+let g:echodoc_enable_at_startup = 1
+let g:neocomplete#enable_insert_char_pre = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " incsearch.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('incsearch.vim')
-    map /  <Plug>(incsearch-forward)
-    map ?  <Plug>(incsearch-backward)
-    map g/ <Plug>(incsearch-stay)
-endif
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('syntastic')
-    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-endif
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if dein#tap('vim-go')
-    if dein#tap('syntastic')
-        let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-        let g:go_list_type = "quickfix"
-    endif
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_structs = 1
-    let g:go_highlight_interfaces = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:go_list_type = "quickfix"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
-    let g:go_fmt_command = "goimports"
-    let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
 
-    " Mapping
-    au FileType go nmap <leader>r <Plug>(go-run)
-    au FileType go nmap <leader>b <Plug>(go-build)
-    au FileType go nmap <leader>t <Plug>(go-test)
-    au FileType go nmap <leader>c <Plug>(go-coverage)
+" Mapping
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 
-    au FileType go nmap <Leader>ds <Plug>(go-def-split)
-    au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-    au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
-    au FileType go nmap <Leader>gd <Plug>(go-doc)
-    au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-    au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>s <Plug>(go-implements)
 
-    au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>i <Plug>(go-info)
 
-    au FileType go nmap <Leader>e <Plug>(go-rename)
-endif
+au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " Tagbar
-if dein#tap('tagbar')
-    if dein#tap('vim-go')
-        let g:tagbar_type_go = {
-        \ 'ctagstype' : 'go',
-        \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-        \ ],
-        \ 'sro' : '.',
-        \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-        \ },
-        \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-        \ },
-        \ 'ctagsbin'  : 'gotags',
-        \ 'ctagsargs' : '-sort -silent'
-    \ }
-    endif
-endif
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
