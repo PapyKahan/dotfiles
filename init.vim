@@ -198,7 +198,16 @@ require('lualine').setup {
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff' },
-        lualine_c = {'filename'},
+        lualine_c = {
+            {
+                'filename',
+                symbols = {
+                    modified = ' ',       -- Text to show when the file is modified.
+                    readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
+                    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                }
+            }
+        },
         lualine_x = {'encoding', 'fileformat', { 'filetype', colored = false } },
         lualine_y = {
             {
@@ -233,7 +242,16 @@ require('lualine').setup {
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'filename'},
+        lualine_c = {
+            {
+                'filename',
+                symbols = {
+                    modified = ' ',       -- Text to show when the file is modified.
+                    readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
+                    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                }
+            }
+        },
         lualine_x = {'location'},
         lualine_y = {},
         lualine_z = {}
