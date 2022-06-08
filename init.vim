@@ -25,14 +25,11 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 
-" Note: NerdTree
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Note: File browser
+Plug 'kyazdani42/nvim-tree.lua'
 
-" Required: git commandline
-Plug 'tpope/vim-fugitive', {'augroup' : 'fugitive'}
+" Git
+Plug 'airblade/vim-gitgutter'
 
 " Note: Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -43,6 +40,10 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Note: Debugger
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python' " need python dependency : pip install debugpy
+
+" Note: CMake
+Plug 'nvim-lua/plenary.nvim'
+Plug 'Shatur/neovim-cmake'
 
 call plug#end()
 
@@ -173,13 +174,14 @@ set clipboard+=unnamedplus
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
+" Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <F3> :NERDTreeToggle<CR>
-imap <silent> <F3> :NERDTreeToggle<CR>
-vmap <silent> <F3> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=60
-
+nnoremap <C-n> :NvimTreeToggle<CR>
+" empty setup using defaults: add your own options
+lua << EOF
+require'nvim-tree'.setup {
+}
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lualine configuraiton
@@ -446,3 +448,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Terminal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
