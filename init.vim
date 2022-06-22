@@ -28,6 +28,12 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Note: File browser
 Plug 'kyazdani42/nvim-tree.lua'
 
+" Note: Symbol outline
+Plug 'simrat39/symbols-outline.nvim'
+
+" Note: Fuzzy finder
+Plug 'nvim-telescope/telescope.nvim'
+
 " Git
 Plug 'airblade/vim-gitgutter'
 
@@ -180,6 +186,14 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 " empty setup using defaults: add your own options
 lua << EOF
 require'nvim-tree'.setup {
+}
+EOF
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+lua << EOF
+require'telescope'.setup {
 }
 EOF
 
