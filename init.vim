@@ -1,57 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimPlug
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('vim_starting')
-    if &compatible
-        set nocompatible
-    endif											" Use vim defaults
-endif
+set nocompatible
 
-" Install vim-plug if not found
-if empty(glob('~/vimfiles/autoload/plug.vim'))
-    silent !curl -fLo ~/vimfiles/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Required:
-call plug#begin('~/vimfiles/plugged')
-
-" Color and visual plugins
-Plug 'sainnhe/gruvbox-material'
-Plug 'vim-scripts/cream-showinvisibles'
-
-" Airline and bufferline plugins
-Plug 'nvim-lualine/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
-Plug 'kyazdani42/nvim-web-devicons'
-
-" Note: File browser
-Plug 'kyazdani42/nvim-tree.lua'
-
-" Note: Symbol outline
-Plug 'simrat39/symbols-outline.nvim'
-
-" Note: Fuzzy finder
-Plug 'nvim-telescope/telescope.nvim'
-
-" Git
-Plug 'airblade/vim-gitgutter'
-
-" Note: Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Note: Tree-Sitter syntax optimizations
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Note: Debugger
-Plug 'mfussenegger/nvim-dap'
-Plug 'mfussenegger/nvim-dap-python' " need python dependency : pip install debugpy
-
-" Note: CMake
-Plug 'nvim-lua/plenary.nvim'
-Plug 'Shatur/neovim-cmake'
-
-call plug#end()
+lua require('plugins')
 
 " Required:
 filetype plugin indent on
