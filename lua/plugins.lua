@@ -4,7 +4,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup(function(use)
+return require('packer').startup(function()
+    use 'wbthomason/packer.nvim'
+
+    use 'lewis6991/impatient.nvim'
 
     -- Color and visual plugins
     use 'sainnhe/gruvbox-material'
@@ -19,14 +22,14 @@ return require('packer').startup(function(use)
     -- Note: File browser
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
+        requires = {'kyazdani42/nvim-web-devicons'}
     }
 
     -- Note: Symbol outline
     use 'simrat39/symbols-outline.nvim'
 
     -- Note: Fuzzy finder
-    use 'nvim-telescope/telescope.nvim'
+    use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
 
     -- Git
     use 'airblade/vim-gitgutter'
@@ -34,13 +37,13 @@ return require('packer').startup(function(use)
     -- Note: Autocomplete
     use {
         'neoclide/coc.nvim',
-        branch = 'release',
+        branch = 'release'
     }
 
     -- Note: Tree-Sitter syntax optimizations
     use {
         'nvim-treesitter/nvim-treesitter',
-        cmd = 'TSUpdate',
+        cmd = 'TSUpdate'
     }
 
     -- Note: Debugger
@@ -50,7 +53,7 @@ return require('packer').startup(function(use)
     -- Note: CMake
     use {
         'Shatur/neovim-cmake',
-        requires = {'nvim-lua/plenary.nvim'},
+        requires = {'nvim-lua/plenary.nvim'}
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

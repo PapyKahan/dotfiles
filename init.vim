@@ -1,12 +1,5 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VimPlug
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible
-
 lua require('plugins')
-
-" Required:
-filetype plugin indent on
+lua require('configs')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
@@ -20,90 +13,83 @@ if (has("win16") || has("win32") || has("win64") || has("win95") || has("win32un
 	set shellquote= shellxquote=
 
 endif
-set nomodeline												" No modeline
-set backspace=indent,eol,start								" Backspace options
-set autoread												" automatically read a file when it was modified outside of Vim
-set mouse=a													" set all mouse options
-set encoding=utf-8                                          " sets the character encoding used inside Vim.
-set lazyredraw                                              " Don't redraw while executing marcros (good performance config)
-set showmatch                                               " Shows matching bracets
-set number                                                  " Shows line number
-set signcolumn=number
+" set nomodeline												" No modeline
+" set backspace=indent,eol,start								" Backspace options
+" set autoread												" automatically read a file when it was modified outside of Vim
+" set mouse=a													" set all mouse options
+" set encoding=utf-8                                          " sets the character encoding used inside Vim.
+" set lazyredraw                                              " Don't redraw while executing marcros (good performance config)
+" set showmatch                                               " Shows matching bracets
+" set number                                                  " Shows line number
+" set signcolumn=number
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set is														" Set incremental search
-set hlsearch                                                " set highlight search for all matches
+" set is														" Set incremental search
+" set hlsearch                                                " set highlight search for all matches
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command menu options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set wildmenu												" When 'wildmenu' is on, command-line completion operates in an enhanced mode
-set wildmode=longest:full,full								" set autocompletion
+" set wildmenu												" When 'wildmenu' is on, command-line completion operates in an enhanced mode
+" set wildmode=longest:full,full								" set autocompletion
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Cscope Relative
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set cscopeverbose											" give messages when adding a cscope database
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text formating
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nowrap													" turn off word wrap
+" set nowrap													" turn off word wrap
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Diff options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set diffopt+=iwhite
+" set diffopt+=iwhite
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set fileformats=dos,unix
-filetype plugin indent on
+" set fileformats=dos,unix
+" filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable												" enable syntax highlighting
-set stal=1													" show tabulation line
-set ttyfast													" smoother changes
-set showcmd													" When inserting a bracket, briefly jump to its match
-set showmatch												" When inserting a bracket, briefly jump to its match
-set laststatus=2											" Always show status line
-set visualbell t_vb=										" turn off error beep/flash
-set novisualbell											" turn off visual bell
-set noerrorbells											" ring the bell for error messages
-set guioptions=ig										    " remove gui menu and toolbar. Default: mtTig
-set background=dark										    " set gui background
-colorscheme gruvbox-material						        " set color scheme for gui
-set guifont=Hack\ NF                                        " Set gui font
-if &term =~ "xterm" || &term =~ "rxvt"
-    set t_Co=256									        " set 256 colors
-endif
-if has("termguicolors")
-    set termguicolors
-endif
+" syntax enable												" enable syntax highlighting
+" set stal=1													" show tabulation line
+" set ttyfast													" smoother changes
+" set showcmd													" When inserting a bracket, briefly jump to its match
+" set showmatch												" When inserting a bracket, briefly jump to its match
+" set laststatus=2											" Always show status line
+" set visualbell t_vb=										" turn off error beep/flash
+" set novisualbell											" turn off visual bell
+" set noerrorbells											" ring the bell for error messages
+" set guioptions=ig										    " remove gui menu and toolbar. Default: mtTig
+" set background=dark										    " set gui background
+" colorscheme gruvbox-material						        " set color scheme for gui
+" set guifont=Hack\ NF                                        " Set gui font
+" if &term =~ "xterm" || &term =~ "rxvt"
+"     set t_Co=256									        " set 256 colors
+" endif
+" if has("termguicolors")
+"     set termguicolors
+" endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Indentation
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set ai														" set auto indentation
-set cindent													" enable c indentation
-" Tabulations
-" always insert a tab character when Shift-Tab is hit
-inoremap <S-Tab> <C-V> <Tab>
-set ts=4													" set tab stops to 4 spaces
-set shiftwidth=4											" number of spaces to use for each step of (auto)indent.
-set smarttab												" When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.
-set softtabstop=4                                           " Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
-set expandtab												" In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+" set ai														" set auto indentation
+" set cindent													" enable c indentation
+" set ts=4													" set tab stops to 4 spaces
+" set shiftwidth=4											" number of spaces to use for each step of (auto)indent.
+" set smarttab												" When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.
+" set softtabstop=4                                           " Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
+" set expandtab												" In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Completion settings config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set completeopt=longest,menuone,preview						" A comma separated list of options for Insert mode completion.
+" set completeopt=longest,menuone,preview						" A comma separated list of options for Insert mode completion.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Buffer related config
@@ -135,11 +121,6 @@ set clipboard+=unnamedplus
 " Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <C-n> :NvimTreeToggle<CR>
-" empty setup using defaults: add your own options
-lua << EOF
-require'nvim-tree'.setup {
-}
-EOF
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tree
