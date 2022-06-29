@@ -4,7 +4,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup(function()
+return require('packer').startup({function()
     use 'wbthomason/packer.nvim'
 
     use 'lewis6991/impatient.nvim'
@@ -17,19 +17,25 @@ return require('packer').startup(function()
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
+        config = [[require 'config.lualine']]
     }
 
     -- Note: File browser
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'}
+        requires = {'kyazdani42/nvim-web-devicons'},
+        config = [[require 'config.nvimtree']]
     }
 
     -- Note: Symbol outline
     use 'simrat39/symbols-outline.nvim'
 
     -- Note: Fuzzy finder
-    use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        config = [[require 'config.telescope']]
+    }
 
     -- Git
     use 'airblade/vim-gitgutter'
@@ -37,7 +43,8 @@ return require('packer').startup(function()
     -- Note: Autocomplete
     use {
         'neoclide/coc.nvim',
-        branch = 'release'
+        branch = 'release',
+        config = [[require 'config.coc']]
     }
 
     -- Note: Tree-Sitter syntax optimizations
@@ -47,7 +54,11 @@ return require('packer').startup(function()
     }
 
     -- Note: Debugger
-    use 'mfussenegger/nvim-dap'
+    use {
+        'mfussenegger/nvim-dap',
+        config = [[require 'config.dap']]
+    }
+
     use 'mfussenegger/nvim-dap-python' -- need python dependency : pip install debugpy
 
     -- Note: CMake
@@ -56,9 +67,12 @@ return require('packer').startup(function()
         requires = {'nvim-lua/plenary.nvim'}
     }
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
     if packer_bootstrap then
-      require('packer').sync()
+        require('packer').sync()
     end
-end)
+end,
+display = {
+    open_fn = function()
+        return require('packer.util').float({ border = 'single' })
+    end
+}})

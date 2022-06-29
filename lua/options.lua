@@ -3,11 +3,31 @@ vim.g.did_load_filetypes = 0
 
 require 'impatient'
 
+-------------------------------------------------------------------
+-- Language
+-------------------------------------------------------------------
+vim.api.nvim_exec('language en_US', true)
+
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
+local has = vim.fn.has
 
-
+-------------------------------------------------------------------
+-- shell configuration
+-------------------------------------------------------------------
+if (has("win16") or has("win32") or has("win64") or has("win95") or has("win32unix")) then
+    if vim.fn.has('win32') then
+        vim.o.shell = 'powershell'
+    else
+        vim.o.shell = 'pwsh'
+    end
+    vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.o.shellquote = nil
+    vim.o.shellxquote = nil
+end
 -- local buffer = { o, bo }
 -- local window = { o, wo }
 -------------------------------------------------------------------
@@ -89,3 +109,25 @@ o.expandtab = true											-- In Insert mode: Use the appropriate number of sp
 -- Completion settings config
 -------------------------------------------------------------------
 o.completeopt = "longest,menuone,preview"					-- A comma separated list of options for Insert mode completion.
+
+
+-------------------------------------------------------------------
+-- Buffer related config
+-------------------------------------------------------------------
+vim.g.mapleader = ','
+
+-------------------------------------------------------------------
+-- Tabbing related config
+-------------------------------------------------------------------
+o.showtabline = 2
+
+-------------------------------------------------------------------
+-- Files/Backups
+-------------------------------------------------------------------
+o.backup = false
+o.writebackup = false
+
+-------------------------------------------------------------------
+-- Clipboard configuration
+-------------------------------------------------------------------
+vim.o.clipboard = "unnamedplus"
