@@ -74,18 +74,11 @@ require('lualine').setup {
                 modified = ' ',      -- Text to show when the buffer is modified
                 alternate_file = '#', -- Text to show to identify the alternate file
                 directory =  '',     -- Text to show when the buffer is a directory
+                readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
+                unnamed = '[No Name]', -- Text to show for unnamed buffers.
             },
         }},
-        lualine_b = {
-            {
-                'filename',
-                symbols = {
-                    modified = ' ',       -- Text to show when the file is modified.
-                    readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
-                    unnamed = '[No Name]', -- Text to show for unnamed buffers.
-                }
-            }
-        },
+        lualine_b = {},
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},

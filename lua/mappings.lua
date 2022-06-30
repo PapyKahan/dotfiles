@@ -6,6 +6,22 @@ local map = vim.api.nvim_set_keymap
 vim.g.mapleader = ','
 
 -------------------------------------------------------------------
+-- Better navigation
+-------------------------------------------------------------------
+map('n', "<C-h>", "<C-w>h", {silent = true, noremap = true})
+map('n', "<C-j>", "<C-w>j", {silent = true, noremap = true})
+map('n', "<C-k>", "<C-w>k", {silent = true, noremap = true})
+map('n', "<C-l>", "<C-w>l", {silent = true, noremap = true})
+
+map('n', "<C-Up>", ":resize -2<cr>", {silent = true, noremap = true})
+map('n', "<C-Down>", ":resize +2<cr>", {silent = true, noremap = true})
+map('n', "<C-Left>", ":vertical resize -2<cr>", {silent = true, noremap = true})
+map('n', "<C-Right>", ":vertical resize +2<cr>", {silent = true, noremap = true})
+
+map('n', "<S-l>", ":bn<cr>", {silent = true, noremap = true})
+map('n', "<S-h>", ":bp<cr>", {silent = true, noremap = true})
+
+-------------------------------------------------------------------
 -- dap
 -------------------------------------------------------------------
 map('n', "<leader>dn", ":lua require('dap-python').test_method()<CR>", {silent = true, noremap = true})
@@ -104,3 +120,9 @@ map('n', '<leader>qf', "<Plug>(coc-fix-current)", { noremap = false })
 
 -- Run the Code Lens action on the current line.
 map('n', '<leader>cl', "<Plug>(coc-codelens-action)", { noremap = false })
+
+-------------------------------------------------------------------
+-- Telescope
+-------------------------------------------------------------------
+
+map('n', '<leader>p', ":Telescope<cr>", { silent = true, noremap = false })

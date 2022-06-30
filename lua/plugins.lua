@@ -7,16 +7,12 @@ end
 
 local packer = require'packer'
 
-return packer.startup({function()
-    local use = packer.use
-
+return packer.startup({function(use)
     use 'wbthomason/packer.nvim'
-
     use 'lewis6991/impatient.nvim'
 
     -- Color and visual plugins
     use 'sainnhe/gruvbox-material'
-    use 'vim-scripts/cream-showinvisibles'
 
     -- Airline and bufferline plugins
     use {
@@ -32,13 +28,15 @@ return packer.startup({function()
         config = [[require 'config.nvimtree']]
     }
 
-    -- Note: Symbol outline
-    use 'simrat39/symbols-outline.nvim'
-
     -- Note: Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+        requires = {
+            {'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim'},
+            {'BurntSushi/ripgrep'},
+            {'sharkdp/fd'},
+        },
         config = [[require 'config.telescope']]
     }
 

@@ -29,31 +29,32 @@ end
 -- General settings
 -------------------------------------------------------------------
 set.modeline = false
-set.backspace = "indent,eol,start"        -- Backspace options
-set.autoread = true                       -- automatically read a file when it was modified outside of Vim
-set.mouse = "a"                           -- set all mouse options
-set.encoding = "utf-8"                    -- sets the character encoding used inside Vim.
-set.lazyredraw = true                     -- Don't redraw while executing marcros (good performance config)
-set.number = true                         -- Shows line number
+set.backspace = "indent,eol,start"
+set.autoread = true
+set.mouse = "a"
+set.encoding = "utf-8"
+set.lazyredraw = true
+set.number = true
 set.signcolumn = "number"
+set.cursorline = true
 
 
 -------------------------------------------------------------------
 -- Search options
 -------------------------------------------------------------------
-set.incsearch = true                             -- Set incremental search
-set.hlsearch = true                       -- set highlight search for all matches
+set.incsearch = true
+set.hlsearch = true
 
 -------------------------------------------------------------------
 -- Command menu options
 -------------------------------------------------------------------
-set.wildmenu = true                       -- When 'wildmenu' is on, command-line completion operates in an enhanced mode
-set.wildmode = "longest:full,full"        -- set autocompletion
+set.wildmenu = true
+set.wildmode = "longest:full,full"
 
 -------------------------------------------------------------------
 -- Text formating
 -------------------------------------------------------------------
-set.wrap = false                          -- turn off word wrap
+set.wrap = false
 
 -------------------------------------------------------------------
 -- Diff options
@@ -64,39 +65,42 @@ set.diffopt = "internal,filler,closeoff,iwhite"
 -- Filetype
 -------------------------------------------------------------------
 set.fileformats = "dos,unix"
+set.fileencoding = "utf-8"
 cmd [[filetype plugin indent on]]
 
 -------------------------------------------------------------------
 -- Visual
 -------------------------------------------------------------------
-set.syntax = "ON"											-- enable syntax highlighting
-set.showcmd = true											-- When inserting a bracket, briefly jump to its match
-set.showmatch = true										-- When inserting a bracket, briefly jump to its match
-set.laststatus = 2											-- Always show status line
-set.visualbell = false										-- turn off visual bell
-set.errorbells = false										-- ring the bell for error messages
-set.guioptions = "ig"									    -- remove gui menu and toolbar. Default: mtTig
-set.background = "dark"									    -- set gui background
-cmd [[colorscheme gruvbox-material]]			            -- set color scheme for gui
-set.guifont = "Hack NF"                                     -- Set gui font
-set.termguicolors = true
+set.syntax = "ON"
+set.showcmd = true
+set.showmatch = true
+set.laststatus = 2
+set.visualbell = false
+set.errorbells = false
+set.guioptions = "ig"
+set.background = "dark"
+cmd [[colorscheme gruvbox-material]]
+set.guifont = "Hack NF"
+if has('termguicolors') then
+    set.termguicolors = true
+end
 
 
 -------------------------------------------------------------------
 -- Indentation
 -------------------------------------------------------------------
-set.autoindent = true										-- set auto indentation
-set.cindent = true											-- enable c indentation
-set.tabstop = 4												-- set tab stops to 4 spaces
-set.shiftwidth = 4											-- number of spaces to use for each step of (auto)indent.
-set.smarttab = true											-- When on, a <Tab> in front of a line inserts blanks according to 'shiftwidth'.
-set.softtabstop = 4                                         -- Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>.
-set.expandtab = true										-- In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+set.autoindent = true
+set.cindent = true
+set.tabstop = 4
+set.shiftwidth = 4
+set.smarttab = true
+set.softtabstop = 4
+set.expandtab = true
 
 -------------------------------------------------------------------
 -- Completion settings config
 -------------------------------------------------------------------
-set.completeopt = "longest,menuone,preview"					-- A comma separated list of options for Insert mode completion.
+set.completeopt = "longest,menuone,preview"
 
 -------------------------------------------------------------------
 -- Tab related config
