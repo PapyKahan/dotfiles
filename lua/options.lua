@@ -3,11 +3,6 @@ vim.g.did_load_filetypes = 0
 
 require 'impatient'
 
--------------------------------------------------------------------
--- Language
--------------------------------------------------------------------
-vim.api.nvim_exec('language en_US', true)
-
 local g = vim.g
 local cmd = vim.cmd
 local o, wo, bo = vim.o, vim.wo, vim.bo
@@ -17,6 +12,8 @@ local has = vim.fn.has
 -- shell configuration
 -------------------------------------------------------------------
 if (has("win16") or has("win32") or has("win64") or has("win95") or has("win32unix")) then
+    -- Language
+    vim.api.nvim_exec('language en_US', true)
     if vim.fn.has('win32') then
         vim.o.shell = 'powershell'
     else
