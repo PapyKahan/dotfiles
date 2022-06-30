@@ -3,25 +3,25 @@ local map = vim.api.nvim_set_keymap
 -------------------------------------------------------------------
 -- dap
 -------------------------------------------------------------------
-map('n', "<silent> <leader>dn", ":lua require('dap-python').test_method()<CR>", {noremap = true})
-map('n', "<silent> <leader>df", ":lua require('dap-python').test_class()<CR>", {noremap = true})
-map('n', "<silent> <leader>ds", "<ESC>:lua require('dap-python').debug_selection()<CR>", {noremap = true})
+map('n', "<leader>dn", ":lua require('dap-python').test_method()<CR>", {silent = true, noremap = true})
+map('n', "<leader>df", ":lua require('dap-python').test_class()<CR>", {silent = true, noremap = true})
+map('n', "<leader>ds", "<ESC>:lua require('dap-python').debug_selection()<CR>", {silent = true, noremap = true})
 
-map('n', "<silent> <F5>", "<Cmd>lua require'dap'.continue()<CR>", {noremap = true})
-map('n', "<silent> <F10>", "<Cmd>lua require'dap'.step_over()<CR>", {noremap = true})
-map('n', "<silent> <F11>", "<Cmd>lua require'dap'.step_into()<CR>", {noremap = true})
-map('n', "<silent> <F12>", "<Cmd>lua require'dap'.step_out()<CR>", {noremap = true})
-map('n', "<silent> <Leader>b", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", {noremap = true})
-map('n', "<silent> <Leader>B", "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", {noremap = true})
-map('n', "<silent> <Leader>lp", "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", {noremap = true})
-map('n', "<silent> <Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>", {noremap = true})
-map('n', "<silent> <Leader>dl", "<Cmd>lua require'dap'.run_last()<CR>", {noremap = true})
+map('n', "<F5>", "<Cmd>lua require'dap'.continue()<CR>", {silent = true, noremap = true})
+map('n', "<F10>", "<Cmd>lua require'dap'.step_over()<CR>", {silent = true, noremap = true})
+map('n', "<F11>", "<Cmd>lua require'dap'.step_into()<CR>", {silent = true, noremap = true})
+map('n', "<F12>", "<Cmd>lua require'dap'.step_out()<CR>", {silent = true, noremap = true})
+map('n', "<Leader>b", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", {silent = true, noremap = true})
+map('n', "<Leader>B", "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", {silent = true, noremap = true})
+map('n', "<Leader>lp", "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", {silent = true, noremap = true})
+map('n', "<Leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>", {silent = true, noremap = true})
+map('n', "<Leader>dl", "<Cmd>lua require'dap'.run_last()<CR>", {silent = true, noremap = true})
 
 
 -------------------------------------------------------------------
 -- nvim-tree
 -------------------------------------------------------------------
-map("n", "<C-n>", ":NvimTreeToggle<CR>", {noremap = true})
+map("n", "<C-n>", ":NvimTreeToggle<CR>", {silent = true, noremap = true})
 
 
 -------------------------------------------------------------------
