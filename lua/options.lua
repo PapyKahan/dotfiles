@@ -35,7 +35,8 @@ set.mouse = "a"
 set.encoding = "utf-8"
 set.lazyredraw = true
 set.number = true
-set.signcolumn = "number"
+set.numberwidth = 4
+set.signcolumn = "yes"
 set.cursorline = true
 
 
@@ -91,6 +92,8 @@ end
 -------------------------------------------------------------------
 set.autoindent = true
 set.cindent = true
+set.smartindent = true -- make indenting smarter again
+set.smartcase = true -- smart case
 set.tabstop = 4
 set.shiftwidth = 4
 set.smarttab = true

@@ -41,7 +41,11 @@ return packer.startup({function(use)
     }
 
     -- Git
-    use 'airblade/vim-gitgutter'
+    use {
+        'lewis6991/gitsigns.nvim',
+        event = "BufRead",
+        config = [[require 'config.gitsigns']]
+    }
 
     -- Note: Autocomplete
     use {
