@@ -47,11 +47,41 @@ return packer.startup({function(use)
         config = [[require 'config.gitsigns']]
     }
 
+    -- Node : LSP
+    use {
+        'williamboman/nvim-lsp-installer',
+        config = [[require 'config.lsp-installer']]
+    }
+    use {
+        'neovim/nvim-lspconfig',
+        config = [[require 'config.lsp-config']]
+    }
+
     -- Note: Autocomplete
     use {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        config = [[require 'config.coc']]
+        'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'petertriho/cmp-git',
+            'hrsh7th/cmp-vsnip',
+            'hrsh7th/vim-vsnip'
+        },
+        config = [[require'config.cmp']]
+    }
+
+    -- Pairs
+    use {
+        'windwp/nvim-autopairs',
+        config = function() require'nvim-autopairs'.setup() end
+    }
+
+    -- Key mapping helper
+    use {
+        "folke/which-key.nvim",
+        config = function() require'which-key'.setup() end
     }
 
     -- Note: Tree-Sitter syntax optimizations
