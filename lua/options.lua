@@ -10,14 +10,10 @@ vim.g.did_load_filetypes = 0
 -------------------------------------------------------------------
 -- shell configuration
 -------------------------------------------------------------------
-if (has("win32") or has("win64") or has("win32unix")) then
+if (has("win32") == 1 or has("win64") == 1 or has("win32unix") == 1) then
     -- Language
     cmd [[language en_US]]
-    if vim.fn.has('win32') then
-        set.shell = 'powershell'
-    else
-        set.shell = 'pwsh'
-    end
+    set.shell = 'powershell'
     set.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
     set.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
     set.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
