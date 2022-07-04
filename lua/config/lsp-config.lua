@@ -3,7 +3,6 @@ if not loaded then
    return
 end
 
--- Borders for LspInfo winodw
 local win = require "lspconfig.ui.windows"
 local _default_opts = win.default_opts
 
@@ -41,8 +40,13 @@ lspconfig.sumneko_lua.setup {
     },
 }
 
-lspconfig.pyright.setup {
+local pyright_opt = {
     on_attach = lsp.default_on_attach_callback,
     capabilities = default_capabilities,
-    cmd = { vim.env['LSP_LANGUAGE_SERVERS']..'\\pyright\\node_modules\\.bin\\pyright-langserver.cmd', "--stdio" }
 }
+
+if vim.env['NEXTHINK'] then
+    pyright_opt.cmd = { vim.env['LSP_LANGUAGE_SERVERS']..'\\pyright\\node_modules\\.bin\\pyright-langserver.cmd', "--stdio" }
+end
+
+lspconfig.pyright.setup(pyright_opt)
