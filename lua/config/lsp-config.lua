@@ -1,9 +1,11 @@
-local present, lspconfig = pcall(require, "lspconfig")
-if not present then
+local loaded, lspconfig = pcall(require, "lspconfig")
+if not loaded then
    return
 end
 
 require 'ui.lsp'
+
+vim.lsp.set_log_level("debug")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem = {
@@ -109,4 +111,5 @@ lspconfig.sumneko_lua.setup {
 lspconfig.pyright.setup {
     on_attach = on_attach_callback,
     capabilities = capabilities,
+    cmd = { vim.env['LSP_LANGUAGE_SERVERS']..'\\pyright\\node_modules\\.bin\\pyright-langserver.cmd', "--stdio" }
 }

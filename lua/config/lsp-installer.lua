@@ -4,12 +4,7 @@ if not lsp_installer_loaded then
 end
 
 local options = {
-   -- ensure_installed is not needed as automatic_installation is enabled
-   -- then any lsp server you setup by lspconfig is going to get installed automatically!
-
-   -- ensure_installed = { "lua" },
    automatic_installation = true,
-
    ui = {
       icons = {
          server_installed = " ",

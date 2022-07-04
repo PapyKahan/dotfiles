@@ -1,4 +1,8 @@
-local tree = require 'nvim-tree'
+local loaded, tree = pcall(require, 'nvim-tree')
+if not loaded then
+    return
+end
+
 tree.setup({
     auto_reload_on_write = true,
     create_in_closed_folder = false,

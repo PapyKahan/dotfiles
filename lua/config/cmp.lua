@@ -1,5 +1,5 @@
-local present, cmp = pcall(require, "cmp")
-if not present then
+local loaded, cmp = pcall(require, "cmp")
+if not loaded then
    return
 end
 

@@ -1,7 +1,13 @@
+local loaded, telescope = pcall(require, 'telescope')
+if not loaded then
+    return
+end
+
 local previewers = require "telescope.previewers"
 local sorters = require "telescope.sorters"
 local actions = require "telescope.actions"
-require'telescope'.setup {
+
+telescope.setup {
     file_previewer = previewers.file_previewer,
     grep_previewer = previewers.grep_previewer,
     qflist_previewer = previewers.qflist_previewer,

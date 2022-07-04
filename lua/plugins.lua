@@ -47,7 +47,7 @@ return packer.startup({function(use)
         config = [[require 'config.gitsigns']]
     }
 
-    -- Node : LSP
+    -- Note : LSP
     use {
         'williamboman/nvim-lsp-installer',
         config = [[require 'config.lsp-installer']]
