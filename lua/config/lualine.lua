@@ -3,6 +3,13 @@ if not loaded then
     return
 end
 
+local utils = require'lualine.utils.utils'
+local function get_fg_color(hlgroup)
+    return utils.extract_highlight_colors(hlgroup, 'fg')
+end
+
+
+
 lualine.setup {
     options = {
         icons_enabled = true,
@@ -30,19 +37,15 @@ lualine.setup {
         lualine_y = {
             {
                 'diagnostics',
-                -- Table of diagnostic sources, available sources are:
-                --   'nvim_lsp', 'nvim_diagnostic', 'coc', 'ale', 'vim_lsp'.
-                -- or a function that returns a table as such:
-                --   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
                 sources = { 'nvim_diagnostic' },
                 -- Displays diagnostics for the defined severity types
                 sections = { 'error', 'warn', 'info', 'hint' },
                 diagnostics_color = {
                     -- Same values as the general color option can be used here.
-                    error = 'DiagnosticError', -- Changes diagnostics' error color.
-                    warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
-                    info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
-                    hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
+                    error = { fg = get_fg_color('DiagnosticSignError') }, -- Changes diagnostics' error color.
+                    warn  = { fg = get_fg_color('DiagnosticSignWarn') },  -- Changes diagnostics' warn color.
+                    info  = { fg = get_fg_color('DiagnosticSignInfo') },  -- Changes diagnostics' info color.
+                    hint  = { fg = get_fg_color('DiagnosticSignHint') },  -- Changes diagnostics' hint color.
                 },
                 symbols = { error = " ", warn  = " ", info  = " ", hint  = " " },
                 colored = true,           -- Displays diagnostics status in color if set to true.
