@@ -28,9 +28,9 @@ end
 
 whichkey.register({
     name = "Dap Python",
-    dm = { function() dap_python.test_method() end, "Exectute test method" },
-    dc = { function() dap_python.test_class() end, "Exectute test class" },
-    ds = { function() dap_python.debug_selection() end, "Debug selection" }
+    dm = { function() dap_python.test_method({}) end, "Exectute test method" },
+    dc = { function() dap_python.test_class({}) end, "Exectute test class" },
+    ds = { function() dap_python.debug_selection({}) end, "Debug selection" }
 },{
     silent = true,
     noremap = false,
@@ -45,7 +45,7 @@ end
 whichkey.register({
     name = "Dap",
     ["<F5>"] = { function() dap.continue() end, "Continue debugging" },
-    ["<F10>"] = { function() dap.step_over() end, "Debugging step over" },
+    ["<F10>"] = { function() dap.step_over({}) end, "Debugging step over" },
     ["<F11>"] = { function() dap.step_into() end, "Debugging step into" },
     ["<F12>"] = { function() dap.step_out() end, "Debugging step out" },
 },{

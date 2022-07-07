@@ -34,21 +34,17 @@ lualine.setup {
                 --   'nvim_lsp', 'nvim_diagnostic', 'coc', 'ale', 'vim_lsp'.
                 -- or a function that returns a table as such:
                 --   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
-                sources = { 'nvim_lsp' },
+                sources = { 'nvim_diagnostic' },
                 -- Displays diagnostics for the defined severity types
                 sections = { 'error', 'warn', 'info', 'hint' },
                 diagnostics_color = {
-                    error = { fg = '#DF0000' },
-                    warn  = { fg = '#D75F00' },
-                    info  = { fg = '#0087AF' },
-                    hint  = { fg = '#008700' }
+                    -- Same values as the general color option can be used here.
+                    error = 'DiagnosticError', -- Changes diagnostics' error color.
+                    warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
+                    info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
+                    hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
                 },
-                symbols = {
-                    error = " ",
-                    warn  = " ",
-                    info  = " ",
-                    hint  = " "
-                },
+                symbols = { error = " ", warn  = " ", info  = " ", hint  = " " },
                 colored = true,           -- Displays diagnostics status in color if set to true.
                 update_in_insert = false, -- Update diagnostics in insert mode.
                 always_visible = false,   -- Show diagnostics even if there are none.

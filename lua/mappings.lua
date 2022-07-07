@@ -1,4 +1,3 @@
-local map = vim.api.nvim_set_keymap
 local loaded, whichkey = pcall(require, 'which-key')
 if not loaded then
     return
@@ -30,25 +29,16 @@ whichkey.register({
     noremap = false
 })
 
+
 -------------------------------------------------------------------
 -- nvim-tree
 -------------------------------------------------------------------
 whichkey.register({
-    ["C-n"] = { ":NvimTreeToggle<CR>", "Open Nvim-Tree"},
+    x = { "<cmd>NvimTreeToggle<CR>", "Open Nvim-Tree"},
 }, {
     silent = true,
-    noremap = false
-})
-
--------------------------------------------------------------------
--- LSP
--------------------------------------------------------------------
--- Use K to show documentation in preview window.
-whichkey.register({
-    K = { function () vim.lsp.buf.hover() end, "Show documentation"}
-}, {
-    silent = true,
-    noremap = false
+    noremap = true,
+    prefix = '<leader>'
 })
 
 -------------------------------------------------------------------

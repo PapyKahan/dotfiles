@@ -56,6 +56,10 @@ return packer.startup({function(use)
         'neovim/nvim-lspconfig',
         config = [[require 'config.lsp-config']]
     }
+    use {
+        'j-hui/fidget.nvim',
+        config = [[require 'config.fidget']]
+    }
 
     -- Note: Autocomplete
     use {

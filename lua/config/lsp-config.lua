@@ -17,7 +17,7 @@ end
 local lsp = require 'lsp'
 local default_capabilities = lsp.default_capabilities()
 
-lspconfig.sumneko_lua.setup {
+local lua_options = {
     on_attach = lsp.default_on_attach_callback,
     capabilities = default_capabilities,
     settings = {
@@ -29,16 +29,17 @@ lspconfig.sumneko_lua.setup {
                 globals = { "vim" },
             },
             workspace = {
-                library = {
-                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-                    [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-                },
-                maxPreload = 100000,
-                preloadFileSize = 10000,
+                library = vim.api.nvim_get_runtime_file("", true),
             },
         },
     },
 }
+
+if vim.env['NEXTHINK'] then
+    lua_options.cmd = { vim.env['LSP_LANGUAGE_SERVERS']..'sumneko_lua\\extension\\server\\bin\\lua-language-server.exe', "--stdio" }
+end
+
+lspconfig.sumneko_lua.setup(lua_options)
 
 local pyright_opt = {
     on_attach = lsp.default_on_attach_callback,

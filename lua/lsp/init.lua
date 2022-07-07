@@ -3,21 +3,21 @@ local M = {}
 function M.default_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem = {
-       documentationFormat = { "markdown", "plaintext" },
-       snippetSupport = true,
-       preselectSupport = true,
-       insertReplaceSupport = true,
-       labelDetailsSupport = true,
-       deprecatedSupport = true,
-       commitCharactersSupport = true,
-       tagSupport = { valueSet = { 1 } },
-       resolveSupport = {
-          properties = {
-             "documentation",
-             "detail",
-             "additionalTextEdits",
-          },
-       },
+        documentationFormat = { "markdown", "plaintext" },
+        snippetSupport = true,
+        preselectSupport = true,
+        insertReplaceSupport = true,
+        labelDetailsSupport = true,
+        deprecatedSupport = true,
+        commitCharactersSupport = true,
+        tagSupport = { valueSet = { 1 } },
+        resolveSupport = {
+            properties = {
+                "documentation",
+                "detail",
+                "additionalTextEdits",
+            },
+        },
     }
     local cmp_ok, cmp = pcall(require, "cmp_nvim_lsp")
     if cmp_ok then
@@ -70,23 +70,76 @@ local function setup_document_highlight(client, bufnr)
     })
 end
 
+local whichkey_loaded, whichkey = pcall(require, 'which-key')
+if not whichkey_loaded then
+    return
+end
+
+local function setup_mappings(client, bufnr)
+
+    whichkey.register({
+        gD = { function () vim.lsp.buf.declaration() end, "Go to declaration" },
+        gd = { function() vim.lsp.buf.definition() end, "Go to definition" },
+        K = { function() vim.lsp.buf.hover() end, "Show documentation" },
+        gi = { function() vim.lsp.buf.implementation() end, "Go to implementation" },
+        gS = { function() vim.lsp.buf.signature_help() end, "Get signature" },
+        gr = { function() vim.lsp.buf.references() end, "Get all references" },
+    }, {
+        noremap = true,
+        silent = true,
+        buffer = bufnr
+    })
+
+    whichkey.register({
+        D = { function() vim.lsp.buf.type_definition() end, "Go to type definition" },
+        rn = { function() vim.lsp.buf.rename() end, "Rename" },
+        ca = { function () vim.lsp.buf.code_action() end, "Code action" },
+        f = { function() vim.lsp.buf.format() end, "Format" },
+    }, {
+        noremap = true,
+        silent = true,
+        buffer = bufnr,
+        prefix = '<leader>'
+    })
+end
+
 function M.default_on_attach_callback(client, bufnr)
     setup_codelens_refresh(client, bufnr)
     setup_document_highlight(client, bufnr)
+    setup_mappings(client, bufnr)
 end
-
 
 local function lspSymbol(name, icon)
     local hl = "DiagnosticSign" .. name
     vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
-
 function M.setup()
     lspSymbol("Error", "")
     lspSymbol("Info", "")
     lspSymbol("Hint", "")
     lspSymbol("Warn", "")
+
+    -- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    whichkey.register({
+        e = { function() vim.diagnostic.open_float() end, "Show diagnostics" },
+        q = { function() vim.diagnostic.setloclist() end, "Show local list" },
+
+    }, {
+        noremap = true,
+        silent = true,
+        prefix = '<leader>',
+    })
+
+    whichkey.register({
+        ["[d"] = { function() vim.diagnostic.goto_prev() end, "Goto previous diagnostic" },
+        ["]d"] = { function() vim.diagnostic.goto_next() end, "Goto next diagnostic" },
+
+    }, {
+        noremap = true,
+        silent = true,
+    })
 
     vim.diagnostic.config {
         virtual_text = {
@@ -107,7 +160,7 @@ function M.setup()
                 local t = vim.deepcopy(d)
                 local code = d.code or (d.user_data and d.user_data.lsp.code)
                 if code then
-                  t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
+                    t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
                 end
                 return t.message
             end,
