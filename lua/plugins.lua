@@ -10,6 +10,14 @@ if not loaded then
     return
 end
 
+packer.init({
+    display = {
+        open_fn = function()
+            return require('packer.util').float({ border = 'rounded' })
+        end
+    }
+})
+
 return packer.startup({function(use)
     use 'wbthomason/packer.nvim'
     use 'lewis6991/impatient.nvim'
@@ -114,9 +122,4 @@ return packer.startup({function(use)
     if packer_bootstrap then
         packer.sync()
     end
-end,
-display = {
-    open_fn = function()
-        return require('packer.util').float({ border = 'single' })
-    end
-}})
+end})

@@ -1,12 +1,3 @@
--- Define debug signs
-vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointCondition', {text='🔘', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapLogPoint', {text='❕', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='🔷', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointRejected', {text='🚫', texthl='', linehl='', numhl=''})
-
-
-
 local dap_python_loaded, dap_python = pcall(require, 'dap-python')
 if not dap_python_loaded then
     return
@@ -31,7 +22,7 @@ whichkey.register({
     dm = { function() dap_python.test_method({}) end, "Exectute test method" },
     dc = { function() dap_python.test_class({}) end, "Exectute test class" },
     ds = { function() dap_python.debug_selection({}) end, "Debug selection" }
-},{
+}, {
     silent = true,
     noremap = false,
     prefix = "<leader>"
@@ -42,26 +33,65 @@ if not dap_loaded then
     return
 end
 
-whichkey.register({
-    name = "Dap",
-    ["<F5>"] = { function() dap.continue() end, "Continue debugging" },
-    ["<F10>"] = { function() dap.step_over({}) end, "Debugging step over" },
-    ["<F11>"] = { function() dap.step_into() end, "Debugging step into" },
-    ["<F12>"] = { function() dap.step_out() end, "Debugging step out" },
-},{
-    silent = true,
-    noremap = false,
-})
 
 whichkey.register({
-    name = "Dap",
-    b = { function() dap.toggle_breakpoint() end, "Toggle breakpoint" },
-    B = { function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, "Toggle conditional breakpoint" },
-    lp = { function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, "Toggle logging breakpoint" },
-    dr = { function() dap.repl.open() end, "" },
-    dl = { function() dap.run_last() end, "Run last debug session" },
-},{
+    name = "Debugging",
+    d = {
+        b = { function() dap.toggle_breakpoint() end, "Toggle breakpoint" },
+        B = { function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, "Toggle conditional breakpoint" },
+        l = { function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, "Toggle logging breakpoint" },
+        x = { function() dap.clear_breakpoints() end, "Clear all breakpoints" },
+        r = { function() dap.repl.toggle() end, "Open debug console" },
+        d = { function() dap.run_last() end, "Run last session" },
+        c = { function() dap.continue() end, "Continue" },
+        o = { function() dap.step_over({}) end, "Step over" },
+        i = { function() dap.step_into() end, "Step into" },
+        u = { function() dap.step_out() end, "Step out" },
+        s = { function() dap.continue() end, "Start" },
+        q = { function() dap.close() end, "Quit" },
+    }
+}, {
     silent = true,
     noremap = false,
     prefix = "<leader>"
 })
+
+local ui = {
+    breakpoint = {
+        text = "",
+        texthl = "LspDiagnosticsSignError",
+        linehl = "",
+        numhl = "",
+    },
+    breakpoint_condition = {
+        text = "",
+        texthl = "LspDiagnosticsSignWarnning",
+        linehl = "",
+        numhl = "",
+    },
+    log_point = {
+        text = "",
+        texthl = "LspDiagnosticsSignInfo",
+        linehl = "",
+        numhl = "",
+    },
+    breakpoint_rejected = {
+        text = "",
+        texthl = "LspDiagnosticsSignHint",
+        linehl = "",
+        numhl = "",
+    },
+    stopped = {
+        text = "",
+        texthl = "LspDiagnosticsSignInformation",
+        linehl = "DiagnosticUnderlineInfo",
+        numhl = "LspDiagnosticsSignInformation",
+    },
+}
+
+-- Define debug signs
+vim.fn.sign_define("DapBreakpoint", ui.breakpoint)
+vim.fn.sign_define('DapBreakpointCondition', ui.breakpoint_condition)
+vim.fn.sign_define('DapLogPoint', ui.log_point)
+vim.fn.sign_define('DapStopped', ui.stopped)
+vim.fn.sign_define('DapBreakpointRejected', ui.breakpoint_rejected)
