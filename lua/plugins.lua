@@ -5,7 +5,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
     packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-local packer = require'packer'
+local loaded, packer = pcall(require, 'packer')
+if not loaded then
+    return
+end
 
 return packer.startup({function(use)
     use 'wbthomason/packer.nvim'
