@@ -27,9 +27,9 @@ lualine.setup {
             {
                 'filename',
                 symbols = {
-                    modified = ' ',       -- Text to show when the file is modified.
-                    readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
-                    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                    modified = ' ',
+                    readonly = ' ',
+                    unnamed = '[No Name]',
                 }
             }
         },
@@ -38,19 +38,17 @@ lualine.setup {
             {
                 'diagnostics',
                 sources = { 'nvim_diagnostic' },
-                -- Displays diagnostics for the defined severity types
                 sections = { 'error', 'warn', 'info', 'hint' },
                 diagnostics_color = {
-                    -- Same values as the general color option can be used here.
-                    error = { fg = get_fg_color('DiagnosticSignError') }, -- Changes diagnostics' error color.
-                    warn  = { fg = get_fg_color('DiagnosticSignWarn') },  -- Changes diagnostics' warn color.
-                    info  = { fg = get_fg_color('DiagnosticSignInfo') },  -- Changes diagnostics' info color.
-                    hint  = { fg = get_fg_color('DiagnosticSignHint') },  -- Changes diagnostics' hint color.
+                    error = { fg = get_fg_color('DiagnosticSignError') },
+                    warn  = { fg = get_fg_color('DiagnosticSignWarn') },
+                    info  = { fg = get_fg_color('DiagnosticSignInfo') },
+                    hint  = { fg = get_fg_color('DiagnosticSignHint') },
                 },
-                symbols = { error = " ", warn  = " ", info  = " ", hint  = " " },
-                colored = true,           -- Displays diagnostics status in color if set to true.
-                update_in_insert = false, -- Update diagnostics in insert mode.
-                always_visible = false,   -- Show diagnostics even if there are none.
+                symbols = { error = " ", warn  = " ", info  = " ", hint  = " " },
+                colored = true,
+                update_in_insert = false,
+                always_visible = false,
             }},
         lualine_z = {'progress', 'location'}
     },
@@ -61,9 +59,9 @@ lualine.setup {
             {
                 'filename',
                 symbols = {
-                    modified = ' ',       -- Text to show when the file is modified.
-                    readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
-                    unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                    modified = ' ',
+                    readonly = ' ',
+                    unnamed = '[No Name]',
                 }
             }
         },
@@ -75,11 +73,11 @@ lualine.setup {
         lualine_a = {{
             'buffers',
             symbols = {
-                modified = ' ',      -- Text to show when the buffer is modified
-                alternate_file = '#', -- Text to show to identify the alternate file
-                directory =  '',     -- Text to show when the buffer is a directory
-                readonly = ' ',      -- Text to show when the file is non-modifiable or readonly.
-                unnamed = '[No Name]', -- Text to show for unnamed buffers.
+                modified = ' ',
+                alternate_file = '#',
+                directory =  '',
+                readonly = ' ',
+                unnamed = '[No Name]',
             },
         }},
         lualine_b = {},

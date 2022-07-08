@@ -76,7 +76,6 @@ if not whichkey_loaded then
 end
 
 local function setup_mappings(client, bufnr)
-
     whichkey.register({
         gD = { function () vim.lsp.buf.declaration() end, "Go to declaration" },
         gd = { function() vim.lsp.buf.definition() end, "Go to definition" },
@@ -109,19 +108,15 @@ function M.default_on_attach_callback(client, bufnr)
     setup_mappings(client, bufnr)
 end
 
-local function lspSymbol(name, icon)
-    local hl = "DiagnosticSign" .. name
-    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-end
-
 function M.setup()
-    lspSymbol("Error", "")
-    lspSymbol("Info", "")
-    lspSymbol("Hint", "")
-    lspSymbol("Warn", "")
+    local signs = { Error = "", Warn = "", Info = "", Hint = "" }
+    for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+    end
 
     -- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     whichkey.register({
         e = { function() vim.diagnostic.open_float() end, "Show diagnostics" },
         q = { function() vim.diagnostic.setloclist() end, "Show local list" },
