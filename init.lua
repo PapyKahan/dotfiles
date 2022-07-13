@@ -1,5 +1,5 @@
-require('plugins')
-require('options')
-require('mappings')
+require('usr.plugins')
+require('usr.options')
+require('usr.mappings')
 
-require'lsp'.setup()
+require'usr.lsp'.setup()
