@@ -45,9 +45,13 @@ whichkey.register({
 -- Telescope
 -------------------------------------------------------------------
 whichkey.register({
+    name = "Telescope",
     p = { ":Telescope<cr>", "Open Telescope"},
-    ff = { "<cmd>Telescope find_files<cr>", "Find files"},
-    fg = { "<cmd>Telescope live_grep<cr>", "Find text"}
+    f = {
+        name = "Find",
+        f = { "<cmd>Telescope find_files<cr>", "Find files"},
+        g = { "<cmd>Telescope live_grep<cr>", "Find text"}
+    }
 },{
     silent = true,
     noremap = false,
