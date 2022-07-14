@@ -24,6 +24,13 @@ return packer.startup({function(use)
 
     -- Color and visual plugins
     use 'sainnhe/gruvbox-material'
+    use {
+        'sonph/onehalf',
+        rtp = "vim"
+    }
+    use 'dracula/vim'
+    use "EdenEast/nightfox.nvim"
+    use 'folke/tokyonight.nvim'
 
     -- Airline and bufferline plugins
     use {

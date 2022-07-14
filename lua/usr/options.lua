@@ -79,7 +79,7 @@ set.visualbell = false
 set.errorbells = false
 set.guioptions = "ig"
 set.background = "dark"
-cmd [[colorscheme gruvbox-material]]
+cmd [[colorscheme nightfox]]
 set.guifont = "Hack NF:h12"
 if has('termguicolors') then
     set.termguicolors = true

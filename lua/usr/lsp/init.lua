@@ -71,6 +71,9 @@ local function setup_document_highlight(client, bufnr)
 end
 
 local mappings = require 'usr.lsp.mappings'
+if not mappings.setup_buffer_mappings then
+	return
+end
 
 function M.default_on_attach_callback(client, bufnr)
     setup_codelens_refresh(client, bufnr)

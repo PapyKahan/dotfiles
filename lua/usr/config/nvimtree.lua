@@ -112,10 +112,10 @@ tree.setup({
         enable = true,
         show_on_dirs = false,
         icons = {
-            hint = "",
-            info = "",
-            warning = "",
-            error = "",
+            hint = "",
+            info = "",
+            warning = "",
+            error = "",
         },
     },
     filters = {
