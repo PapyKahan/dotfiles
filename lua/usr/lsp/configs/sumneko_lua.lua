@@ -1,7 +1,5 @@
 
 local lua_options = {
-    on_attach = lsp.default_on_attach_callback,
-    capabilities = default_capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -16,5 +14,9 @@ local lua_options = {
         },
     },
 }
+
+if vim.env['NEXTHINK'] then
+    lua_options.cmd = { vim.env['LSP_LANGUAGE_SERVERS']..'sumneko_lua\\extension\\server\\bin\\lua-language-server.exe', "--stdio" }
+end
 
 return lua_options

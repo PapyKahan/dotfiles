@@ -40,4 +40,11 @@ M.lspkind = {
    Package = "",
 }
 
+M.diagnostic_signs = {
+    Error = "",
+    Warn = "",
+    Info = "",
+    Hint = ""
+}
+
 return M

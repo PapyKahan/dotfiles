@@ -31,6 +31,11 @@ return packer.startup({function(use)
     use 'dracula/vim'
     use "EdenEast/nightfox.nvim"
     use 'folke/tokyonight.nvim'
+    use 'navarasu/onedark.nvim'
+    use({
+	    "catppuccin/nvim",
+	    as = "catppuccin"
+    })
 
     -- Airline and bufferline plugins
     use {
@@ -70,13 +75,21 @@ return packer.startup({function(use)
         'williamboman/nvim-lsp-installer',
         config = [[require 'usr.config.lsp-installer']]
     }
-    use {
-        'neovim/nvim-lspconfig',
-        config = [[require 'usr.config.lsp-config']]
-    }
+    use 'neovim/nvim-lspconfig'
     use {
         'j-hui/fidget.nvim',
         config = [[require 'usr.config.fidget']]
+    }
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
     }
 
     -- Note: Autocomplete

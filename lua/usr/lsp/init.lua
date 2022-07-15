@@ -1,4 +1,5 @@
 local M = {}
+local mappings = require 'usr.lsp.mappings'
 
 function M.default_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -70,53 +71,18 @@ local function setup_document_highlight(client, bufnr)
     })
 end
 
-local mappings = require 'usr.lsp.mappings'
-if not mappings.setup_buffer_mappings then
-	return
-end
-
 function M.default_on_attach_callback(client, bufnr)
     setup_codelens_refresh(client, bufnr)
     setup_document_highlight(client, bufnr)
     mappings.setup_buffer_mappings(bufnr)
 end
 
+
 function M.setup()
-    local signs = { Error = "", Warn = "", Info = "", Hint = "" }
-    for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-    end
-
     mappings.setup_global_mappings()
-
-    vim.diagnostic.config {
-        virtual_text = {
-            prefix = "",
-        },
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = true,
-        float = {
-            focusable = false,
-            style = "minimal",
-            border = "rounded",
-            source = "always",
-            header = "",
-            prefix = "",
-            format = function(d)
-                local t = vim.deepcopy(d)
-                local code = d.code or (d.user_data and d.user_data.lsp.code)
-                if code then
-                    t.message = string.format("%s [%s]", t.message, code):gsub("1. ", "")
-                end
-                return t.message
-            end,
-        }
-    }
-
-    require 'usr.lsp.handlers'.initialize_lsp_handlers()
+    require'usr.lsp.handlers'.setup()
+    require'usr.lsp.diagnostic'.setup()
+    require'usr.lsp.config'.setup({'sumneko_lua', 'pyright'})
 
     -- suppress error messages from lang servers
     vim.notify = function(msg, log_level)

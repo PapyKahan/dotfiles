@@ -1,6 +1,6 @@
 local M = {}
 
-function M.initialize_lsp_handlers()
+function M.setup()
     vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         focusable = true,
         style = "minimal",

@@ -3,4 +3,8 @@ if not loaded then
     return
 end
 
-fidget.setup {}
+fidget.setup {
+    text = {
+        spinner = 'circle_halves'
+    }
+}
