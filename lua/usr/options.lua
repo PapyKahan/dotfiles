@@ -1,8 +1,3 @@
-local loaded, impatient = pcall(require, "impatient")
-if not loaded then
-   return
-end
-
 local cmd = vim.cmd
 local has = vim.fn.has
 local set = vim.opt
@@ -79,7 +74,7 @@ set.visualbell = false
 set.errorbells = false
 set.guioptions = "ig"
 set.background = "dark"
-cmd [[colorscheme catppuccin]]
+cmd [[colorscheme nightfox]]
 set.guifont = "Hack NF:h12"
 if has('termguicolors') then
     set.termguicolors = true
