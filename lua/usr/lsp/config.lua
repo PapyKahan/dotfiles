@@ -81,20 +81,46 @@ local function default_on_attach_callback(client, bufnr)
     require'usr.lsp.mappings'.setup_buffer_mappings(bufnr)
 end
 
-function M.setup(servers)
-    for _, server_name in pairs(servers) do
-        local server_config = require("usr.lsp.configs."..server_name)
-        server_config.capabilities = default_capabilities()
-        server_config.on_attach = default_on_attach_callback
+function M.setup()
+    local lsp_installer_loaded, installer = pcall(require, 'nvim-lsp-installer')
+    if not lsp_installer_loaded then
+        return
+    end
 
-        lspconfig[server_name].setup(server_config)
+    local options = {
+       automatic_installation = true,
+       max_concurrent_installers = 10,
+    }
+
+    if vim.env['NEXTHINK'] then
+        options.install_root_dir = vim.env['LSP_LANGUAGE_SERVERS']
+    end
+
+    installer.setup(options)
+
+    lspconfig.util.default_config = vim.tbl_extend(
+        "force",
+        lspconfig.util.default_config,
+        {
+            on_attach = default_on_attach_callback,
+            default_capabilities = default_capabilities
+        }
+    )
+
+    for _, server in pairs(installer.get_installed_servers()) do
+        local config_loaded, server_config = pcall(require, "usr.lsp.configs."..server.name)
+        if config_loaded then
+            lspconfig[server.name].setup(server_config)
+        else
+            lspconfig[server.name].setup()
+        end
     end
 
     local win = require "lspconfig.ui.windows"
     local _default_opts = win.default_opts
 
-    win.default_opts = function(options)
-        local opts = _default_opts(options)
+    win.default_opts = function(default_opts)
+        local opts = _default_opts(default_opts)
         opts.focusable = false
         opts.style = "minimal"
         opts.border = "rounded"

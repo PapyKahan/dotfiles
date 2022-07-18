@@ -15,11 +15,24 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     formatting = {
-        format = function(_, vim_item)
+        format = function(entry, vim_item)
             local icons = require("usr.ui.icons").lspkind
             vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+            vim_item.menu = ({
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[LUA]",
+                vsnip = "[Snippet]",
+                buffer = "[Buffer]",
+                path = "[Path]"
+            })[entry.source.name]
             return vim_item
         end,
+        duplicates = {
+            buffer = 1,
+            path = 1,
+            nvim_lsp = 0,
+            luasnip = 1,
+        },
     },
     mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -55,6 +68,7 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
         { name = 'vsnip' }, -- For vsnip users.
     }, {
         { name = 'buffer' },

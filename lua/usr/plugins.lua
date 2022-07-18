@@ -73,7 +73,6 @@ return packer.startup({function(use)
     -- Note : LSP
     use {
         'williamboman/nvim-lsp-installer',
-        config = [[require 'usr.config.lsp-installer']]
     }
     use 'neovim/nvim-lspconfig'
     use {
@@ -85,12 +84,17 @@ return packer.startup({function(use)
         requires = "kyazdani42/nvim-web-devicons",
         config = [[require'usr.config.trouble']],
     }
+    use {
+        "max397574/lua-dev.nvim",
+        module = "lua-dev",
+    }
 
     -- Note: Autocomplete
     use {
         'hrsh7th/nvim-cmp',
         requires = {
             'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
