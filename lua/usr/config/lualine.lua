@@ -8,6 +8,8 @@ local function get_fg_color(hlgroup)
     return utils.extract_highlight_colors(hlgroup, 'fg')
 end
 
+local diagnostic_signs = require'usr.ui.icons'.diagnostic_signs
+
 lualine.setup {
     options = {
         icons_enabled = true,
@@ -43,7 +45,12 @@ lualine.setup {
                     info  = { fg = get_fg_color('DiagnosticSignInfo') },
                     hint  = { fg = get_fg_color('DiagnosticSignHint') },
                 },
-                symbols = { error = " ", warn  = " ", info  = " ", hint  = " " },
+                symbols = {
+                    error = diagnostic_signs.Error.." ",
+                    warn  = diagnostic_signs.Warn.." ",
+                    info  = diagnostic_signs.Info.." ",
+                    hint  = diagnostic_signs.Hint.." "
+                },
                 colored = true,
                 update_in_insert = false,
                 always_visible = false,

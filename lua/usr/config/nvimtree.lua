@@ -3,6 +3,8 @@ if not loaded then
     return
 end
 
+local diagnostic_signs = require'usr.ui.icons'.diagnostic_signs
+
 tree.setup({
     auto_reload_on_write = true,
     create_in_closed_folder = false,
@@ -112,10 +114,10 @@ tree.setup({
         enable = true,
         show_on_dirs = false,
         icons = {
-            hint = "",
-            info = "",
-            warning = "",
-            error = "",
+            hint = diagnostic_signs.Hint,
+            info = diagnostic_signs.Info,
+            warning = diagnostic_signs.Warn,
+            error = diagnostic_signs.Error,
         },
     },
     filters = {

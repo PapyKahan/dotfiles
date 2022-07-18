@@ -1,4 +1,3 @@
-
 local lua_options = {
     settings = {
         Lua = {

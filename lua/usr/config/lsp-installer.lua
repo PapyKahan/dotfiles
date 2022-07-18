@@ -12,6 +12,4 @@ if vim.env['NEXTHINK'] then
     options.install_root_dir = vim.env['LSP_LANGUAGE_SERVERS']
 end
 
-
 installer.setup(options)
-

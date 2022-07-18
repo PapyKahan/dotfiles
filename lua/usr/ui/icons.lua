@@ -44,7 +44,8 @@ M.diagnostic_signs = {
     Error = "",
     Warn = "",
     Info = "",
-    Hint = ""
+    Hint = "",
+    Other = "﫠"
 }
 
 return M
