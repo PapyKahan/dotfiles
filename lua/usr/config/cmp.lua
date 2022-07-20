@@ -20,7 +20,6 @@ cmp.setup({
             vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
-                nvim_lua = "[LUA]",
                 vsnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]"
@@ -31,7 +30,6 @@ cmp.setup({
             buffer = 1,
             path = 1,
             nvim_lsp = 0,
-            luasnip = 1,
         },
     },
     mapping = cmp.mapping.preset.insert({
@@ -68,7 +66,6 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
         { name = 'vsnip' }, -- For vsnip users.
     }, {
         { name = 'buffer' },

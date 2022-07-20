@@ -6,25 +6,24 @@ local lua_options = {
             },
             workspace = {
                 library = {
-                    [vim.fn.stdpath("config") .. "/lua"] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                    [vim.fn.stdpath('config') .. '/lua'] = true,
+                    [vim.fn.stdpath('data') .. '/site/pack/packer'] = true,
                 }
             },
         },
     },
 }
 
-local loaded, lua_dev = pcall(require, "lua-dev")
+local loaded, luadev = pcall(require, 'lua-dev')
 if not loaded then
     return lua_options
 end
 
-local opts = {
-    library = {
-        vimruntime = true,
-        types = true,
-        plugins = true,
-    },
-    lspconfig = lua_options
-}
-
-return lua_dev.setup(opts)
+return luadev.setup({
+    lspconfig = lua_options,
+    vimruntime = true,
+    types = true,
+    plugins = true,
+})

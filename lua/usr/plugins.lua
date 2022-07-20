@@ -89,16 +89,16 @@ return packer.startup({function(use)
         requires = "kyazdani42/nvim-web-devicons",
         config = [[require'usr.config.trouble']],
     }
-    use {
-        "max397574/lua-dev.nvim",
-        module = "lua-dev",
-    }
     use "b0o/schemastore.nvim"
     use "Hoffs/omnisharp-extended-lsp.nvim"
     use {
         'stevearc/dressing.nvim',
         requires = 'MunifTanjim/nui.nvim',
         config = [[require('usr.config.dressing')]]
+    }
+    use {
+        "folke/lua-dev.nvim",
+        module = "lua-dev",
     }
 
     -- Note: Terminal
