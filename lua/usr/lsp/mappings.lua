@@ -47,6 +47,7 @@ function M.setup_global_mappings()
             e = { function() vim.diagnostic.open_float() end, "Show diagnostics" },
             q = { function() vim.diagnostic.setloclist() end, "Show local list" },
             t = { "<cmd>TroubleToggle<cr>", "Show troubles"},
+            o = { "<cmd>SymbolsOutline<cr>", "Show symbols outline"},
         }
     }, {
         noremap = true,

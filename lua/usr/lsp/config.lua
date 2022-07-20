@@ -112,7 +112,7 @@ function M.setup()
         if config_loaded then
             lspconfig[server.name].setup(server_config)
         else
-            lspconfig[server.name].setup()
+            lspconfig[server.name].setup({})
         end
     end
 

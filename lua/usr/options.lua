@@ -76,7 +76,7 @@ set.guioptions = "ig"
 set.background = "dark"
 cmd [[colorscheme catppuccin]]
 --cmd [[colorscheme nightfox]]
-set.guifont = "Hack NF:h12"
+set.guifont = "Hack NF:h14"
 if has('termguicolors') then
     set.termguicolors = true
 end

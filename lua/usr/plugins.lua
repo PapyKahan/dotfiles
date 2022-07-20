@@ -18,6 +18,14 @@ packer.init({
     }
 })
 
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    pattern = { "plugins.lua" },
+    callback = function()
+        vim.cmd("runtime lua/usr/plugins.lua")
+        packer.sync()
+    end,
+})
+
 return packer.startup({function(use)
     use 'wbthomason/packer.nvim'
     use 'lewis6991/impatient.nvim'
@@ -28,10 +36,7 @@ return packer.startup({function(use)
         'sonph/onehalf',
         rtp = "vim"
     }
-    use 'dracula/vim'
     use "EdenEast/nightfox.nvim"
-    use 'folke/tokyonight.nvim'
-    use 'navarasu/onedark.nvim'
     use({
 	    "catppuccin/nvim",
 	    as = "catppuccin"
@@ -88,6 +93,20 @@ return packer.startup({function(use)
         "max397574/lua-dev.nvim",
         module = "lua-dev",
     }
+    use "b0o/schemastore.nvim"
+    use "Hoffs/omnisharp-extended-lsp.nvim"
+    use {
+        'stevearc/dressing.nvim',
+        requires = 'MunifTanjim/nui.nvim',
+        config = [[require('usr.config.dressing')]]
+    }
+
+    -- Note: Terminal
+    use {
+        'akinsho/nvim-toggleterm.lua',
+        branch = 'main',
+        config = [[require('usr.config.toggleterm')]]
+    }
 
     -- Note: Autocomplete
     use {
@@ -137,6 +156,12 @@ return packer.startup({function(use)
         'Shatur/neovim-cmake',
         requires = {'nvim-lua/plenary.nvim'}
     }
+
+    -- Note: Outlining
+    use({
+        "simrat39/symbols-outline.nvim",
+        cmd = { "SymbolsOutline" },
+    })
 
     if packer_bootstrap then
         packer.sync()

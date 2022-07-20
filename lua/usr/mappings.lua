@@ -57,3 +57,24 @@ whichkey.register({
     noremap = false,
     prefix = "<leader>"
 })
+
+-------------------------------------------------------------------
+-- Toggleterm
+-------------------------------------------------------------------
+whichkey.register({
+    name = "Terminal",
+    ["<F12>"] = { "<cmd>ToggleTerm<cr>", "Open Terminal"}
+}, {
+    mode = "n",
+    silent = true,
+    noremap = false,
+})
+
+whichkey.register({
+    name = "Terminal",
+    ["<F12>"] = { "<cmd>ToggleTerm<cr>", "Open Terminal"}
+}, {
+    mode = "t",
+    silent = true,
+    noremap = false,
+})

@@ -13,10 +13,6 @@ local lua_options = {
     },
 }
 
-if vim.env['NEXTHINK'] then
-    lua_options.cmd = { vim.env['LSP_LANGUAGE_SERVERS']..'sumneko_lua\\extension\\server\\bin\\lua-language-server.exe', "--stdio" }
-end
-
 local loaded, lua_dev = pcall(require, "lua-dev")
 if not loaded then
     return lua_options
