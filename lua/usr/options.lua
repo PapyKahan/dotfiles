@@ -80,6 +80,7 @@ set.guifont = "Hack NF:h14"
 if has('termguicolors') then
     set.termguicolors = true
 end
+set.updatetime=300
 
 
 -------------------------------------------------------------------
