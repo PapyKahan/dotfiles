@@ -62,6 +62,7 @@ end
         --→ razor.trace                                                               default: "Off"
 
 return {
+    cmd = { "omnisharp.cmd" },
     handlers = {
         ["textDocument/definition"] = omnisharp_extended.handler,
     },
