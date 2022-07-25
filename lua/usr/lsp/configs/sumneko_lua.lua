@@ -1,4 +1,5 @@
 local lua_options = {
+    cmd = { 'lua-language-server.cmd' },
     settings = {
         Lua = {
             diagnostics = {

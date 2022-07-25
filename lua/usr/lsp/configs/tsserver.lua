@@ -125,4 +125,20 @@
 -- → typescript.updateImportsOnFileMove.enabled                                     default: "prompt"
 -- → typescript.validate.enable                                                     default: true
 -- → typescript.workspaceSymbols.scope                                              default: "allOpenProjects"
-return {}
+return {
+    javascript = {
+        referencesCodeLens = {
+            enabled = true,
+            showOnAllFunctions = true,
+        },
+    },
+    typescript = {
+        suggest = {
+            completeFunctionCalls = true
+        },
+        referencesCodeLens = {
+            enabled = true,
+            showOnAllFunctions = true,
+        },
+    }
+}

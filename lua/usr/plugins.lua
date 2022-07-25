@@ -77,9 +77,10 @@ return packer.startup({function(use)
 
     -- Note : LSP
     use {
-        'williamboman/nvim-lsp-installer',
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig"
     }
-    use 'neovim/nvim-lspconfig'
     use {
         'j-hui/fidget.nvim',
         config = [[require 'usr.config.fidget']]
@@ -130,6 +131,7 @@ return packer.startup({function(use)
         'windwp/nvim-autopairs',
         config = function() require'nvim-autopairs'.setup() end
     }
+    use 'windwp/nvim-ts-autotag'
 
     -- Key mapping helper
     use {
@@ -140,7 +142,8 @@ return packer.startup({function(use)
     -- Note: Tree-Sitter syntax optimizations
     use {
         'nvim-treesitter/nvim-treesitter',
-        cmd = 'TSUpdate'
+        cmd = 'TSUpdate',
+        config = [[require'usr.config.treesitter']]
     }
 
     -- Note: Debugger

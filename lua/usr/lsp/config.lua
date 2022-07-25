@@ -81,15 +81,17 @@ local function default_on_attach_callback(client, bufnr)
     require'usr.lsp.mappings'.setup_buffer_mappings(bufnr)
 end
 
-function M.setup()
-    local lsp_installer_loaded, installer = pcall(require, 'nvim-lsp-installer')
-    if not lsp_installer_loaded then
+local function setup_installer()
+    local mason_loaded, installer = pcall(require, 'mason')
+    if not mason_loaded then
         return
     end
-
     local options = {
-       automatic_installation = true,
-       max_concurrent_installers = 10,
+        ui = {
+            border = "rounded"
+        },
+        automatic_installation = true,
+        max_concurrent_installers = 10,
     }
 
     if vim.env['NEXTHINK'] then
@@ -97,7 +99,10 @@ function M.setup()
     end
 
     installer.setup(options)
+end
 
+
+local function setup_lspconfig()
     lspconfig.util.default_config = vim.tbl_extend(
         "force",
         lspconfig.util.default_config,
@@ -106,15 +111,6 @@ function M.setup()
             default_capabilities = default_capabilities
         }
     )
-
-    for _, server in pairs(installer.get_installed_servers()) do
-        local config_loaded, server_config = pcall(require, "usr.lsp.configs."..server.name)
-        if config_loaded then
-            lspconfig[server.name].setup(server_config)
-        else
-            lspconfig[server.name].setup({})
-        end
-    end
 
     local win = require "lspconfig.ui.windows"
     local _default_opts = win.default_opts
@@ -126,6 +122,30 @@ function M.setup()
         opts.border = "rounded"
         return opts
     end
+end
+
+local function setup_installer_handlers()
+    local mason_lspconfig_loaded, mason_lspconfig = pcall(require, 'mason-lspconfig')
+    if not mason_lspconfig_loaded then
+	    return
+    end
+    mason_lspconfig.setup_handlers({
+        function (server_name)
+            local config_loaded, server_config = pcall(require, "usr.lsp.configs."..server_name)
+            if config_loaded then
+                lspconfig[server_name].setup(server_config)
+            else
+                lspconfig[server_name].setup({})
+            end
+        end
+    })
+    mason_lspconfig.setup({ automatic_installation = true })
+end
+
+function M.setup()
+    setup_installer()
+    setup_lspconfig()
+    setup_installer_handlers()
 end
 
 return M
