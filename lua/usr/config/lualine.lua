@@ -99,23 +99,23 @@ lualine.setup {
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {
-        lualine_a = {{
-            'buffers',
-            symbols = {
-                modified = ' ',
-                alternate_file = '#',
-                directory =  '',
-                readonly = ' ',
-                unnamed = '[No Name]',
-            },
-        }},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
+    --tabline = {
+    --    lualine_a = {{
+    --        'buffers',
+    --        symbols = {
+    --            modified = ' ',
+    --            alternate_file = '#',
+    --            directory =  '',
+    --            readonly = ' ',
+    --            unnamed = '[No Name]',
+    --        },
+    --    }},
+    --    lualine_b = {},
+    --    lualine_c = {},
+    --    lualine_x = {},
+    --    lualine_y = {},
+    --    lualine_z = {}
+    --},
     extensions = {
         'symbols-outline',
         'nvim-tree',

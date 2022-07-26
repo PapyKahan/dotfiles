@@ -37,10 +37,10 @@ return packer.startup({function(use)
         rtp = "vim"
     }
     use "EdenEast/nightfox.nvim"
-    use({
-	    "catppuccin/nvim",
-	    as = "catppuccin"
-    })
+    use{
+        "catppuccin/nvim",
+        as = "catppuccin"
+    }
 
     -- Airline and bufferline plugins
     use {
@@ -48,13 +48,15 @@ return packer.startup({function(use)
         requires = {'kyazdani42/nvim-web-devicons'},
         config = [[require 'usr.config.lualine']]
     }
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "v2.*",
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = [[require 'usr.config.bufferline']]
+    }
 
     -- Note: File browser
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = [[require 'usr.config.nvimtree']]
-    }
+    use { 'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, config = [[require 'usr.config.nvimtree']] }
 
     -- Note: Fuzzy finder
     use {
