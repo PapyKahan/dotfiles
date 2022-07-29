@@ -168,6 +168,9 @@ return packer.startup({function(use)
         cmd = { "SymbolsOutline" },
     })
 
+    -- Robot framework
+    use 'suzuki11109/robot.vim'
+
     if packer_bootstrap then
         packer.sync()
     end

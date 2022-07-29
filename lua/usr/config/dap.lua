@@ -59,33 +59,33 @@ whichkey.register({
 local ui = {
     breakpoint = {
         text = "",
-        texthl = "LspDiagnosticsSignError",
+        texthl = "DiagnosticSignError",
         linehl = "",
         numhl = "",
     },
     breakpoint_condition = {
         text = "",
-        texthl = "LspDiagnosticsSignWarnning",
+        texthl = "DiagnosticSignWarn",
         linehl = "",
         numhl = "",
     },
     log_point = {
         text = "",
-        texthl = "LspDiagnosticsSignInfo",
+        texthl = "DiagnosticSignInfo",
         linehl = "",
         numhl = "",
     },
     breakpoint_rejected = {
         text = "",
-        texthl = "LspDiagnosticsSignHint",
+        texthl = "DiagnosticSignHint",
         linehl = "",
         numhl = "",
     },
     stopped = {
         text = "",
-        texthl = "LspDiagnosticsSignInformation",
+        texthl = "DiagnosticsSignInfo",
         linehl = "DiagnosticUnderlineInfo",
-        numhl = "LspDiagnosticsSignInformation",
+        numhl = "DiagnosticSignInfo",
     },
 }
 
