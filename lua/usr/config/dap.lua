@@ -4,7 +4,7 @@ if not dap_python_loaded then
 end
 
 if vim.env['NEXTHINK'] then
-    dap_python.setup('c:/ieu/tools/python3/python.exe')
+    dap_python.setup('C:/ieu/tools/WPy64-31050/python-3.10.5.amd64/python.exe')
 else
     dap_python.setup()
 end
@@ -95,3 +95,7 @@ vim.fn.sign_define('DapBreakpointCondition', ui.breakpoint_condition)
 vim.fn.sign_define('DapLogPoint', ui.log_point)
 vim.fn.sign_define('DapStopped', ui.stopped)
 vim.fn.sign_define('DapBreakpointRejected', ui.breakpoint_rejected)
+
+-- Dap log level
+
+dap.set_log_level('ERROR')
