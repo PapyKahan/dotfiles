@@ -97,5 +97,30 @@ vim.fn.sign_define('DapStopped', ui.stopped)
 vim.fn.sign_define('DapBreakpointRejected', ui.breakpoint_rejected)
 
 -- Dap log level
-
 dap.set_log_level('ERROR')
+
+local dapui_loaded, dapui = pcall(require, 'dapui')
+if not dapui_loaded then
+    return
+end
+
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open({})
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close({})
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close({})
+end
+--require("dapui").eval(<expression>)
+whichkey.register({
+    name = "Debugging",
+    d = {
+        e = { function() dapui.eval() end, "Evaluate expression" },
+    }
+}, {
+    silent = true,
+    noremap = false,
+    prefix = "<leader>"
+})

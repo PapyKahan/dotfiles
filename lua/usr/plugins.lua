@@ -153,8 +153,8 @@ return packer.startup({function(use)
         'mfussenegger/nvim-dap',
         config = [[require 'usr.config.dap']]
     }
-
-    use 'mfussenegger/nvim-dap-python' -- need python dependency : pip install debugpy
+    use { 'mfussenegger/nvim-dap-python', requires= { 'mfussenegger/nvim-dap' } } -- need python dependency : pip install debugpy
+    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
 
     -- Note: CMake
     use {
