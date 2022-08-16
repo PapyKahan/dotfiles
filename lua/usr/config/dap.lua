@@ -104,6 +104,8 @@ if not dapui_loaded then
     return
 end
 
+dapui.setup()
+
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open({})
 end
