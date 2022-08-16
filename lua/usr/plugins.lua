@@ -165,7 +165,7 @@ return packer.startup({function(use)
     -- Note: Outlining
     use({
         "simrat39/symbols-outline.nvim",
-        cmd = { "SymbolsOutline" },
+        config = [[require("symbols-outline").setup()]]
     })
 
     -- Robot framework
