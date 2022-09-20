@@ -5,5 +5,5 @@ return {
   font = wezterm.font('JetBrainsMono NF', { weight = 'Medium' }),
   font_size = 12,
   --color_scheme = "OneHalfDark",
-  color_scheme = "Catppuccin Macchiato",
+  color_scheme = "Catppuccin Macchiato"
 }
