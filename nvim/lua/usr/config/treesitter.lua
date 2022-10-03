@@ -6,5 +6,8 @@ end
 treesitter_config.setup {
     autotag = {
         enable = true
+    },
+    highlight = {
+        enable = true
     }
 }
