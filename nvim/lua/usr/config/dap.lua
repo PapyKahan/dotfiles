@@ -4,7 +4,7 @@ if not dap_python_loaded then
 end
 
 if vim.env['NEXTHINK'] then
-    dap_python.setup('C:/ieu/tools/WPy64-31050/python-3.10.5.amd64/python.exe')
+    dap_python.setup('C:/ieu/tools/WPy64-31101/python-3.11.0.amd64/python.exe')
 else
     dap_python.setup()
 end

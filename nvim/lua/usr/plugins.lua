@@ -41,6 +41,8 @@ return packer.startup({function(use)
         "catppuccin/nvim",
         as = "catppuccin"
     }
+    use "rafamadriz/neon"
+    use 'folke/tokyonight.nvim'
 
     -- Airline and bufferline plugins
     use {
@@ -79,7 +81,10 @@ return packer.startup({function(use)
 
     -- Note : LSP
     use {
-        "williamboman/mason.nvim",
+        {
+            "williamboman/mason.nvim",
+            config = [[require 'usr.config.mason']]
+        },
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig"
     }
@@ -128,12 +133,6 @@ return packer.startup({function(use)
         config = [[require'usr.config.cmp']]
     }
 
-    -- Pairs
-    use {
-        'windwp/nvim-autopairs',
-        config = function() require'nvim-autopairs'.setup() end
-    }
-    use 'windwp/nvim-ts-autotag'
 
     -- Key mapping helper
     use {
@@ -144,8 +143,22 @@ return packer.startup({function(use)
     -- Note: Tree-Sitter syntax optimizations
     use {
         'nvim-treesitter/nvim-treesitter',
-        cmd = 'TSUpdate',
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
         config = [[require'usr.config.treesitter']]
+    }
+
+    -- Pairs
+    use {
+        'windwp/nvim-autopairs',
+        config = function() require'nvim-autopairs'.setup() end,
+        after='nvim-treesitter'
+    }
+    use {
+        'windwp/nvim-ts-autotag',
+        after='nvim-treesitter'
     }
 
     -- Note: Debugger
