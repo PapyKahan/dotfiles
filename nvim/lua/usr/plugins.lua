@@ -184,6 +184,12 @@ return packer.startup({function(use)
     -- Robot framework
     use 'suzuki11109/robot.vim'
 
+    -- Github Copilot
+    use {
+        'github/copilot.vim',
+        config = [[require'usr.config.copilot']]
+    }
+
     if packer_bootstrap then
         packer.sync()
     end
