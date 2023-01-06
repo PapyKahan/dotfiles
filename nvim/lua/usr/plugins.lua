@@ -186,8 +186,16 @@ return packer.startup({function(use)
 
     -- Github Copilot
     use {
-        'github/copilot.vim',
+        "zbirenbaum/copilot.lua",
+        event = "VimEnter",
         config = [[require'usr.config.copilot']]
+    }
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function ()
+            require("copilot_cmp").setup()
+        end
     }
 
     if packer_bootstrap then
