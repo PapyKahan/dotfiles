@@ -41,8 +41,9 @@ return packer.startup({function(use)
         "catppuccin/nvim",
         as = "catppuccin"
     }
-    use "rafamadriz/neon"
+    use 'rafamadriz/neon'
     use 'folke/tokyonight.nvim'
+    use 'ray-x/aurora'
 
     -- Airline and bufferline plugins
     use {

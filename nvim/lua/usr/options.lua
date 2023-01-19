@@ -5,7 +5,7 @@ local set = vim.opt
 -------------------------------------------------------------------
 -- shell configuration
 -------------------------------------------------------------------
-if (has("win32") == 1 or has("win64") == 1 or has("win32unix") == 1) then
+if (has('win32') == 1 or has('win64') == 1 or has('win32unix') == 1) then
     -- Language
     cmd [[language en_US]]
     set.shell = 'powershell'
@@ -18,21 +18,21 @@ end
 
 if (vim.g.neovide) then
     vim.g.neovide_cursor_animation_length = 0
-    vim.g.neovide_cursor_vfx_mode = ""
+    vim.g.neovide_cursor_vfx_mode = ''
 end
 
 -------------------------------------------------------------------
 -- General settings
 -------------------------------------------------------------------
 set.modeline = false
-set.backspace = "indent,eol,start"
+set.backspace = 'indent,eol,start'
 set.autoread = true
-set.mouse = "a"
-set.encoding = "utf-8"
+set.mouse = 'a'
+set.encoding = 'utf-8'
 set.lazyredraw = true
 set.number = true
 set.numberwidth = 4
-set.signcolumn = "yes"
+set.signcolumn = 'yes'
 set.cursorline = true
 
 
@@ -46,7 +46,7 @@ set.hlsearch = true
 -- Command menu options
 -------------------------------------------------------------------
 set.wildmenu = true
-set.wildmode = "longest:full,full"
+set.wildmode = 'longest:full,full'
 
 -------------------------------------------------------------------
 -- Text formating
@@ -56,29 +56,30 @@ set.wrap = false
 -------------------------------------------------------------------
 -- Diff options
 -------------------------------------------------------------------
-set.diffopt = "internal,filler,closeoff,iwhite"
+set.diffopt = 'internal,filler,closeoff,iwhite'
 
 -------------------------------------------------------------------
 -- Filetype
 -------------------------------------------------------------------
-set.fileformats = "dos,unix"
-set.fileencoding = "utf-8"
+set.fileformats = 'dos,unix'
+set.fileencoding = 'utf-8'
 cmd [[filetype plugin indent on]]
 
 -------------------------------------------------------------------
 -- Visual
 -------------------------------------------------------------------
-set.syntax = "ON"
+set.syntax = 'ON'
 set.showcmd = true
 set.showmatch = true
 set.laststatus = 2
 set.visualbell = false
 set.errorbells = false
-set.guioptions = "ig"
-set.background = "dark"
--- cmd [[colorscheme nightfox]]
-cmd [[colorscheme catppuccin]]
-set.guifont = "JetbrainsMono NF:h12"
+set.guioptions = 'ig'
+set.background = 'dark'
+cmd [[colorscheme tokyonight]]
+--cmd [[colorscheme nightfox]]
+-- cmd [[colorscheme catppuccin]]
+set.guifont = 'JetbrainsMono NF:h12'
 if has('termguicolors') then
     set.termguicolors = true
 end
@@ -101,7 +102,7 @@ set.expandtab = true
 -------------------------------------------------------------------
 -- Completion settings config
 -------------------------------------------------------------------
-set.completeopt = "longest,menuone,preview"
+set.completeopt = 'longest,menuone,preview'
 
 -------------------------------------------------------------------
 -- Tab related config
@@ -117,4 +118,4 @@ set.writebackup = false
 -------------------------------------------------------------------
 -- Clipboard configuration
 -------------------------------------------------------------------
-set.clipboard = "unnamedplus"
+set.clipboard = 'unnamedplus'
