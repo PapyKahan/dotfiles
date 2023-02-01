@@ -11,3 +11,4 @@ Remove-Item -Force "$env:temp\vcvars.txt"
 $env:VIRTUAL_ENV_DISABLE_PROMPT = 'true'
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
 #oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\default.omp.json" | Invoke-Expression
+$env:OPENAI_API_KEY = "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"

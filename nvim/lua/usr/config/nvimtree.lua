@@ -1,3 +1,9 @@
+local function open_nvim_tree()
+    require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
 local loaded, tree = pcall(require, 'nvim-tree')
 if not loaded then
     return
@@ -13,9 +19,9 @@ tree.setup({
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
     ignore_buffer_on_setup = false,
-    open_on_setup = false,
-    open_on_setup_file = false,
-    open_on_tab = false,
+    --open_on_setup = false,
+    --open_on_setup_file = false,
+    --open_on_tab = false,
     sort_by = "name",
     root_dirs = {},
     prefer_startup_root = false,
@@ -93,7 +99,7 @@ tree.setup({
     },
     hijack_directories = {
         enable = true,
-        auto_open = true,
+        --auto_open = true,
     },
     update_focused_file = {
         enable = true,
