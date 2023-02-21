@@ -3,7 +3,11 @@ if not loaded then
     return
 end
 
-copilot.setup()
+copilot.setup({
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+    method = "getCompletionsCycling",
+})
 
 if vim.env['NEXTHINK'] then
     vim.g.copilot_proxy = vim.env['HTTPS_PROXY']

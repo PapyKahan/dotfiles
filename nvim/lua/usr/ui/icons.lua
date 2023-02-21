@@ -38,6 +38,7 @@ M.lspkind = {
    Calendar = "",
    Watch = " ",
    Package = "",
+   Copilot = "",
 }
 
 M.diagnostic_signs = {
