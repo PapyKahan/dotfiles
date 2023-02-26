@@ -19,7 +19,6 @@ cmp.setup({
             local icons = require("usr.ui.icons").lspkind
             vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
-                copilot = "[Copilot]",
                 nvim_lsp = "[LSP]",
                 vsnip = "[Snippet]",
                 buffer = "[Buffer]",
@@ -66,7 +65,6 @@ cmp.setup({
         }),
     }),
     sources = cmp.config.sources({
-        { name = 'copilot' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'vsnip' }, -- For vsnip users.

@@ -187,31 +187,24 @@ return packer.startup({function(use)
 
     -- Github Copilot
     use {
-        "zbirenbaum/copilot.lua",
-        event = "VimEnter",
+        "github/copilot.vim",
         config = [[require'usr.config.copilot']]
     }
-    use {
-        "zbirenbaum/copilot-cmp",
-        after = { "copilot.lua" },
-        config = function ()
-            require("copilot_cmp").setup()
-        end
-    }
-
-    use {
-        "jackMort/ChatGPT.nvim",
-        config = function()
-            require("chatgpt").setup({
-                -- optional configuration
-            })
-        end,
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
-        }
-    }
+    
+    -- Github Copilot
+    --use {
+    --    "zbirenbaum/copilot.lua",
+    --    event = "VimEnter",
+    --    config = [[require'usr.config.copilot']]
+    --}
+    --use {
+    --    "zbirenbaum/copilot-cmp",
+    --    after = { "copilot.lua" },
+    --    config = function ()
+    --        require("copilot_cmp").setup()
+    --    end
+    --}
+   
 
     if packer_bootstrap then
         packer.sync()
