@@ -187,10 +187,10 @@ return packer.startup({function(use)
 
     -- Github Copilot
     use {
-        "github/copilot.vim",
+        "PapyKahan/copilot.vim",
         config = [[require'usr.config.copilot']]
     }
-    
+
     -- Github Copilot
     --use {
     --    "zbirenbaum/copilot.lua",
@@ -204,7 +204,8 @@ return packer.startup({function(use)
     --        require("copilot_cmp").setup()
     --    end
     --}
-   
+
+    --use 'Exafunction/codeium.vim'
 
     if packer_bootstrap then
         packer.sync()
