@@ -191,6 +191,12 @@ return packer.startup({function(use)
         config = [[require'usr.config.copilot']]
     }
 
+    -- Rust
+    use {
+        "simrat39/rust-tools.nvim",
+        config = [[require'usr.config.rust-tools']]
+    }
+
     -- Github Copilot
     --use {
     --    "zbirenbaum/copilot.lua",
