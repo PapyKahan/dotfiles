@@ -1,130 +1,120 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-local packer_bootstrap = nil
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local loaded, packer = pcall(require, 'packer')
+local loaded, lazy = pcall(require, 'lazy')
 if not loaded then
     return
 end
 
-packer.init({
-    display = {
-        open_fn = function()
-            return require('packer.util').float({ border = 'rounded' })
-        end
-    }
-})
+vim.g.mapleader = " "
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-    pattern = { "plugins.lua" },
-    callback = function()
-        vim.cmd("runtime lua/usr/plugins.lua")
-        packer.sync()
-    end,
-})
-
-return packer.startup({function(use)
-    use 'wbthomason/packer.nvim'
-    use 'lewis6991/impatient.nvim'
-
+lazy.setup({
     -- Color and visual plugins
-    use 'sainnhe/gruvbox-material'
-    use {
-        'sonph/onehalf',
-        rtp = "vim"
-    }
-    use "EdenEast/nightfox.nvim"
-    use{
+    'sainnhe/gruvbox-material',
+    "EdenEast/nightfox.nvim",
+    {
         "catppuccin/nvim",
-        as = "catppuccin"
-    }
-    use 'rafamadriz/neon'
-    use 'folke/tokyonight.nvim'
-    use 'ray-x/aurora'
+        name = "catppuccin"
+    },
+    'folke/tokyonight.nvim',
+    'ray-x/aurora',
 
     -- Airline and bufferline plugins
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons'},
-        config = [[require 'usr.config.lualine']]
-    }
-    use {
-        'akinsho/bufferline.nvim',
-        tag = "v2.*",
-        requires = 'kyazdani42/nvim-web-devicons',
-        config = [[require 'usr.config.bufferline']]
-    }
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+        config = function() require('usr.config.lualine') end
+    },
+    {
+	    'akinsho/bufferline.nvim',
+	    version = "v3.*",
+	    dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function() require 'usr.config.bufferline' end
+    },
 
     -- Note: File browser
-    use { 'kyazdani42/nvim-tree.lua', requires = {'kyazdani42/nvim-web-devicons'}, config = [[require 'usr.config.nvimtree']] }
+    { 
+        'kyazdani42/nvim-tree.lua',
+        dependencies = {'nvim-tree/nvim-web-devicons'},
+        config = function() require 'usr.config.nvimtree' end
+    },
 
     -- Note: Fuzzy finder
-    use {
+    {
         'nvim-telescope/telescope.nvim',
-        requires = {
+        dependencies = {
             {'nvim-lua/popup.nvim'},
             {'nvim-lua/plenary.nvim'},
             {'BurntSushi/ripgrep'},
             {'sharkdp/fd'},
         },
-        config = [[require 'usr.config.telescope']]
-    }
+        config = function() require 'usr.config.telescope' end
+    },
 
-    use {
+    {
         "nvim-telescope/telescope-file-browser.nvim",
-        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    }
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
     -- Git
-    use {
+    {
         'lewis6991/gitsigns.nvim',
         event = "BufRead",
-        config = [[require 'usr.config.gitsigns']]
-    }
+        config = function() require 'usr.config.gitsigns' end
+    },
 
     -- Note : LSP
-    use {
-        {
-            "williamboman/mason.nvim",
-            config = [[require 'usr.config.mason']]
-        },
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig"
-    }
-    use {
+    {
+        'williamboman/mason.nvim',
+        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        config = function() require 'usr.config.mason' end,
+        dependencies = {
+            'williamboman/mason-lspconfig.nvim',
+            'neovim/nvim-lspconfig',
+            'Hoffs/omnisharp-extended-lsp.nvim'
+        }
+    },
+
+    {
         'j-hui/fidget.nvim',
-        config = [[require 'usr.config.fidget']]
-    }
-    use {
+        config = function() require 'usr.config.fidget' end
+    },
+
+    {
         "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-        config = [[require'usr.config.trouble']],
-    }
-    use "b0o/schemastore.nvim"
-    use "Hoffs/omnisharp-extended-lsp.nvim"
-    use {
+        dependencies = "nvim-tree/nvim-web-devicons",
+        config = function() require'usr.config.trouble' end,
+    },
+
+    "b0o/schemastore.nvim",
+    {
         'stevearc/dressing.nvim',
-        requires = 'MunifTanjim/nui.nvim',
-        config = [[require('usr.config.dressing')]]
-    }
-    use {
-        "folke/lua-dev.nvim",
-        module = "lua-dev",
-    }
+        dependencies = 'MunifTanjim/nui.nvim',
+        config = function() require('usr.config.dressing') end
+    },
+
+    "folke/neodev.nvim",
 
     -- Note: Terminal
-    use {
+    {
         'akinsho/nvim-toggleterm.lua',
         branch = 'main',
-        config = [[require('usr.config.toggleterm')]]
-    }
+        config = function() require('usr.config.toggleterm') end
+    },
 
     -- Note: Autocomplete
-    use {
+    {
         'hrsh7th/nvim-cmp',
-        requires = {
+        dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
@@ -135,71 +125,72 @@ return packer.startup({function(use)
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip'
         },
-        config = [[require'usr.config.cmp']]
-    }
+        config = function() require'usr.config.cmp' end
+    },
 
 
     -- Key mapping helper
-    use {
+    {
         "folke/which-key.nvim",
         config = function() require'which-key'.setup() end
-    }
+    },
 
     -- Note: Tree-Sitter syntax optimizations
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
-        config = [[require'usr.config.treesitter']]
-    }
+        cmd = 'TSUpdate',
+        config = function() require'usr.config.treesitter' end
+    },
 
     -- Pairs
-    use {
+    {
         'windwp/nvim-autopairs',
         config = function() require'nvim-autopairs'.setup() end,
-        after='nvim-treesitter'
-    }
-    use {
-        'windwp/nvim-ts-autotag',
-        after='nvim-treesitter'
-    }
+    },
+
+    'windwp/nvim-ts-autotag',
 
     -- Note: Debugger
-    use {
+    {
         'mfussenegger/nvim-dap',
-        config = [[require 'usr.config.dap']]
-    }
-    use { 'mfussenegger/nvim-dap-python', requires= { 'mfussenegger/nvim-dap' } } -- need python dependency : pip install debugpy
-    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+        config = function() require 'usr.config.dap' end
+    },
+    {
+        'mfussenegger/nvim-dap-python',
+        dependencies = { 'mfussenegger/nvim-dap' }
+    }, -- need python dependency : pip install debugpy
+
+    {
+        'rcarriga/nvim-dap-ui',
+        requires = { 'mfussenegger/nvim-dap' }
+    },
 
     -- Note: CMake
-    use {
+    {
         'Shatur/neovim-cmake',
-        requires = {'nvim-lua/plenary.nvim'}
-    }
+        dependencies = {'nvim-lua/plenary.nvim'}
+    },
 
     -- Note: Outlining
-    use({
+    {
         "simrat39/symbols-outline.nvim",
-        config = [[require("symbols-outline").setup()]]
-    })
+        config = function() require("symbols-outline").setup() end
+    },
 
     -- Robot framework
-    use 'suzuki11109/robot.vim'
+    'suzuki11109/robot.vim',
 
     -- Github Copilot
-    use {
+    {
         "PapyKahan/copilot.vim",
-        config = [[require'usr.config.copilot']]
-    }
+        config = function() require'usr.config.copilot' end
+    },
 
     -- Rust
-    use {
+    {
         "simrat39/rust-tools.nvim",
-        config = [[require'usr.config.rust-tools']]
-    }
+        config = function() require'usr.config.rust-tools' end
+    },
 
     -- Github Copilot
     --use {
@@ -216,8 +207,4 @@ return packer.startup({function(use)
     --}
 
     --use 'Exafunction/codeium.vim'
-
-    if packer_bootstrap then
-        packer.sync()
-    end
-end})
+})
