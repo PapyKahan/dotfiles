@@ -49,6 +49,7 @@ whichkey.register({
     p = { ":Telescope<cr>", "Open Telescope"},
     f = {
         name = "Find",
+        b = { "<cmd>Telescope file_browser<cr>", "File browser"},
         f = { "<cmd>Telescope find_files<cr>", "Find files"},
         g = { "<cmd>Telescope live_grep<cr>", "Find text"}
     }

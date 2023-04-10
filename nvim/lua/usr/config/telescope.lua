@@ -44,5 +44,13 @@ telescope.setup {
                 ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
             },
         },
-    }
+    },
+    extensions = {
+        file_browser = {
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+        },
+    },
 }
+
+telescope.load_extension "file_browser"

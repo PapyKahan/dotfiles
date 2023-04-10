@@ -73,6 +73,10 @@ return packer.startup({function(use)
         config = [[require 'usr.config.telescope']]
     }
 
+    use {
+        "nvim-telescope/telescope-file-browser.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    }
     -- Git
     use {
         'lewis6991/gitsigns.nvim',
