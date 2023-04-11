@@ -4,6 +4,7 @@ if loaded then
 end
 
 require'usr.plugins'
+require'usr.options'
 require'usr.mappings'
 require'usr.lsp'
-require'usr.options'
+require'usr.dap'
