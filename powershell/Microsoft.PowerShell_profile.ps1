@@ -9,10 +9,11 @@ if (Test-Path "C:\Program Files (x86)\Microsoft Visual Studio\2022\Professional\
     Remove-Item -Force "$env:temp\vcvars.txt"
 }
 
-$env:VIRTUAL_ENV_DISABLE_PROMPT = 'true'
+#$env:VIRTUAL_ENV_DISABLE_PROMPT = 'true'
 #oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\tokyonight_storm.omp.json" | Invoke-Expression
+#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\tokyonight_storm.omp.json" | Invoke-Expression
 #oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\default.omp.json" | Invoke-Expression
+Invoke-Expression (&starship init powershell)
 
 $env:PUPPETEER_SKIP_CHROMIUM_DOWNLOAD='true'
 
