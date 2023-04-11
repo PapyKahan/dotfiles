@@ -161,6 +161,11 @@ lazy.setup({
     }, -- need python dependency : pip install debugpy
 
     {
+        'mxsdev/nvim-dap-vscode-js',
+        dependencies = { 'mfussenegger/nvim-dap' },
+    },
+
+    {
         'rcarriga/nvim-dap-ui',
         requires = { 'mfussenegger/nvim-dap' }
     },

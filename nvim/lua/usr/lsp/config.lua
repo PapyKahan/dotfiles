@@ -94,7 +94,7 @@ local function setup_installer()
         max_concurrent_installers = 10,
     }
 
-    if vim.env['NEXTHINK'] then
+    if vim.env['LSP_LANGUAGE_SERVERS'] then
         options.install_root_dir = vim.env['LSP_LANGUAGE_SERVERS']
     end
 
