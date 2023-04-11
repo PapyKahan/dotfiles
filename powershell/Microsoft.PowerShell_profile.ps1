@@ -4,12 +4,15 @@ if (!(Test-Path $targetDir)) {
 }
 
 if (Test-Path $targetDir) {
-    cmd /c "`"$targetDir\vcvars64.bat`"&set" |
-    foreach {
-      if ($_ -match "(.*?)=(.*)") {
-        Set-Item -force -path "ENV:\$($matches[1])" -value "$($matches[2])"
-      }
+    if (!(Test-Path "$env:temp\vcvars.txt")) {
+        cmd.exe /c "call `"$targetDir\vcvars64.bat`" && set > %temp%\vcvars.txt"
     }
+    Get-Content "$env:temp\vcvars.txt" | Foreach-Object {
+        if ($_ -match "^(.*?)=(.*)$") {
+            Set-Content "env:\$($matches[1])" $matches[2]
+        }
+    }
+    Write-Host "Visual Studio environment variables loaded."
 }
 
 Invoke-Expression (&starship init powershell)
