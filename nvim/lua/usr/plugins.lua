@@ -69,10 +69,6 @@ lazy.setup({
         config = function() require 'usr.config.telescope' end
     },
 
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    },
     -- Git
     {
         'lewis6991/gitsigns.nvim',
