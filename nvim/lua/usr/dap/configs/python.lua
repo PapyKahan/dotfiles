@@ -20,8 +20,8 @@ end
 whichkey.register({
     name = "Dap Python",
     dm = { function() dap_python.test_method({}) end, "Exectute test method" },
-    dc = { function() dap_python.test_class({}) end, "Exectute test class" },
-    ds = { function() dap_python.debug_selection({}) end, "Debug selection" }
+    --dc = { function() dap_python.test_class({}) end, "Exectute test class" },
+    --ds = { function() dap_python.debug_selection({}) end, "Debug selection" }
 }, {
     silent = true,
     noremap = false,
