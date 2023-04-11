@@ -79,9 +79,7 @@ set.visualbell = false
 set.errorbells = false
 set.guioptions = 'ig'
 set.background = 'dark'
-cmd [[colorscheme tokyonight]]
---cmd [[colorscheme nightfox]]
--- cmd [[colorscheme catppuccin]]
+--cmd [[colorscheme tokyonight]]
 set.guifont = 'JetbrainsMono NF:h12'
 if has('termguicolors') then
     set.termguicolors = true
