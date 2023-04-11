@@ -1,22 +1,21 @@
-if (Test-Path "C:\Program Files (x86)\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat") {
-    cmd.exe /c "call `"C:\Program Files (x86)\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\vcvars64.bat`" && set > %temp%\vcvars.txt"
-    Get-Content "$env:temp\vcvars.txt" | Foreach-Object {
-        if ($_ -match "^(.*?)=(.*)$") {
-            Set-Content "env:\$($matches[1])" $matches[2]
-        }
-    }
-
-    Remove-Item -Force "$env:temp\vcvars.txt"
+$targetDir = "C:\Program Files (x86)\Microsoft Visual Studio\2022\Professional\VC\Auxiliary\Build\"
+if (!(Test-Path $targetDir)) {
+    $targetDir = "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\"
 }
 
-#$env:VIRTUAL_ENV_DISABLE_PROMPT = 'true'
-#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\night-owl.omp.json" | Invoke-Expression
-#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\tokyonight_storm.omp.json" | Invoke-Expression
-#oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\default.omp.json" | Invoke-Expression
-Invoke-Expression (&starship init powershell)
+if (Test-Path $targetDir) {
+    cmd /c "`"$targetDir\vcvars64.bat`"&set" |
+    foreach {
+      if ($_ -match "(.*?)=(.*)") {
+        Set-Item -force -path "ENV:\$($matches[1])" -value "$($matches[2])"
+      }
+    }
+}
 
-$env:PUPPETEER_SKIP_CHROMIUM_DOWNLOAD='true'
+Invoke-Expression (&starship init powershell)
 
 Set-Alias -Name activate -Value .\.venv\Scripts\activate
 Function python_venv {python.exe -m venv .venv}
 Set-Alias -Name py -Value python.exe
+
+$env:PUPPETEER_SKIP_CHROMIUM_DOWNLOAD='true'
