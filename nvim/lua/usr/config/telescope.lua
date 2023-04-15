@@ -46,3 +46,21 @@ telescope.setup {
         },
     },
 }
+
+local whichkey_loaded, whichkey = pcall(require, 'which-key')
+if whichkey_loaded then
+    whichkey.register({
+        name = "Telescope",
+        p = { ":Telescope<cr>", "Open Telescope"},
+        f = {
+            name = "Find",
+            b = { "<cmd>Telescope file_browser<cr>", "File browser"},
+            f = { "<cmd>Telescope find_files<cr>", "Find files"},
+            g = { "<cmd>Telescope live_grep<cr>", "Find text"}
+        }
+    },{
+        silent = true,
+        noremap = false,
+        prefix = "<leader>"
+    })
+end

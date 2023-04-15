@@ -3,6 +3,32 @@ if not loaded then
     return
 end
 
+
+-------------------------------------------------------------------
+-- Toggleterm
+-------------------------------------------------------------------
+local whichkey_loaded, whichkey = pcall(require, 'which-key')
+if whichkey_loaded then
+    whichkey.register({
+        name = "Terminal",
+        ["<F12>"] = { "<cmd>ToggleTerm<cr>", "Open Terminal"}
+    }, {
+        mode = "n",
+        silent = true,
+        noremap = false,
+    })
+    
+    whichkey.register({
+        name = "Terminal",
+        ["<F12>"] = { "<cmd>ToggleTerm<cr>", "Open Terminal"}
+    }, {
+        mode = "t",
+        silent = true,
+        noremap = false,
+    })
+end
+
+
 toggleterm.setup {
     hide_numbers = true,
     close_on_exit = true,

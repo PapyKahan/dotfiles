@@ -11,3 +11,4 @@ treesitter_config.setup {
         enable = true
     }
 }
+

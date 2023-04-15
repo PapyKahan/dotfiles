@@ -31,7 +31,7 @@ tree.setup({
         signcolumn = "yes",
         mappings = {
             custom_only = false,
-            list = {
+            list ={
             },
         },
     },
@@ -177,3 +177,14 @@ tree.setup({
         },
     },
 })
+
+local whichkey_loaded, whichkey = pcall(require, 'which-key')
+if whichkey_loaded then
+    whichkey.register({
+        x = { "<cmd>NvimTreeToggle<CR>", "Open Nvim-Tree"},
+    }, {
+        silent = true,
+        noremap = true,
+        prefix = '<leader>'
+    })
+end

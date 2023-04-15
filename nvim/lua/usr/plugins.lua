@@ -20,12 +20,6 @@ vim.g.mapleader = " "
 
 lazy.setup({
     -- Color and visual plugins
-    'sainnhe/gruvbox-material',
-    "EdenEast/nightfox.nvim",
-    {
-        "catppuccin/nvim",
-        name = "catppuccin"
-    },
     {
         "folke/tokyonight.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -35,7 +29,6 @@ lazy.setup({
             vim.cmd([[colorscheme tokyonight]])
         end,
     },
-    'ray-x/aurora',
 
     -- Airline and bufferline plugins
     {
@@ -53,18 +46,24 @@ lazy.setup({
     -- Note: File browser
     { 
         'kyazdani42/nvim-tree.lua',
-        dependencies = {'nvim-tree/nvim-web-devicons'},
-        config = function() require 'usr.config.nvimtree' end
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+            -- depends on which-key
+            'folke/which-key.nvim',
+
+        },
+        config = function() require 'usr.config.nvimtree' end,
     },
 
     -- Note: Fuzzy finder
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
-            {'nvim-lua/popup.nvim'},
-            {'nvim-lua/plenary.nvim'},
-            {'BurntSushi/ripgrep'},
-            {'sharkdp/fd'},
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            'BurntSushi/ripgrep',
+            'sharkdp/fd',
+            'folke/which-key.nvim',
         },
         config = function() require 'usr.config.telescope' end
     },
@@ -79,7 +78,6 @@ lazy.setup({
     -- Note : LSP
     {
         'williamboman/mason.nvim',
-        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
         config = function() require 'usr.config.mason' end,
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
@@ -88,6 +86,7 @@ lazy.setup({
         }
     },
 
+    -- Lsp Progress bar
     {
         'j-hui/fidget.nvim',
         config = function() require 'usr.config.fidget' end
@@ -99,19 +98,32 @@ lazy.setup({
         config = function() require'usr.config.trouble' end,
     },
 
-    "b0o/schemastore.nvim",
     {
         'stevearc/dressing.nvim',
         dependencies = 'MunifTanjim/nui.nvim',
         config = function() require('usr.config.dressing') end
     },
 
-    "folke/neodev.nvim",
+    -- Json schemastore
+    {
+        "b0o/schemastore.nvim",
+        ft = { "json", "jsonc", "json5", "yaml" },
+    },
+
+    -- Neovim lua development
+    {
+        "folke/neodev.nvim",
+        ft = "lua",
+    },
 
     -- Note: Terminal
     {
         'akinsho/nvim-toggleterm.lua',
         branch = 'main',
+        dependencies = {
+            -- Depends on which-key
+            'folke/which-key.nvim',
+        },
         config = function() require('usr.config.toggleterm') end
     },
 
@@ -142,36 +154,24 @@ lazy.setup({
     -- Note: Tree-Sitter syntax optimizations
     {
         'nvim-treesitter/nvim-treesitter',
-        cmd = 'TSUpdate',
-        config = function() require'usr.config.treesitter' end
+        dependencies = {
+            'windwp/nvim-ts-autotag',
+            'windwp/nvim-autopairs',
+        },
+        config = function() require'usr.config.treesitter' end,
     },
 
-    -- Pairs
-    {
-        'windwp/nvim-autopairs',
-        config = function() require'nvim-autopairs'.setup() end,
-    },
-
-    'windwp/nvim-ts-autotag',
 
     -- Note: Debugger
     {
         'mfussenegger/nvim-dap',
-        config = function() require 'usr.config.dap' end
-    },
-    {
-        'mfussenegger/nvim-dap-python',
-        dependencies = { 'mfussenegger/nvim-dap' }
-    }, -- need python dependency : pip install debugpy
-
-    {
-        'mxsdev/nvim-dap-vscode-js',
-        dependencies = { 'mfussenegger/nvim-dap' },
-    },
-
-    {
-        'rcarriga/nvim-dap-ui',
-        requires = { 'mfussenegger/nvim-dap' }
+        dependencies = {
+            'rcarriga/nvim-dap-ui',
+            'theHamsta/nvim-dap-virtual-text',
+            'mfussenegger/nvim-dap-python',
+            'mxsdev/nvim-dap-vscode-js',
+        },
+        config = function() require 'usr.config.dap' end,
     },
 
     -- Note: CMake
@@ -180,14 +180,17 @@ lazy.setup({
         dependencies = {'nvim-lua/plenary.nvim'}
     },
 
+    -- Rust
+    {
+        "simrat39/rust-tools.nvim",
+        config = function() require'usr.config.rust-tools' end
+    },
+
     -- Note: Outlining
     {
         "simrat39/symbols-outline.nvim",
         config = function() require("symbols-outline").setup() end
     },
-
-    -- Robot framework
-    'suzuki11109/robot.vim',
 
     -- Github Copilot
     {
@@ -195,11 +198,6 @@ lazy.setup({
         config = function() require'usr.config.copilot' end
     },
 
-    -- Rust
-    {
-        "simrat39/rust-tools.nvim",
-        config = function() require'usr.config.rust-tools' end
-    },
 
     -- Github Copilot
     --use {
