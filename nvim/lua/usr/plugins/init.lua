@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -22,7 +22,7 @@ lazy.setup({
     -- Color and visual plugins
     {
         "folke/tokyonight.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
@@ -33,18 +33,18 @@ lazy.setup({
     -- Airline and bufferline plugins
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = {'nvim-tree/nvim-web-devicons'},
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('usr.plugins.configs.lualine') end
     },
     {
-	    'akinsho/bufferline.nvim',
-	    version = "v3.*",
-	    dependencies = 'nvim-tree/nvim-web-devicons',
+        'akinsho/bufferline.nvim',
+        version = "v3.*",
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function() require 'usr.plugins.configs.bufferline' end
     },
 
     -- Note: File browser
-    { 
+    {
         'kyazdani42/nvim-tree.lua',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
@@ -95,7 +95,7 @@ lazy.setup({
     {
         "folke/trouble.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
-        config = function() require'usr.plugins.configs.trouble' end,
+        config = function() require 'usr.plugins.configs.trouble' end,
     },
 
     {
@@ -141,24 +141,30 @@ lazy.setup({
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip'
         },
-        config = function() require'usr.plugins.configs.cmp' end
+        config = function() require 'usr.plugins.configs.cmp' end
     },
 
 
     -- Key mapping helper
     {
         "folke/which-key.nvim",
-        config = function() require'which-key'.setup() end
+        config = function() require 'which-key'.setup() end
     },
 
     -- Note: Tree-Sitter syntax optimizations
     {
         'nvim-treesitter/nvim-treesitter',
         dependencies = {
-            'windwp/nvim-ts-autotag',
-            'windwp/nvim-autopairs',
+            {
+                'windwp/nvim-ts-autotag',
+                config = function() require('nvim-ts-autotag').setup() end,
+            },
+            {
+                'windwp/nvim-autopairs',
+                config = function() require('nvim-autopairs').setup() end,
+            },
         },
-        config = function() require'usr.plugins.configs.treesitter' end,
+        config = function() require 'usr.plugins.configs.treesitter' end,
     },
 
 
@@ -177,14 +183,21 @@ lazy.setup({
     -- Note: CMake
     {
         'Shatur/neovim-cmake',
-        dependencies = {'nvim-lua/plenary.nvim'}
+        dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
     -- Rust
     {
         "simrat39/rust-tools.nvim",
         ft = "rust",
-        config = function() require'usr.plugins.configs.rust-tools' end
+        config = function() require 'usr.plugins.configs.rust-tools' end
+    },
+    {
+        'saecki/crates.nvim',
+        event = 'BufRead Cargo.toml',
+        tag = 'v0.3.0',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function() require('crates').setup() end,
     },
 
     -- Note: Outlining
@@ -196,7 +209,7 @@ lazy.setup({
     -- Github Copilot
     {
         "PapyKahan/copilot.vim",
-        config = function() require'usr.plugins.configs.copilot' end
+        config = function() require 'usr.plugins.configs.copilot' end
     },
 
 
