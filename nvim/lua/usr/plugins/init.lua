@@ -46,6 +46,7 @@ lazy.setup({
     -- Note: File browser
     {
         'kyazdani42/nvim-tree.lua',
+        event = "VeryLazy",
         dependencies = {
             'nvim-tree/nvim-web-devicons',
             -- depends on which-key
@@ -71,6 +72,7 @@ lazy.setup({
     -- Git
     {
         'lewis6991/gitsigns.nvim',
+        lazy = true,
         event = "BufRead",
         config = function() require 'usr.plugins.configs.gitsigns' end
     },
@@ -78,6 +80,7 @@ lazy.setup({
     -- Note : LSP
     {
         'williamboman/mason.nvim',
+        event = "VeryLazy",
         config = function() require 'usr.plugins.configs.mason' end,
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
@@ -94,12 +97,14 @@ lazy.setup({
 
     {
         "folke/trouble.nvim",
+        event = "VeryLazy",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function() require 'usr.plugins.configs.trouble' end,
     },
 
     {
         'stevearc/dressing.nvim',
+        event = "VeryLazy",
         dependencies = 'MunifTanjim/nui.nvim',
         config = function() require('usr.plugins.configs.dressing') end
     },
@@ -119,6 +124,7 @@ lazy.setup({
     -- Note: Terminal
     {
         'akinsho/nvim-toggleterm.lua',
+        event = "VeryLazy",
         branch = 'main',
         dependencies = {
             -- Depends on which-key
@@ -130,6 +136,7 @@ lazy.setup({
     -- Note: Autocomplete
     {
         'hrsh7th/nvim-cmp',
+        event = 'InsertEnter',
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
@@ -138,8 +145,6 @@ lazy.setup({
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'petertriho/cmp-git',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip'
         },
         config = function() require 'usr.plugins.configs.cmp' end
     },
@@ -154,6 +159,7 @@ lazy.setup({
     -- Note: Tree-Sitter syntax optimizations
     {
         'nvim-treesitter/nvim-treesitter',
+        event = 'BufRead',
         dependencies = {
             {
                 'windwp/nvim-ts-autotag',
@@ -171,6 +177,7 @@ lazy.setup({
     -- Note: Debugger
     {
         'mfussenegger/nvim-dap',
+        event = "VeryLazy",
         dependencies = {
             'rcarriga/nvim-dap-ui',
             'theHamsta/nvim-dap-virtual-text',
@@ -183,6 +190,7 @@ lazy.setup({
     -- Note: CMake
     {
         'Shatur/neovim-cmake',
+        ft = 'cmake',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
@@ -194,7 +202,7 @@ lazy.setup({
     },
     {
         'saecki/crates.nvim',
-        event = 'BufRead Cargo.toml',
+        ft = "toml",
         tag = 'v0.3.0',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function() require('crates').setup() end,
@@ -203,12 +211,14 @@ lazy.setup({
     -- Note: Outlining
     {
         "simrat39/symbols-outline.nvim",
+        event = "VeryLazy",
         config = function() require("symbols-outline").setup() end
     },
 
     -- Github Copilot
     {
         "PapyKahan/copilot.vim",
+        event = "VeryLazy",
         config = function() require 'usr.plugins.configs.copilot' end
     },
 
