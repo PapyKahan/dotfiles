@@ -18,6 +18,7 @@ end
 
 vim.g.mapleader = " "
 
+
 lazy.setup({
     -- Color and visual plugins
     {
@@ -225,7 +226,6 @@ lazy.setup({
         config = function() require 'usr.plugins.configs.copilot' end
     },
 
-
     -- Github Copilot
     --use {
     --    "zbirenbaum/copilot.lua",
@@ -241,4 +241,15 @@ lazy.setup({
     --}
 
     --use 'Exafunction/codeium.vim'
+
+    -- Documentation generator
+    {
+        "danymat/neogen",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "folke/which-key.nvim",
+        },
+        config = function() require 'usr.plugins.configs.neogen' end
+    }
 })
