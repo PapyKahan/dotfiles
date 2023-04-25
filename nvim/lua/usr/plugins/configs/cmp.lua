@@ -1,6 +1,12 @@
 local loaded, cmp = pcall(require, "cmp")
 if not loaded then
-   return
+    return
+end
+
+-- import neogen
+local neogen_loaded, neogen = pcall(require, "neogen")
+if not neogen_loaded then
+    return
 end
 
 cmp.setup({
@@ -46,22 +52,28 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
+            elseif neogen.jumpable() then
+                neogen.jump_next()
             else
                 fallback()
             end
         end, {
             "i",
             "s",
+            "c",
         }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
-                cmp.select_prev_item()
+                cmp.select_next_item()
+            elseif neogen.jumpable() then
+                neogen.jump_next()
             else
                 fallback()
             end
         end, {
             "i",
             "s",
+            "c",
         }),
     }),
     sources = cmp.config.sources({

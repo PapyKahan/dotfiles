@@ -49,10 +49,10 @@ end
 whichkey.register({
     name = "Docgen",
     c = {
-        f = { function() neogen.generate({ type = 'func' }) end, "Generate function doc" },
-        c = { function() neogen.generate({ type = 'class' }) end, "Generate class doc" },
-        F = { function() neogen.generate({ type = 'file' }) end, "Generate file doc" },
-        t = { function() neogen.generate({ type = 'type' }) end, "Generate type doc" },
+        f = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'func' }) end, "Generate function doc" },
+        c = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'class' }) end, "Generate class doc" },
+        F = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'file' }) end, "Generate file doc" },
+        t = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'type' }) end, "Generate type doc" },
     }
 }, {
     noremap = true,
