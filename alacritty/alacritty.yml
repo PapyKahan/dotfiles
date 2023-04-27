@@ -386,13 +386,13 @@ font:
   #
   #command: None
 
-#selection:
+selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: false
 
 #cursor:
   # Cursor style
@@ -452,14 +452,14 @@ font:
 #   - (Windows) powershell
 shell:
   program: nu
-#  args:
-#    - --login
+  args:
+    - -e "cd ~/"
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-#working_directory: None
+working_directory: None
 
 # Offer IPC using `alacritty msg` (unix only)
 #ipc_socket: true
