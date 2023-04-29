@@ -10,7 +10,7 @@ if (has('win32') == 1 or has('win64') == 1 or has('win32unix') == 1) then
     cmd [[language en_US]]
 
     -- Set the shell to powershell
-    local powershell_options = {
+    local shell_options = {
         shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
         shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
         shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
@@ -18,8 +18,17 @@ if (has('win32') == 1 or has('win64') == 1 or has('win32unix') == 1) then
         shellquote = "",
         shellxquote = "",
     }
-    
-    for option, value in pairs(powershell_options) do
+
+    if vim.fn.executable "nu" then
+        shell_options = {
+            shell = "nu",
+            shellcmdflag = "-c",
+            shellquote = "",
+            shellxquote = "",
+        }
+    end
+
+    for option, value in pairs(shell_options) do
       set[option] = value
     end
 end
