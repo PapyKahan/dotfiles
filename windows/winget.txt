@@ -1,23 +1,10 @@
-7-Zip 22.01 (x64)                     7zip.7zip                             
-Airflow (64-bit)                      Airflow (64-bit)                      
-Prime Video for Windows               AmazonVideo.PrimeVideo_pwbj9vvecjh7j  
-Git                                   Git.Git                               
-LLVM                                  LLVM.LLVM                             
-Terminal Windows                      Microsoft.WindowsTerminal             
-Parsec                                Parsec.Parsec                         
-Qobuz                                 Qobuz                                 
-VLC media player                      VideoLAN.VLC                          
-Vivaldi                               VivaldiTechnologies.Vivaldi           
-Visual Studio Build Tools 2022        Microsoft.VisualStudio.2022.BuildToo… 
-Free Download Manager                 SoftDeluxe.FreeDownloadManager        
-Python Launcher                       {0E6EEAC9-4913-4C2F-B7D2-761B27C35D7… 
-PowerShell 7-x64                      Microsoft.PowerShell                  
-Python 3.11.2 (64-bit)                Python.Python.3.10                    
-Node.js                               OpenJS.NodeJS                         
-Neovim                                Neovim.Neovim                         
-Adobe Acrobat (64-bit)                {AC76BA86-1033-1033-7760-BC15014EA70… 
-LibreOffice 7.5.2.2                   TheDocumentFoundation.LibreOffice     
-WezTerm version 20230408-112425-69ae… wez.wezterm                           
-Steam Link                            Valve.SteamLink                       
-Alacritty                             Alacritty.Alacritty                   
-Moonlight Game Streaming Client       MoonlightGameStreamingProject.Moonli… 
+7zip.7zip
+Git.Git
+LLVM.LLVM
+Microsoft.VisualStudio.2022.BuildTools
+Microsoft.PowerShell
+Python.Python.3.10
+OpenJS.NodeJS
+Neovim.Neovim
+wez.wezterm
+Alacritty.Alacritty

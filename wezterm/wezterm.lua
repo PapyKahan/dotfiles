@@ -1,9 +1,8 @@
 local wezterm = require 'wezterm'
 
 return {
-  default_prog = { 'pwsh.exe', '-NoLogo' },
+  default_prog = { 'nu' },
   font = wezterm.font('JetBrainsMono NF', { weight = 'Medium' }),
   font_size = 10,
-  --color_scheme = "OneHalfDark",
-  color_scheme = "Catppuccin Macchiato"
+  color_scheme = "tokyonight",
 }
