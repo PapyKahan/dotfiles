@@ -1,23 +1,23 @@
-7-Zip 22.01 (x64)                     7zip.7zip                             22.01                                winget
-Airflow (64-bit)                      Airflow (64-bit)                      3.3.1                                
-Prime Video for Windows               AmazonVideo.PrimeVideo_pwbj9vvecjh7j  1.0.132.0                            
-Git                                   Git.Git                               2.40.0                    2.40.1     winget
-LLVM                                  LLVM.LLVM                             16.0.1                               winget
-Terminal Windows                      Microsoft.WindowsTerminal             1.16.10262.0                         winget
-Parsec                                Parsec.Parsec                         150-87c                              winget
-Qobuz                                 Qobuz                                 7.0.1-b016                           
-VLC media player                      VideoLAN.VLC                          3.0.18                               winget
-Vivaldi                               VivaldiTechnologies.Vivaldi           6.0.2979.15                          winget
-Visual Studio Build Tools 2022        Microsoft.VisualStudio.2022.BuildToo… 17.5.4                               winget
-Free Download Manager                 SoftDeluxe.FreeDownloadManager        6.19.0.5156                          winget
-Python Launcher                       {0E6EEAC9-4913-4C2F-B7D2-761B27C35D7… 3.11.7966.0                          
-PowerShell 7-x64                      Microsoft.PowerShell                  7.3.4.0                              winget
-Python 3.11.2 (64-bit)                Python.Python.3.10                    > 3.10.10                            winget
-Node.js                               OpenJS.NodeJS                         19.9.0                               winget
-Neovim                                Neovim.Neovim                         0.9.0                                winget
-Adobe Acrobat (64-bit)                {AC76BA86-1033-1033-7760-BC15014EA70… 23.001.20143                         
-LibreOffice 7.5.2.2                   TheDocumentFoundation.LibreOffice     7.5.2.2                              winget
-WezTerm version 20230408-112425-69ae… wez.wezterm                           20230408-112425-69ae8472             winget
-Steam Link                            Valve.SteamLink                       1.2.0                                winget
-Alacritty                             Alacritty.Alacritty                   0.12.0                               winget
-Moonlight Game Streaming Client       MoonlightGameStreamingProject.Moonli… 4.3.1.0                              winget
+7-Zip 22.01 (x64)                     7zip.7zip                             
+Airflow (64-bit)                      Airflow (64-bit)                      
+Prime Video for Windows               AmazonVideo.PrimeVideo_pwbj9vvecjh7j  
+Git                                   Git.Git                               
+LLVM                                  LLVM.LLVM                             
+Terminal Windows                      Microsoft.WindowsTerminal             
+Parsec                                Parsec.Parsec                         
+Qobuz                                 Qobuz                                 
+VLC media player                      VideoLAN.VLC                          
+Vivaldi                               VivaldiTechnologies.Vivaldi           
+Visual Studio Build Tools 2022        Microsoft.VisualStudio.2022.BuildToo… 
+Free Download Manager                 SoftDeluxe.FreeDownloadManager        
+Python Launcher                       {0E6EEAC9-4913-4C2F-B7D2-761B27C35D7… 
+PowerShell 7-x64                      Microsoft.PowerShell                  
+Python 3.11.2 (64-bit)                Python.Python.3.10                    
+Node.js                               OpenJS.NodeJS                         
+Neovim                                Neovim.Neovim                         
+Adobe Acrobat (64-bit)                {AC76BA86-1033-1033-7760-BC15014EA70… 
+LibreOffice 7.5.2.2                   TheDocumentFoundation.LibreOffice     
+WezTerm version 20230408-112425-69ae… wez.wezterm                           
+Steam Link                            Valve.SteamLink                       
+Alacritty                             Alacritty.Alacritty                   
+Moonlight Game Streaming Client       MoonlightGameStreamingProject.Moonli… 
