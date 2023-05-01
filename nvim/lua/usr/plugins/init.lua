@@ -81,11 +81,6 @@ lazy.setup({
 
     -- Note : LSP
     {
-        'jose-elias-alvarez/null-ls.nvim',
-        event = "VeryLazy",
-        config = function() require 'usr.plugins.configs.null-ls' end,
-    },
-    {
         'williamboman/mason.nvim',
         event = "VeryLazy",
         config = function() require 'usr.plugins.configs.mason' end,
