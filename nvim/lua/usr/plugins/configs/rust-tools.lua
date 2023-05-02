@@ -25,8 +25,6 @@ else
   liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
 end
 
-print(codelldb_path)
-
 rust_tools.setup({
     tools = {
         inlay_hints = {
