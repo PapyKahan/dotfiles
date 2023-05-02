@@ -82,7 +82,6 @@ lazy.setup({
     -- Note : LSP
     {
         'williamboman/mason.nvim',
-        event = "VeryLazy",
         config = function() require 'usr.plugins.configs.mason' end,
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
@@ -187,6 +186,7 @@ lazy.setup({
             'theHamsta/nvim-dap-virtual-text',
             'mfussenegger/nvim-dap-python',
             'mxsdev/nvim-dap-vscode-js',
+
         },
         config = function() require 'usr.plugins.configs.dap' end,
     },
