@@ -1,6 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
+    local msg = vim.fn.system({
         "git",
         "clone",
         "--filter=blob:none",
@@ -8,6 +8,7 @@ if not vim.loop.fs_stat(lazypath) then
         "--branch=stable", -- latest stable release
         lazypath,
     })
+    print(msg)
 end
 vim.opt.rtp:prepend(lazypath)
 

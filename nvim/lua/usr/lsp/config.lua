@@ -1,7 +1,4 @@
 local loaded, lspconfig = pcall(require, "lspconfig")
-if not loaded then
-   return
-end
 
 local M = {}
 
@@ -143,9 +140,11 @@ local function setup_installer_handlers()
 end
 
 function M.setup()
-    setup_installer()
-    setup_lspconfig()
-    setup_installer_handlers()
+    if loaded then
+        setup_installer()
+        setup_lspconfig()
+        setup_installer_handlers()
+    end
 end
 
 return M
