@@ -8,7 +8,7 @@ local function get_fg_color(hlgroup)
     return utils.extract_highlight_colors(hlgroup, 'fg')
 end
 
-local diagnostic_signs = require'usr.ui.icons'.diagnostic_signs
+local diagnostic_signs = require'ui.icons'.diagnostic_signs
 
 lualine.setup {
     options = {

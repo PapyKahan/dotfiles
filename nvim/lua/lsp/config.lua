@@ -75,7 +75,7 @@ end
 local function default_on_attach_callback(client, bufnr)
     setup_codelens_refresh(client, bufnr)
     setup_document_highlight(client, bufnr)
-    require'usr.lsp.mappings'.setup_buffer_mappings(bufnr)
+    require'lsp.mappings'.setup_buffer_mappings(bufnr)
 end
 
 local function setup_installer()
@@ -128,7 +128,7 @@ local function setup_installer_handlers()
     end
     mason_lspconfig.setup_handlers({
         function (server_name)
-            local config_loaded, server_config = pcall(require, "usr.lsp.configs."..server_name)
+            local config_loaded, server_config = pcall(require, "lsp.configs."..server_name)
             if config_loaded then
                 lspconfig[server_name].setup(server_config)
             else

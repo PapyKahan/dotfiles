@@ -102,10 +102,10 @@ whichkey.register({
 })
 
 -- Load language specific configs
-local files = vim.api.nvim_get_runtime_file("lua/usr/dap/configs/*.lua", true)
+local files = vim.api.nvim_get_runtime_file("lua/dap/configs/*.lua", true)
 for _, file in pairs(files) do
     local dap_config_file = file:match("^.*[/|\\](.*).lua$")
     if dap_config_file then
-        require('usr.dap.configs.'..dap_config_file)
+        require('dap.configs.'..dap_config_file)
     end
 end

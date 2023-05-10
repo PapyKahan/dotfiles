@@ -36,13 +36,13 @@ lazy.setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function() require('usr.plugins.configs.lualine') end
+        config = function() require('plugins.configs.lualine') end
     },
     {
         'akinsho/bufferline.nvim',
         version = "v3.*",
         dependencies = 'nvim-tree/nvim-web-devicons',
-        config = function() require 'usr.plugins.configs.bufferline' end
+        config = function() require 'plugins.configs.bufferline' end
     },
 
     -- Note: File browser
@@ -55,7 +55,7 @@ lazy.setup({
             'folke/which-key.nvim',
 
         },
-        config = function() require 'usr.plugins.configs.nvimtree' end,
+        config = function() require 'plugins.configs.nvimtree' end,
     },
 
     -- Note: Fuzzy finder
@@ -69,7 +69,7 @@ lazy.setup({
             'sharkdp/fd',
             'folke/which-key.nvim',
         },
-        config = function() require 'usr.plugins.configs.telescope' end
+        config = function() require 'plugins.configs.telescope' end
     },
 
     -- Git
@@ -77,13 +77,13 @@ lazy.setup({
         'lewis6991/gitsigns.nvim',
         lazy = true,
         event = "BufRead",
-        config = function() require 'usr.plugins.configs.gitsigns' end
+        config = function() require 'plugins.configs.gitsigns' end
     },
 
     -- Note : LSP
     {
         'williamboman/mason.nvim',
-        config = function() require 'usr.plugins.configs.mason' end,
+        config = function() require 'plugins.configs.mason' end,
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
             'neovim/nvim-lspconfig',
@@ -94,21 +94,21 @@ lazy.setup({
     -- Lsp Progress bar
     {
         'j-hui/fidget.nvim',
-        config = function() require 'usr.plugins.configs.fidget' end
+        config = function() require 'plugins.configs.fidget' end
     },
 
     {
         "folke/trouble.nvim",
         event = "VeryLazy",
         dependencies = "nvim-tree/nvim-web-devicons",
-        config = function() require 'usr.plugins.configs.trouble' end,
+        config = function() require 'plugins.configs.trouble' end,
     },
 
     {
         'stevearc/dressing.nvim',
         event = "VeryLazy",
         dependencies = 'MunifTanjim/nui.nvim',
-        config = function() require('usr.plugins.configs.dressing') end
+        config = function() require('plugins.configs.dressing') end
     },
 
     -- Json schemastore
@@ -132,7 +132,7 @@ lazy.setup({
             -- Depends on which-key
             'folke/which-key.nvim',
         },
-        config = function() require('usr.plugins.configs.toggleterm') end
+        config = function() require('plugins.configs.toggleterm') end
     },
 
     -- Note: Autocomplete
@@ -150,7 +150,7 @@ lazy.setup({
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip'
         },
-        config = function() require 'usr.plugins.configs.cmp' end
+        config = function() require 'plugins.configs.cmp' end
     },
 
 
@@ -174,7 +174,7 @@ lazy.setup({
                 config = function() require('nvim-autopairs').setup() end,
             },
         },
-        config = function() require 'usr.plugins.configs.treesitter' end,
+        config = function() require 'plugins.configs.treesitter' end,
     },
 
 
@@ -189,7 +189,7 @@ lazy.setup({
             'mxsdev/nvim-dap-vscode-js',
 
         },
-        config = function() require 'usr.plugins.configs.dap' end,
+        config = function() require 'plugins.configs.dap' end,
     },
 
     -- Note: CMake
@@ -203,7 +203,7 @@ lazy.setup({
     {
         "simrat39/rust-tools.nvim",
         ft = "rust",
-        config = function() require 'usr.plugins.configs.rust-tools' end
+        config = function() require 'plugins.configs.rust-tools' end
     },
     {
         'saecki/crates.nvim',
@@ -224,14 +224,14 @@ lazy.setup({
     {
         "PapyKahan/copilot.vim",
         event = "VeryLazy",
-        config = function() require 'usr.plugins.configs.copilot' end
+        config = function() require 'plugins.configs.copilot' end
     },
 
     -- Github Copilot
     --use {
     --    "zbirenbaum/copilot.lua",
     --    event = "VimEnter",
-    --    config = [[require'usr.plugins.configs.copilot']]
+    --    config = [[require'plugins.configs.copilot']]
     --}
     --use {
     --    "zbirenbaum/copilot-cmp",
@@ -251,6 +251,6 @@ lazy.setup({
             "nvim-treesitter/nvim-treesitter",
             "folke/which-key.nvim",
         },
-        config = function() require 'usr.plugins.configs.neogen' end
+        config = function() require 'plugins.configs.neogen' end
     }
 })
