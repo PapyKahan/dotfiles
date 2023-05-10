@@ -540,3 +540,4 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
+#let git_completion = $nu.default-config-dir + "/nu_scripts/custom-completions/git/git-completions.nu"
