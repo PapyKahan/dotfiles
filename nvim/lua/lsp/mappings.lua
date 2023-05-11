@@ -38,7 +38,7 @@ function M.setup_buffer_mappings(bufnr)
     end
 end
 
-function M.setup_global_mappings()
+function M.setup()
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     if whichkey_loaded then
