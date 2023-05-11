@@ -1,13 +1,18 @@
 return {
     -- Note : LSP
     {
-        'williamboman/mason.nvim',
-        config = function() require 'plugins.configs.mason' end,
+        'neovim/nvim-lspconfig',
+        event = {'BufReadPre', 'BufNewFile'},
         dependencies = {
+            'mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            'neovim/nvim-lspconfig',
             'Hoffs/omnisharp-extended-lsp.nvim',
-        }
+        },
+    },
+    {
+        'williamboman/mason.nvim',
+        cmd = 'Mason',
+        config = function() require 'plugins.configs.mason' end,
     },
 
     -- Lsp Progress bar
