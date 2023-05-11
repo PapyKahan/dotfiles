@@ -163,7 +163,7 @@ lazy.setup({
     -- Note: Tree-Sitter syntax optimizations
     {
         'nvim-treesitter/nvim-treesitter',
-        event = 'BufRead',
+        event = {'BufReadPost', 'BufNewFile'},
         dependencies = {
             {
                 'windwp/nvim-ts-autotag',
@@ -222,31 +222,16 @@ lazy.setup({
 
     -- Github Copilot
     {
-        "PapyKahan/copilot.vim",
-        event = "VeryLazy",
-        config = function() require 'plugins.configs.copilot' end
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function() require("plugins.configs.copilot") end,
     },
-
-    -- Github Copilot
-    --use {
-    --    "zbirenbaum/copilot.lua",
-    --    event = "VimEnter",
-    --    config = [[require'plugins.configs.copilot']]
-    --}
-    --use {
-    --    "zbirenbaum/copilot-cmp",
-    --    after = { "copilot.lua" },
-    --    config = function ()
-    --        require("copilot_cmp").setup()
-    --    end
-    --}
-
-    --use 'Exafunction/codeium.vim'
 
     -- Documentation generator
     {
         "danymat/neogen",
-        event = "VeryLazy",
+        event = {'BufReadPost', 'BufNewFile'},
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "folke/which-key.nvim",
