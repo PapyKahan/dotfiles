@@ -53,4 +53,3 @@ treesitter_config.setup {
         "yaml",
     },
 }
-
