@@ -5,12 +5,6 @@ return {
         ft = { "json", "jsonc", "json5", "yaml" },
     },
 
-    -- Neovim lua development
-    {
-        "folke/neodev.nvim",
-        ft = "lua",
-    },
-
     -- Note: CMake
     {
         'Shatur/neovim-cmake',

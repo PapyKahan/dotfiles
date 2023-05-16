@@ -14,12 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     spec = {
-        { import = "base.dap" },
+        { import = "base" },
         { import = "plugins" },
     },
     --defaults = { lazy = true, version = nil },
-    --install = { missing = true, colorscheme = { 'tokyonight'} },
-    --checker = { enabled = true, },
+    install = { missing = true, colorscheme = { 'tokyonight' } },
     performance = {
         --cache = { enabled = true, },
         rtp = {
