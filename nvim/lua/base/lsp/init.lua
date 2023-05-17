@@ -17,7 +17,7 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        cmd = 'Mason',
+        cmd = {'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll', 'MasonUpdate', 'MasonLog' },
         config = function()
             local options = {
                 ui = {
