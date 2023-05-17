@@ -3,13 +3,13 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function() require('plugins.configs.lualine') end
+        config = function() require('base.ui.lualine') end
     },
     {
         'akinsho/bufferline.nvim',
         version = "v3.*",
         dependencies = 'nvim-tree/nvim-web-devicons',
-        config = function() require 'plugins.configs.bufferline' end
+        config = function() require 'base.ui.bufferline' end
     },
 
     -- Note: File browser
@@ -22,7 +22,7 @@ return {
             'folke/which-key.nvim',
 
         },
-        config = function() require 'plugins.configs.nvimtree' end,
+        config = function() require 'base.ui.nvimtree' end,
     },
 
     -- Note: Fuzzy finder
@@ -36,7 +36,7 @@ return {
             'sharkdp/fd',
             'folke/which-key.nvim',
         },
-        config = function() require 'plugins.configs.telescope' end
+        config = function() require 'base.ui.telescope' end
     },
 
     -- Git
@@ -44,13 +44,13 @@ return {
         'lewis6991/gitsigns.nvim',
         lazy = true,
         event = "BufRead",
-        config = function() require 'plugins.configs.gitsigns' end
+        config = function() require 'base.ui.gitsigns' end
     },
 
     {
         'stevearc/dressing.nvim',
         event = "VeryLazy",
         dependencies = 'MunifTanjim/nui.nvim',
-        config = function() require('plugins.configs.dressing') end
+        config = function() require('base.ui.dressing') end
     },
 }
