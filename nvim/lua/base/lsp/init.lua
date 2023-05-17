@@ -50,7 +50,7 @@ return {
         event = "VeryLazy",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            local diagnostic_signs = require 'ui.icons'.diagnostic_signs
+            local diagnostic_signs = require 'base.ui.icons'.diagnostic_signs
             require('trouble').setup {
                 signs = {
                     error = diagnostic_signs.Error,

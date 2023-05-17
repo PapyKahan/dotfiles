@@ -1,6 +1,6 @@
 local M =  {}
 
-local signs = require'ui.icons'.diagnostic_signs
+local signs = require'base.ui.icons'.diagnostic_signs
 function M.setup()
     for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type

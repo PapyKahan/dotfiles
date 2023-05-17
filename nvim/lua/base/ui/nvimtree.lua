@@ -3,7 +3,7 @@ if not loaded then
     return
 end
 
-local diagnostic_signs = require'ui.icons'.diagnostic_signs
+local diagnostic_signs = require'base.ui.icons'.diagnostic_signs
 
 tree.setup({
     auto_reload_on_write = true,
