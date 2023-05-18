@@ -6,7 +6,6 @@ return {
         dependencies = {
             'mason.nvim',
             'williamboman/mason-lspconfig.nvim',
-            'Hoffs/omnisharp-extended-lsp.nvim',
         },
         config = function()
             require 'base.lsp.mappings'.setup()
