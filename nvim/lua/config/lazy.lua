@@ -24,7 +24,7 @@ require('lazy').setup({
         border = "rounded",
     },
     performance = {
-        --cache = { enabled = true, },
+        cache = { enabled = true, },
         rtp = {
             ---@type string[] list any plugins you want to disable here
             disabled_plugins = {
