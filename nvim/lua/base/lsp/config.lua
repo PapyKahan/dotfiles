@@ -100,18 +100,15 @@ local function setup_lspconfig()
 end
 
 local function setup_installer_handlers()
-    local mason_lspconfig_loaded, mason_lspconfig = pcall(require, 'mason-lspconfig')
-    if not mason_lspconfig_loaded then
-        return
-    end
+    local mason_lspconfig = require('mason-lspconfig')
     mason_lspconfig.setup_handlers({
         function(server_name)
             local config_loaded, server_config = pcall(require, "base.lsp.configs." .. server_name)
-            if config_loaded then
-                lspconfig[server_name].setup(server_config)
-            else
-                lspconfig[server_name].setup({})
-            end
+                if config_loaded then
+                    lspconfig[server_name].setup(server_config)
+                else
+                    lspconfig[server_name].setup({})
+                end
         end
     })
     mason_lspconfig.setup({ automatic_installation = true })

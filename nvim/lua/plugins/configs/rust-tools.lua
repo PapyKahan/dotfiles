@@ -34,6 +34,18 @@ rust_tools.setup({
         }
 
     },
+    server = {
+        on_attach = function(client, bufnr)
+        end,
+        settings = {
+            ["rust-analyzer"] = {
+                enable = true,
+                cargo = {
+                    autoReload = true,
+                },
+            }
+        }
+    },
     dap = {
         adapter = require('rust-tools.dap').get_codelldb_adapter(
             codelldb_path, liblldb_path)
