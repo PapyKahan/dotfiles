@@ -5,7 +5,9 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             'mason.nvim',
+            'fidget.nvim',
             'williamboman/mason-lspconfig.nvim',
+
         },
         config = function()
             require 'base.lsp.mappings'.setup()

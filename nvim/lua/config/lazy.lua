@@ -17,8 +17,12 @@ require('lazy').setup({
         { import = "base" },
         { import = "plugins" },
     },
-    --defaults = { lazy = true, version = nil },
+    defaults = { lazy = true, version = nil },
+    concurrency = 10,
     install = { missing = true, colorscheme = { 'tokyonight' } },
+    ui = {
+        border = "rounded",
+    },
     performance = {
         --cache = { enabled = true, },
         rtp = {

@@ -2,11 +2,13 @@ return {
     -- Airline and bufferline plugins
     {
         'nvim-lualine/lualine.nvim',
+        event = "VeryLazy",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('base.ui.lualine') end
     },
     {
         'akinsho/bufferline.nvim',
+        event = "VeryLazy",
         version = "v3.*",
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function() require 'base.ui.bufferline' end
