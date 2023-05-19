@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local M = {}
 
-local function default_capabilities()
+function M.default_capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem = {
         documentationFormat = { "markdown", "plaintext" },
@@ -71,7 +71,7 @@ local function setup_document_highlight(client, bufnr)
     })
 end
 
-local function default_on_attach_callback(client, bufnr)
+function M.default_on_attach_callback(client, bufnr)
     setup_codelens_refresh(client, bufnr)
     setup_document_highlight(client, bufnr)
     require 'base.lsp.mappings'.setup_buffer_mappings(bufnr)
@@ -82,8 +82,8 @@ local function setup_lspconfig()
         "force",
         lspconfig.util.default_config,
         {
-            on_attach = default_on_attach_callback,
-            default_capabilities = default_capabilities
+            on_attach = M.default_on_attach_callback,
+            default_capabilities = M.default_capabilities
         }
     )
 

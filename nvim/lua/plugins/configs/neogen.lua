@@ -1,9 +1,4 @@
-local loaded, neogen = pcall(require, "neogen")
-if not loaded then
-    return
-end
-
-neogen.setup({
+require'neogen'.setup({
     snippet_engine = "vsnip",
     enabled = true,
     languages = {
@@ -40,19 +35,14 @@ neogen.setup({
     },
 });
 
-local whichkey_loaded, whichkey = pcall(require, 'which-key')
-if not whichkey_loaded then
-    return
-end
-
 -- the annotation type to generate. Currently supported: func, class, type, file
-whichkey.register({
+require'which-key'.register({
     name = "Docgen",
     g = {
-        f = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'func' }) end, "Generate function doc" },
-        c = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'class' }) end, "Generate class doc" },
-        F = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'file' }) end, "Generate file doc" },
-        t = { function() neogen.generate({ snippet_engine = 'vsnip', type = 'type' }) end, "Generate type doc" },
+        f = { function() require'neogen'.generate({ snippet_engine = 'vsnip', type = 'func' }) end, "Generate function doc" },
+        c = { function() require'neogen'.generate({ snippet_engine = 'vsnip', type = 'class' }) end, "Generate class doc" },
+        F = { function() require'neogen'.generate({ snippet_engine = 'vsnip', type = 'file' }) end, "Generate file doc" },
+        t = { function() require'neogen'.generate({ snippet_engine = 'vsnip', type = 'type' }) end, "Generate type doc" },
     }
 }, {
     noremap = true,
