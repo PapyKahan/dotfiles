@@ -1,10 +1,9 @@
 return {
-    -- Key mapping helper
     {
         "folke/which-key.nvim",
-        config = function()
+        config = function(_, opts)
             local whichkey = require 'which-key'
-            whichkey.setup()
+            whichkey.setup(opts)
             whichkey.register({
                 ["<C-h>"] = { "<C-w>h", 'Move to left window' },
                 ["<C-j>"] = { "<C-w>j", "Move to downward window" },
