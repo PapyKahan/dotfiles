@@ -11,7 +11,8 @@ return {
             'hrsh7th/cmp-nvim-lsp-signature-help',
             'petertriho/cmp-git',
             'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip'
+            'hrsh7th/vim-vsnip',
+            'danymat/neogen',
         },
         config = function() require 'plugins.configs.cmp' end
     },

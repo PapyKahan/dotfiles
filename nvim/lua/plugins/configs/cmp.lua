@@ -1,14 +1,4 @@
-local loaded, cmp = pcall(require, "cmp")
-if not loaded then
-    return
-end
-
--- import neogen
-local neogen_loaded, neogen = pcall(require, "neogen")
-if not neogen_loaded then
-    return
-end
-
+local cmp = require("cmp")
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -50,6 +40,7 @@ cmp.setup({
             select = false,
         },
         ["<Tab>"] = cmp.mapping(function(fallback)
+            local neogen = require("neogen")
             if cmp.visible() then
                 cmp.select_next_item()
             elseif neogen.jumpable() then
@@ -63,10 +54,11 @@ cmp.setup({
             "c",
         }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
+            local neogen = require("neogen")
             if cmp.visible() then
-                cmp.select_next_item()
+                cmp.select_prev_item()
             elseif neogen.jumpable() then
-                neogen.jump_next()
+                neogen.jump_prev()
             else
                 fallback()
             end
