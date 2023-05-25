@@ -1,5 +1,4 @@
 return {
-    -- Note : LSP
     {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
@@ -33,7 +32,6 @@ return {
             require('mason').setup(options)
         end
     },
-
     -- Lsp Progress bar
     {
         'j-hui/fidget.nvim',
@@ -45,7 +43,6 @@ return {
             }
         end
     },
-
     {
         "folke/trouble.nvim",
         event = "VeryLazy",
@@ -63,8 +60,6 @@ return {
             }
         end,
     },
-
-    -- Note: Outlining
     {
         "simrat39/symbols-outline.nvim",
         event = "VeryLazy",

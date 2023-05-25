@@ -26,7 +26,7 @@ function M.setup_buffer_mappings(bufnr)
         prefix = '<leader>'
     })
 
-    whichkey.register({
+    M.whichkey.register({
         name = "Code",
         K = { function() vim.lsp.buf.hover() end, "Show documentation" },
     }, {
