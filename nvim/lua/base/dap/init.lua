@@ -1,12 +1,15 @@
 return {
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
+        lazy = false,
         opts = {
             defaults = {
                 ['<leader>d'] = { name = 'Debugger' },
             },
         },
+        config = function (_, opts)
+            require('which-key').register(opts.defaults)
+        end
     },
     -- Note: Debugger
     {
