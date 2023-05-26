@@ -111,12 +111,25 @@ local function setup_installer_handlers()
                 end
         end
     })
-    mason_lspconfig.setup({ automatic_installation = true })
+    mason_lspconfig.setup({})
 end
 
-function M.setup()
+local function setup_servers(opts)
+    local mason_lspconfig = require('mason-lspconfig')
+    mason_lspconfig.setup_handlers({
+        function(servername)
+            if opts.servers[servername] then
+                lspconfig[servername].setup(opts.servers[servername])
+            end
+        end
+    })
+    mason_lspconfig.setup({})
+end
+
+function M.setup(_, opts)
     setup_lspconfig()
-    setup_installer_handlers()
+    setup_servers(opts)
+    --setup_installer_handlers()
 end
 
 return M

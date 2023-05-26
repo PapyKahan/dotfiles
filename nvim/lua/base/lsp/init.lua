@@ -3,21 +3,24 @@ return {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
-            'mason.nvim',
-            'fidget.nvim',
+            'williamboman/mason.nvim',
+            'j-hui/fidget.nvim',
             'williamboman/mason-lspconfig.nvim',
 
         },
-        config = function()
+        opts = {
+            servers = {}
+        },
+        config = function(_, opts)
             require 'base.lsp.mappings'.setup()
             require 'base.lsp.handlers'.setup()
             require 'base.lsp.diagnostic'.setup()
-            require 'base.lsp.config'.setup()
+            require 'base.lsp.config'.setup(_, opts)
         end
     },
     {
         'williamboman/mason.nvim',
-        cmd = {'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUninstallAll', 'MasonUpdate', 'MasonLog' },
+        event = 'VeryLazy',
         config = function()
             local options = {
                 ui = {

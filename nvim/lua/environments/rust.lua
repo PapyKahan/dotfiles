@@ -1,13 +1,21 @@
 return {
     {
+        "nvim-treesitter/nvim-treesitter",
+        opts = function(_, opts)
+            vim.list_extend(opts.ensure_installed, { "rust" })
+        end,
+    },
+    {
         "simrat39/rust-tools.nvim",
         ft = "rust",
         dependencies = {
-            'nvim-dap',
-            'nvim-lspconfig',
-            'mason.nvim',
-            'which-key.nvim',
+            'williamboman/mason.nvim',
+            'mfussenegger/nvim-dap',
+            'neovim/nvim-lspconfig',
         },
+        cond = function()
+            return require('mason-registry').is_installed('rust-analyzer')
+        end,
         config = function()
             local registry = require 'mason-registry'
             local codelldb = registry.get_package('codelldb')
@@ -31,7 +39,6 @@ return {
                     adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
                 }
             end
-            print("Rust-tools config")
             require('rust-tools').setup({
                 tools = {
                     inlay_hints = {
