@@ -99,27 +99,14 @@ local function setup_lspconfig()
     end
 end
 
-local function setup_installer_handlers()
-    local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup_handlers({
-        function(server_name)
-            local config_loaded, server_config = pcall(require, "base.lsp.configs." .. server_name)
-                if config_loaded then
-                    lspconfig[server_name].setup(server_config)
-                else
-                    lspconfig[server_name].setup({})
-                end
-        end
-    })
-    mason_lspconfig.setup({})
-end
-
 local function setup_servers(opts)
     local mason_lspconfig = require('mason-lspconfig')
     mason_lspconfig.setup_handlers({
         function(servername)
             if opts.servers[servername] then
                 lspconfig[servername].setup(opts.servers[servername])
+            else
+                lspconfig[servername].setup({})
             end
         end
     })
@@ -129,7 +116,6 @@ end
 function M.setup(_, opts)
     setup_lspconfig()
     setup_servers(opts)
-    --setup_installer_handlers()
 end
 
 return M
