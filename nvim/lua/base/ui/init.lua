@@ -17,10 +17,11 @@ return {
     -- Note: File browser
     {
         'kyazdani42/nvim-tree.lua',
-        event = "VeryLazy",
+        keys = {
+            { '<leader>x', "<cmd>NvimTreeToggle<CR>", "Open Nvim-Tree" },
+        },
         dependencies = {
             'nvim-tree/nvim-web-devicons',
-            -- depends on which-key
             'folke/which-key.nvim',
 
         },

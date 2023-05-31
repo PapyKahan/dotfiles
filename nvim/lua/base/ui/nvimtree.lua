@@ -1,8 +1,4 @@
-local loaded, tree = pcall(require, 'nvim-tree')
-if not loaded then
-    return
-end
-
+local tree = require('nvim-tree')
 local diagnostic_signs = require'base.ui.icons'.diagnostic_signs
 
 tree.setup({
@@ -177,14 +173,3 @@ tree.setup({
         },
     },
 })
-
-local whichkey_loaded, whichkey = pcall(require, 'which-key')
-if whichkey_loaded then
-    whichkey.register({
-        x = { "<cmd>NvimTreeToggle<CR>", "Open Nvim-Tree"},
-    }, {
-        silent = true,
-        noremap = true,
-        prefix = '<leader>'
-    })
-end
