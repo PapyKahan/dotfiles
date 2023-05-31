@@ -1,46 +1,38 @@
 return {
-    -- Note: Terminal
+    {
+        "folke/which-key.nvim",
+        lazy = false,
+        opts = {
+            defaults = {
+                ['<F12>'] = { name = 'Terminal' },
+            },
+        },
+        config = function (_, opts)
+            require('which-key').register(opts.defaults)
+        end
+    },
     {
         'akinsho/nvim-toggleterm.lua',
-        event = "VeryLazy",
+        keys = {
+            { "<F12>", "<cmd>ToggleTerm<cr>", "Open Terminal" },
+        },
         branch = 'main',
         dependencies = {
             'folke/which-key.nvim',
         },
-        config = function()
-            local whichkey = require('which-key')
-            whichkey.register({
-                name = "Terminal",
-                ["<F12>"] = { "<cmd>ToggleTerm<cr>", "Open Terminal" }
-            }, {
-                mode = "n",
-                silent = true,
-                noremap = false,
-            })
-
-            whichkey.register({
-                name = "Terminal",
-                ["<F12>"] = { "<cmd>ToggleTerm<cr>", "Open Terminal" }
-            }, {
-                mode = "t",
-                silent = true,
-                noremap = false,
-            })
-
-            require('toggleterm').setup {
-                hide_numbers = true,
-                close_on_exit = true,
-                float_opts = {
-                    -- The border key is *almost* the same as 'nvim_win_open'
-                    -- see :h nvim_win_open for details on borders however
-                    -- the 'curved' border is a custom border type
-                    -- not natively supported but implemented in this plugin.
-                    border = 'curved', -- single/double/shadow/curved
-                    width = math.floor(0.7 * vim.fn.winwidth(0)),
-                    height = math.floor(0.8 * vim.fn.winheight(0)),
-                    winblend = 4,
-                }
+        opts = {
+            hide_numbers = true,
+            shade_terminals = false,
+            close_on_exit = true,
+            float_opts = {
+                border = 'curved',
+                width = math.floor(0.7 * vim.fn.winwidth(0)),
+                height = math.floor(0.8 * vim.fn.winheight(0)),
+                winblend = 4,
             }
+        },
+        config = function(_, opts)
+            require('toggleterm').setup(opts)
         end
     },
 }
