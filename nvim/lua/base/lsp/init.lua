@@ -48,7 +48,9 @@ return {
     },
     {
         "folke/trouble.nvim",
-        event = "VeryLazy",
+        keys = {
+            { "<leader>lt", "<cmd>TroubleToggle<cr>", "Show troubles" }
+        },
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             local diagnostic_signs = require 'base.ui.icons'.diagnostic_signs
@@ -65,7 +67,9 @@ return {
     },
     {
         "simrat39/symbols-outline.nvim",
-        event = "VeryLazy",
+        keys = {
+            { "<leader>lo", "<cmd>SymbolsOutline<cr>", "Show symbols outline" }
+        },
         config = function() require("symbols-outline").setup() end
     },
 }

@@ -37,14 +37,10 @@ function M.setup_buffer_mappings(bufnr)
 end
 
 function M.setup()
-    -- Mappings.
-    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     M.whichkey.register({
         l = {
             e = { function() vim.diagnostic.open_float() end, "Show diagnostics" },
             q = { function() vim.diagnostic.setloclist() end, "Show local list" },
-            t = { "<cmd>TroubleToggle<cr>", "Show troubles" },
-            o = { "<cmd>SymbolsOutline<cr>", "Show symbols outline" },
         }
     }, {
         noremap = true,
