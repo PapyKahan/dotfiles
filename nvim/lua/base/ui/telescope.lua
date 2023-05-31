@@ -27,7 +27,6 @@ telescope.setup {
         },
         color_devicons = true,
         set_env = { ["COLORTERM"] = "truecolor" },
-        ---@usage Mappings are fully customizable. Many familiar mapping patterns are setup as defaults.
         mappings = {
             i = {
                 ["<C-n>"] = actions.move_selection_next,
@@ -47,18 +46,18 @@ telescope.setup {
     },
 }
 
-local whichkey_loaded, whichkey = pcall(require, 'which-key')
-if whichkey_loaded then
-    whichkey.register({
-        p = { ":Telescope<cr>", "Open Telescope"},
-        f = {
-            name = "Find",
-            f = { "<cmd>Telescope find_files<cr>", "Find files"},
-            g = { "<cmd>Telescope live_grep<cr>", "Find text"}
-        }
-    },{
-        silent = true,
-        noremap = false,
-        prefix = "<leader>"
-    })
-end
+--local whichkey_loaded, whichkey = pcall(require, 'which-key')
+--if whichkey_loaded then
+--    whichkey.register({
+--        p = { ":Telescope<cr>", "Open Telescope"},
+--        f = {
+--            name = "Find",
+--            f = { "<cmd>Telescope find_files<cr>", "Find files"},
+--            g = { "<cmd>Telescope live_grep<cr>", "Find text"}
+--        }
+--    },{
+--        silent = true,
+--        noremap = false,
+--        prefix = "<leader>"
+--    })
+--end

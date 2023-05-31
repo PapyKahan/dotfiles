@@ -1,4 +1,16 @@
 return {
+    {
+        "folke/which-key.nvim",
+        lazy = false,
+        opts = {
+            defaults = {
+                ['<leader>f'] = { name = 'Find' },
+            },
+        },
+        config = function (_, opts)
+            require('which-key').register(opts.defaults)
+        end
+    },
     -- Airline and bufferline plugins
     {
         'nvim-lualine/lualine.nvim',
@@ -19,7 +31,7 @@ return {
         'kyazdani42/nvim-tree.lua',
         cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
         keys = {
-            { '<leader>x', "<cmd>NvimTreeToggle<CR>", "Open Nvim-Tree" },
+            { '<leader>x', "<cmd>NvimTreeToggle<CR>", desc = "Open Nvim-Tree" },
         },
         dependencies = {
             'nvim-tree/nvim-web-devicons',
@@ -32,7 +44,14 @@ return {
     -- Note: Fuzzy finder
     {
         'nvim-telescope/telescope.nvim',
-        event = "VeryLazy",
+        cmd = { 'Telescope' },
+        keys = {
+            { "<leader>p",  ":Telescope<cr>", desc = "Open Telescope" },
+            { "<leader>ff", ":Telescope find_files<cr>", desc = "Find files" },
+            { "<leader>fg", ":Telescope live_grep<cr>", desc = "Grep files" },
+            { "<leader>fb", ":Telescope buffers<cr>", desc = "Find buffers" },
+            { "<leader>fh", ":Telescope help_tags<cr>", desc = "Find help tags"}
+        },
         dependencies = {
             'nvim-lua/popup.nvim',
             'nvim-lua/plenary.nvim',
@@ -46,7 +65,6 @@ return {
     -- Git
     {
         'lewis6991/gitsigns.nvim',
-        lazy = true,
         event = "BufRead",
         config = function() require 'base.ui.gitsigns' end
     },
@@ -55,6 +73,6 @@ return {
         'stevearc/dressing.nvim',
         event = "VeryLazy",
         dependencies = 'MunifTanjim/nui.nvim',
-        config = function() require('base.ui.dressing') end
+        config = function() require('dressing').setup() end
     },
 }
