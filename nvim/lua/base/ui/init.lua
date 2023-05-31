@@ -17,6 +17,7 @@ return {
     -- Note: File browser
     {
         'kyazdani42/nvim-tree.lua',
+        cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
         keys = {
             { '<leader>x', "<cmd>NvimTreeToggle<CR>", "Open Nvim-Tree" },
         },
