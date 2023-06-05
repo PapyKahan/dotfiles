@@ -14,7 +14,7 @@ return {
     -- Note: Debugger
     {
         'mfussenegger/nvim-dap',
-        event = "VeryLazy",
+        --event = "VeryLazy",
         dependencies = {
             { 'rcarriga/nvim-dap-ui' },
             { 'theHamsta/nvim-dap-virtual-text' },

@@ -20,7 +20,8 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        event = 'VeryLazy',
+        --event = 'VeryLazy',
+        cmd = { 'Mason', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonLog', 'MasonUninstallAll' },
         config = function()
             local options = {
                 ui = {
