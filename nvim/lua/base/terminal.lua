@@ -14,7 +14,7 @@ return {
     {
         'akinsho/nvim-toggleterm.lua',
         keys = {
-            { "<F12>", "<cmd>ToggleTerm<cr>", "Open Terminal" },
+            { "<F12>", "<cmd>ToggleTerm<cr>", mode = { "n", "t" }, desc = "Open Terminal" },
         },
         branch = 'main',
         dependencies = {
