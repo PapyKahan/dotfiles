@@ -1,6 +1,3 @@
 [submodule "nushell/scripts"]
 	path = nushell/scripts
 	url = https://github.com/nushell/nu_scripts.git
-[submodule "keyboards/zmk-config-cyber60"]
-	path = keyboards/zmk-config-cyber60
-	url = https://github.com/PapyKahan/zmk-config-cyber60.git
