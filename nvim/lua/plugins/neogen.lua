@@ -1,7 +1,25 @@
 return {
     {
+        "folke/which-key.nvim",
+        lazy = false,
+        opts = {
+            defaults = {
+                ['<leader>g'] = { name = 'Docgen' },
+            },
+        },
+        config = function (_, opts)
+            require('which-key').register(opts.defaults)
+        end
+    },
+    {
         "danymat/neogen",
         event = { 'BufReadPost', 'BufNewFile' },
+        keys = {
+            { "<leader>gf", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'func' }) end, desc = "Generate function doc" },
+            { "<leader>gc", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'class' }) end, desc = "Generate class doc" },
+            { "<leader>gF", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'file' }) end, desc = "Generate file doc" },
+            { "<leader>gt", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'type' }) end, desc = "Generate type doc" },
+        },
         dependencies = {
             "folke/which-key.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -43,27 +61,6 @@ return {
                     },
                 },
             });
-
-            -- the annotation type to generate. Currently supported: func, class, type, file
-            require 'which-key'.register({
-                name = "Docgen",
-                g = {
-                    f = { function() require 'neogen'.generate({ snippet_engine = 'vsnip', type = 'func' }) end,
-                        "Generate function doc" },
-                    c = { function() require 'neogen'.generate({ snippet_engine = 'vsnip', type = 'class' }) end,
-                        "Generate class doc" },
-                    F = { function() require 'neogen'.generate({ snippet_engine = 'vsnip', type = 'file' }) end,
-                        "Generate file doc" },
-                    t = { function() require 'neogen'.generate({ snippet_engine = 'vsnip', type = 'type' }) end,
-                        "Generate type doc" },
-                }
-            }, {
-                noremap = true,
-                mode = 'n',
-                silent = true,
-                expr = true,
-                prefix = '<leader>',
-            })
         end
     }
 }
