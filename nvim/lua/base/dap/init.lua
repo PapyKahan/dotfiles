@@ -7,7 +7,7 @@ return {
                 ['<leader>d'] = { name = 'Debugger' },
             },
         },
-        config = function (_, opts)
+        config = function(_, opts)
             require('which-key').register(opts.defaults)
         end
     },
@@ -23,21 +23,37 @@ return {
 
         },
         keys = {
-            { "<leader>db", function() require('dap').toggle_breakpoint() end, desc = "Toggle breakpoint" },
-            { "<leader>dB", function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Toggle conditional breakpoint" },
-            { "<leader>dl", function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = "Toggle logging breakpoint" },
-            { "<leader>dx", function() require('dap').clear_breakpoints() end, desc = "Clear all breakpoints" },
-            { "<leader>dr", function() require('dap').repl.toggle() end, desc = "Open debug console" },
-            { "<leader>dd", function() require('dap').run_last() end, desc = "Run last session" },
-            { "<leader>dc", function() require('dap').continue() end, desc = "Continue" },
-            { "<leader>do", function() require('dap').step_over({}) end, desc = "Step over" },
-            { "<leader>di", function() require('dap').step_into() end, desc = "Step into" },
-            { "<leader>du", function() require('dap').step_out() end, desc = "Step out" },
-            { "<leader>ds", function() require('dap').continue() end, desc = "Start" },
-            { "<leader>dq", function() require('dap').close() end, desc = "Quit" },
-            { "<leader>de", function() require('dapui').eval() end, mode = { 'n', 'v' }, desc = "Evaluate expression" },
+            { "<leader>db", function() require('dap').toggle_breakpoint() end,                                           desc =
+            "Toggle breakpoint" },
+            { "<leader>dB", function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+                                                                                                                             desc =
+                "Toggle conditional breakpoint" },
+            { "<leader>dl", function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
+                                                                                                                             desc =
+                "Toggle logging breakpoint" },
+            { "<leader>dx", function() require('dap').clear_breakpoints() end,                                           desc =
+            "Clear all breakpoints" },
+            { "<leader>dr", function() require('dap').repl.toggle() end,                                                 desc =
+            "Open debug console" },
+            { "<leader>dd", function() require('dap').run_last() end,                                                    desc =
+            "Run last session" },
+            { "<leader>dc", function() require('dap').continue() end,                                                    desc =
+            "Continue" },
+            { "<leader>do", function() require('dap').step_over({}) end,                                                 desc =
+            "Step over" },
+            { "<leader>di", function() require('dap').step_into() end,                                                   desc =
+            "Step into" },
+            { "<leader>du", function() require('dap').step_out() end,                                                    desc =
+            "Step out" },
+            { "<leader>ds", function() require('dap').continue() end,                                                    desc =
+            "Start" },
+            { "<leader>dq", function() require('dap').close() end,                                                       desc =
+            "Quit" },
+            { "<leader>de", function() require('dapui').eval() end,                                                      mode = {
+                'n', 'v' },                                                                                                                                     desc =
+            "Evaluate expression" },
         },
-        config = function()
+        config = function(plugin, opts)
             local ui = {
                 breakpoint = {
                     text = "",
@@ -100,6 +116,10 @@ return {
                 if dap_config_file then
                     require('base.dap.configs.' .. dap_config_file)
                 end
+            end
+
+            for k, _ in pairs(opts.setup) do
+                opts.setup[k](plugin, opts)
             end
         end
     },

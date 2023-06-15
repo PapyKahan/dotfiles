@@ -37,4 +37,57 @@ return {
             }
         end,
     },
+    {
+        "mfussenegger/nvim-dap",
+        opts = {
+            setup = {
+                netcoredbg = function(_, _)
+                    local dap = require "dap"
+
+                    local function get_debugger()
+                        local mason_registry = require "mason-registry"
+                        local debugger = mason_registry.get_package "netcoredbg"
+                        local this_os = vim.loop.os_uname().sysname;
+                        if this_os:find "Windows" then
+                            return debugger:get_install_path() .. "/netcoredbg.cmd"
+                        else
+                            return debugger:get_install_path() .. "/netcoredbg"
+                        end
+                    end
+
+                    dap.configurations.cs = {
+                        {
+                            type = "coreclr",
+                            name = "launch - netcoredbg",
+                            request = "launch",
+                            program = function()
+                                return vim.fn.input("Path to dll", vim.fn.getcwd() .. "/bin/Debug/", "file")
+                            end,
+                        },
+                    }
+                    dap.adapters.coreclr = {
+                        type = "executable",
+                        command = get_debugger(),
+                        args = { "--interpreter=vscode" },
+                    }
+                    dap.adapters.netcoredbg = {
+                        type = "executable",
+                        command = get_debugger(),
+                        args = { "--interpreter=vscode" },
+                    }
+                end,
+            },
+        },
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "Issafalcon/neotest-dotnet",
+        },
+        opts = function(_, opts)
+            vim.list_extend(opts.adapters, {
+                require "neotest-dotnet",
+            })
+        end,
+    },
 }
