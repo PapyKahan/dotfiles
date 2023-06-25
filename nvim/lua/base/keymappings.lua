@@ -2,6 +2,11 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
+        opts = {
+            defaults = {
+                ['<leader>h'] = { name = 'Hop' },
+            },
+        },
         init = function()
             local whichkey = require 'which-key'
             whichkey.register({
@@ -22,6 +27,20 @@ return {
                 silent = true,
                 noremap = false
             })
+        end,
+        config = function (_, opts)
+            require('which-key').register(opts.defaults)
+        end
+    },
+    {
+        'phaazon/hop.nvim',
+        cmd = { 'HopWord', 'HopLine', 'HopChar1', 'HopChar2', 'HopPattern', 'HopAnywhere' },
+        keys = {
+            { '<leader>hw' , function () require('hop').hint_words() end, desc = 'Hop to word' },
+            { '<leader>ha' , function () require('hop').hint_anywhere() end, desc = 'Hop anywhere' },
+        },
+        config = function ()
+            require('hop').setup()
         end
     }
 }
