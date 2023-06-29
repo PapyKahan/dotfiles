@@ -5,7 +5,6 @@ M.whichkey = require('which-key')
 function M.setup_buffer_mappings(bufnr)
     M.whichkey.register({
         l = {
-            name = "Code",
             g = {
                 name = "Goto/Get",
                 D = { function() vim.lsp.buf.declaration() end, "Go to declaration" },

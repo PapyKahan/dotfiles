@@ -1,5 +1,17 @@
 return {
     {
+        "folke/which-key.nvim",
+        lazy = false,
+        opts = {
+            defaults = {
+                ['<leader>l'] = { name = 'Code' },
+            },
+        },
+        config = function(_, opts)
+            require('which-key').register(opts.defaults)
+        end
+    },
+    {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
