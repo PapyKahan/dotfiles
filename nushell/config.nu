@@ -540,4 +540,6 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
+alias activate = overlay use .venv\Scripts\activate.nu
+alias venv = python -m virtualenv .venv
 #let git_completion = $nu.default-config-dir + "/nu_scripts/custom-completions/git/git-completions.nu"
