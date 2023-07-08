@@ -14,7 +14,11 @@ return {
             'neovim/nvim-lspconfig',
         },
         cond = function()
-            return require('mason-registry').is_installed('rust-analyzer')
+            local loaded, registry = pcall(require, 'mason-registry')
+            if loaded then
+                return registry.is_installed('rust-analyzer')
+            end
+            return false
         end,
         config = function()
             local registry = require 'mason-registry'
