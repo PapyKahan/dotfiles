@@ -4,11 +4,10 @@ return {
         cmd = "Copilot",
         event = "InsertEnter",
         init = function()
-            if vim.env['COPILOT_PROXY'] then
-                vim.g.copilot_proxy = vim.env['COPILOT_PROXY']
+            if vim.env['AUTH_PROXY'] then
+                vim.g.copilot_proxy = vim.env['AUTH_PROXY']
                 vim.g.copilot_proxy_strict_ssl = false
             end
-
             vim.g.copilot_no_tab_map = true
         end,
         config = function()
