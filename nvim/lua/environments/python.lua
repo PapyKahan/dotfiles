@@ -25,4 +25,17 @@ return {
             },
         },
     },
+    {
+        "mfussenegger/nvim-dap-python",
+        dependencies = { "mfussenegger/nvim-dap" },
+        ft = "python",
+        config = function()
+            local dap_python = require("dap-python")
+            if vim.env['NEXTHINK'] then
+                dap_python.setup('C:/ieu/tools/WPy64-31101/python-3.11.0.amd64/python.exe')
+            else
+                dap_python.setup()
+            end
+        end,
+    }
 }
