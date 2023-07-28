@@ -2,11 +2,7 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = {
-            defaults = {
-                ['<leader>h'] = { name = 'Hop' },
-            },
-        },
+        opts = { },
         init = function()
             local whichkey = require 'which-key'
             whichkey.register({
@@ -28,19 +24,56 @@ return {
                 noremap = false
             })
         end,
-        config = function (_, opts)
+        config = function(_, opts)
             require('which-key').register(opts.defaults)
         end
     },
     {
-        'phaazon/hop.nvim',
-        cmd = { 'HopWord', 'HopLine', 'HopChar1', 'HopChar2', 'HopPattern', 'HopAnywhere' },
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
         keys = {
-            { '<leader>hw' , function () require('hop').hint_words() end, desc = 'Hop to word' },
-            { '<leader>ha' , function () require('hop').hint_anywhere() end, desc = 'Hop anywhere' },
+            {
+                "s",
+                mode = { "n", "x", "o" },
+                function()
+                    require("flash").jump()
+                end,
+                desc = "Flash",
+            },
+            {
+                "S",
+                mode = { "n", "o", "x" },
+                function()
+                    require("flash").treesitter()
+                end,
+                desc = "Flash Treesitter",
+            },
+            {
+                "r",
+                mode = "o",
+                function()
+                    require("flash").remote()
+                end,
+                desc = "Remote Flash",
+            },
+            {
+                "R",
+                mode = { "o", "x" },
+                function()
+                    require("flash").treesitter_search()
+                end,
+                desc = "Flash Treesitter Search",
+            },
+            {
+                "<c-s>",
+                mode = { "c" },
+                function()
+                    require("flash").toggle()
+                end,
+                desc = "Toggle Flash Search",
+            },
         },
-        config = function ()
-            require('hop').setup()
-        end
     }
 }
