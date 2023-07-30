@@ -31,6 +31,26 @@ return {
         end
     },
     {
+        'nvimdev/lspsaga.nvim',
+        event = "LspAttach",
+        keys = {
+            { "<leader>lo", "<cmd>Lspsaga outline<cr>", "Show symbols outline" }
+        },
+        config = function()
+            require('lspsaga').setup({
+                outline = {
+                    detail = true,
+                    layout = 'float',
+                    max_height = 0.8,
+                }
+            })
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-tree/nvim-web-devicons'
+        }
+    },
+    {
         'williamboman/mason.nvim',
         --event = 'VeryLazy',
         cmd = { 'Mason', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonLog', 'MasonUninstallAll' },
@@ -77,12 +97,5 @@ return {
                 },
             }
         end,
-    },
-    {
-        "simrat39/symbols-outline.nvim",
-        keys = {
-            { "<leader>lo", "<cmd>SymbolsOutline<cr>", "Show symbols outline" }
-        },
-        config = function() require("symbols-outline").setup() end
     },
 }

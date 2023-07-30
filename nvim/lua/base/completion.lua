@@ -13,6 +13,7 @@ return {
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
             'danymat/neogen',
+            'onsails/lspkind.nvim'
         },
         config = function()
             local cmp = require("cmp")
@@ -28,17 +29,7 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 formatting = {
-                    format = function(entry, vim_item)
-                        local icons = require('base.ui.icons').lspkind
-                        vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-                        vim_item.menu = ({
-                            nvim_lsp = "[LSP]",
-                            vsnip = "[Snippet]",
-                            buffer = "[Buffer]",
-                            path = "[Path]"
-                        })[entry.source.name]
-                        return vim_item
-                    end,
+                    format = require("lspkind").cmp_format({maxwidth = 50}),
                     duplicates = {
                         buffer = 1,
                         path = 1,

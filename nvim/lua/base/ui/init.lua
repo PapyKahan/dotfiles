@@ -27,18 +27,30 @@ return {
     },
 
     -- Note: File browser
+    --{
+    --    'kyazdani42/nvim-tree.lua',
+    --    cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
+    --    keys = {
+    --        { '<leader>x', "<cmd>NvimTreeToggle<CR>", desc = "Open Nvim-Tree" },
+    --    },
+    --    dependencies = {
+    --        'nvim-tree/nvim-web-devicons',
+    --        'folke/which-key.nvim',
+
+    --    },
+    --    config = function() require 'base.ui.nvimtree' end,
+    --},
     {
-        'kyazdani42/nvim-tree.lua',
-        cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
         keys = {
-            { '<leader>x', "<cmd>NvimTreeToggle<CR>", desc = "Open Nvim-Tree" },
+            { '<leader>x', "<cmd>Neotree toggle<CR>", desc = "Open Nvim-Tree" },
         },
         dependencies = {
-            'nvim-tree/nvim-web-devicons',
-            'folke/which-key.nvim',
-
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
         },
-        config = function() require 'base.ui.nvimtree' end,
     },
 
     -- Note: Fuzzy finder
