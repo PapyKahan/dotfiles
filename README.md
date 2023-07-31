@@ -16,7 +16,7 @@ Note : install rustup and rust env first
 Install Microsoft BuildTools 2022 with C++ Desktop dev env
 
 ```powershell
-cargo install starship fd-find ripgrep nu --locked
+cargo install nu ripgrep fd-find starship gitui --locked
 ```
 
 ### Neovim
