@@ -37,7 +37,8 @@ return {
                 vscode_js_debug = function()
                     local adapter_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
                     adapter_path = adapter_path .. "/js-debug/src/dapDebugServer.js"
-                    for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" } do
+                    for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal",
+                        "pwa-extensionHost" } do
                         require("dap").adapters[adapter] = {
                             type = "server",
                             host = "localhost",
@@ -132,5 +133,25 @@ return {
 
             }
         },
-    }
+    },
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/neotest-jest",
+            "marilari88/neotest-vitest",
+            "thenbe/neotest-playwright",
+        },
+        opts = function(_, opts)
+            vim.list_extend(opts.adapters, {
+                require "neotest-jest",
+                require "neotest-vitest",
+                require("neotest-playwright").adapter {
+                    options = {
+                        persist_project_selection = true,
+                        enable_dynamic_test_discovery = true,
+                    },
+                },
+            })
+        end,
+    },
 }
