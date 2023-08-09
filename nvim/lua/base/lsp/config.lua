@@ -74,7 +74,6 @@ end
 function M.default_on_attach_callback(client, bufnr)
     setup_codelens_refresh(client, bufnr)
     setup_document_highlight(client, bufnr)
-    require 'base.lsp.mappings'.setup_buffer_mappings(bufnr)
 end
 
 local function setup_lspconfig()
