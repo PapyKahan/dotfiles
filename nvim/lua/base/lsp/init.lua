@@ -39,6 +39,7 @@ return {
             { "<leader>le",  "<cmd>Lspsaga show_workspace_diagnostics<cr>", desc = "Show diagnostics" },
             { "<leader>li",  function() vim.lsp.buf.implementation() end,   desc = "Got to implementation" },
             { "<leader>lo",  "<cmd>Lspsaga outline<cr>",                    desc = "Show symbols outline" },
+            { "<leader>lf",  function() vim.lsp.buf.format() end,               desc = "Format" },
             { "<leader>lq",  "<cmd>Lspsaga show_line_diagnostics<cr>",      desc = "Show line diagnostics" },
             { "<leader>lr",  "<cmd>Lspsaga rename<cr>",                     desc = "Rename" },
             { "<leader>lS",  function() vim.lsp.buf.signature_help() end,   desc = "Get signature" },
