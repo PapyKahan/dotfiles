@@ -109,6 +109,35 @@ return {
                     for _, language in ipairs({ "javascriptreact", "typescriptreact" }) do
                         require("dap").configurations[language] = {
                             {
+                                type = "pwa-node",
+                                request = "launch",
+                                name = "Launch file",
+                                program = "${file}",
+                                cwd = "${workspaceFolder}",
+                            },
+                            {
+                                type = "pwa-node",
+                                request = "attach",
+                                name = "Attach",
+                                processId = require("dap.utils").pick_process,
+                                cwd = "${workspaceFolder}",
+                            },
+                            {
+                                type = "pwa-node",
+                                request = "launch",
+                                name = "Debug Jest Tests",
+                                -- trace = true, -- include debugger info
+                                runtimeExecutable = "node",
+                                runtimeArgs = {
+                                    "./node_modules/jest/bin/jest.js",
+                                    "--runInBand",
+                                },
+                                rootPath = "${workspaceFolder}",
+                                cwd = "${workspaceFolder}",
+                                console = "integratedTerminal",
+                                internalConsoleOptions = "neverOpen",
+                            },
+                            {
                                 type = "pwa-chrome",
                                 name = "Attach - Remote Debugging",
                                 request = "attach",
@@ -143,7 +172,28 @@ return {
         },
         opts = function(_, opts)
             vim.list_extend(opts.adapters, {
-                require "neotest-jest",
+                require "neotest-jest" ({
+                    jestCommand = "npx jest",
+                    jestConfigFile = function()
+                        local file = vim.fn.expand('%:p')
+                        print(file)
+                        print(file)
+                        if string.find(file, "/packages/") then
+                            print(file)
+                            print(string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts")
+                            return string.match(file, "(.-/[^/]+/)src") .. "jest.config.ts"
+                        end
+                        return vim.fn.getcwd() .. "/jest.config.ts"
+                    end,
+                    env = { CI = true },
+                    cwd = function()
+                        local file = vim.fn.expand('%:p')
+                        if string.find(file, "/packages/") then
+                            return string.match(file, "(.-/[^/]+/)src")
+                        end
+                        return vim.fn.getcwd()
+                    end
+                }),
                 require "neotest-vitest",
                 require("neotest-playwright").adapter {
                     options = {
