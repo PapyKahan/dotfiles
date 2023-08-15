@@ -11,7 +11,6 @@ return {
             require('which-key').register(opts.defaults)
         end
     },
-    -- Airline and bufferline plugins
     {
         'nvim-lualine/lualine.nvim',
         event = "VeryLazy",
@@ -25,21 +24,6 @@ return {
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function() require 'base.ui.bufferline' end
     },
-
-    -- Note: File browser
-    --{
-    --    'kyazdani42/nvim-tree.lua',
-    --    cmd = { 'NvimTreeToggle', 'NvimTreeOpen' },
-    --    keys = {
-    --        { '<leader>x', "<cmd>NvimTreeToggle<CR>", desc = "Open Nvim-Tree" },
-    --    },
-    --    dependencies = {
-    --        'nvim-tree/nvim-web-devicons',
-    --        'folke/which-key.nvim',
-
-    --    },
-    --    config = function() require 'base.ui.nvimtree' end,
-    --},
     {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v3.x",
@@ -52,8 +36,6 @@ return {
             "MunifTanjim/nui.nvim",
         },
     },
-
-    -- Note: Fuzzy finder
     {
         'nvim-telescope/telescope.nvim',
         cmd = { 'Telescope' },
@@ -73,14 +55,11 @@ return {
         },
         config = function() require 'base.ui.telescope' end
     },
-
-    -- Git
     {
         'lewis6991/gitsigns.nvim',
         event = "BufRead",
         config = function() require 'base.ui.gitsigns' end
     },
-
     {
         'stevearc/dressing.nvim',
         event = "VeryLazy",

@@ -107,25 +107,25 @@ return {
         config = function(plugin, opts)
             local ui = {
                 breakpoint = {
-                    text = "",
+                    text = "",
                     texthl = "DiagnosticSignError",
                     linehl = "",
                     numhl = "",
                 },
                 breakpoint_condition = {
-                    text = "",
+                    text = "",
                     texthl = "DiagnosticSignWarn",
                     linehl = "",
                     numhl = "",
                 },
                 log_point = {
-                    text = "",
+                    text = "",
                     texthl = "DiagnosticSignInfo",
                     linehl = "",
                     numhl = "",
                 },
                 breakpoint_rejected = {
-                    text = "",
+                    text = "",
                     texthl = "DiagnosticSignHint",
                     linehl = "",
                     numhl = "",
