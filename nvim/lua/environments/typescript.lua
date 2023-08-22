@@ -37,8 +37,7 @@ return {
                 vscode_js_debug = function()
                     local adapter_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
                     adapter_path = adapter_path .. "/js-debug/src/dapDebugServer.js"
-                    for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal",
-                        "pwa-extensionHost" } do
+                    for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" } do
                         require("dap").adapters[adapter] = {
                             type = "server",
                             host = "localhost",
@@ -109,35 +108,6 @@ return {
                     for _, language in ipairs({ "javascriptreact", "typescriptreact" }) do
                         require("dap").configurations[language] = {
                             {
-                                type = "pwa-node",
-                                request = "launch",
-                                name = "Launch file",
-                                program = "${file}",
-                                cwd = "${workspaceFolder}",
-                            },
-                            {
-                                type = "pwa-node",
-                                request = "attach",
-                                name = "Attach",
-                                processId = require("dap.utils").pick_process,
-                                cwd = "${workspaceFolder}",
-                            },
-                            {
-                                type = "pwa-node",
-                                request = "launch",
-                                name = "Debug Jest Tests",
-                                -- trace = true, -- include debugger info
-                                runtimeExecutable = "node",
-                                runtimeArgs = {
-                                    "./node_modules/jest/bin/jest.js",
-                                    "--runInBand",
-                                },
-                                rootPath = "${workspaceFolder}",
-                                cwd = "${workspaceFolder}",
-                                console = "integratedTerminal",
-                                internalConsoleOptions = "neverOpen",
-                            },
-                            {
                                 type = "pwa-chrome",
                                 name = "Attach - Remote Debugging",
                                 request = "attach",
@@ -167,13 +137,13 @@ return {
         "nvim-neotest/neotest",
         dependencies = {
             "nvim-neotest/neotest-jest",
-            --"marilari88/neotest-vitest",
-            --"thenbe/neotest-playwright",
+            "marilari88/neotest-vitest",
+            "thenbe/neotest-playwright",
         },
         opts = function(_, opts)
             vim.list_extend(opts.adapters, {
                 require "neotest-jest" ({
-                    jestCommand = "npx jest",
+                    jestCommand = "pnpm test --",
                     jestConfigFile = function()
                         local file = vim.fn.expand('%:p')
                         if string.find(file, '[/|\\]packages[/|\\]') then
