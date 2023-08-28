@@ -14,12 +14,9 @@ return {
     -- Note: Debugger
     {
         'mfussenegger/nvim-dap',
-        --event = "VeryLazy",
         dependencies = {
             { 'rcarriga/nvim-dap-ui' },
             { 'theHamsta/nvim-dap-virtual-text' },
-            --'mfussenegger/nvim-dap-python',
-            --'mxsdev/nvim-dap-vscode-js',
 
         },
         keys = {
@@ -34,6 +31,12 @@ return {
                 function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
                 desc =
                 "Toggle conditional breakpoint"
+            },
+            {
+                "<leader>dd",
+                function() require('dapui').toggle() end,
+                desc =
+                "Toggle Dap interface"
             },
             {
                 "<leader>dl",
@@ -54,7 +57,7 @@ return {
                 "Open debug console"
             },
             {
-                "<leader>dd",
+                "<leader>dL",
                 function() require('dap').run_last() end,
                 desc =
                 "Run last session"

@@ -60,6 +60,9 @@ return {
                                 name = "Launch file",
                                 program = "${file}",
                                 cwd = "${workspaceFolder}",
+                                internalConsoleOptions = "neverOpen",
+                                console = 'integratedTerminal',
+                                skipFiles = {'<node_internals>/**/*.js'},
                             },
                             {
                                 type = "pwa-node",
@@ -67,6 +70,9 @@ return {
                                 name = "Attach",
                                 processId = require("dap.utils").pick_process,
                                 cwd = "${workspaceFolder}",
+                                internalConsoleOptions = "neverOpen",
+                                console = 'integratedTerminal',
+                                skipFiles = {'<node_internals>/**/*.js'},
                             },
                             {
                                 type = "pwa-node",
@@ -80,8 +86,9 @@ return {
                                 },
                                 rootPath = "${workspaceFolder}",
                                 cwd = "${workspaceFolder}",
-                                console = "integratedTerminal",
                                 internalConsoleOptions = "neverOpen",
+                                console = 'integratedTerminal',
+                                skipFiles = {'<node_internals>/**/*.js'},
                             },
                             {
                                 type = "pwa-chrome",
