@@ -6,7 +6,7 @@ return {
         lazy = false,
         opts = {
             defaults = {
-                ['<leader>c'] = { name = 'Terminal' },
+                ['<leader>z'] = { name = 'Terminal' },
             },
         },
         config = function(_, opts)
@@ -16,9 +16,9 @@ return {
     {
         'akinsho/nvim-toggleterm.lua',
         keys = {
-            { "<leader>ct", "<cmd>ToggleTerm<cr>", mode = { "n", "t" }, desc = "Open Terminal" },
+            { "<leader>zt", "<cmd>ToggleTerm<cr>", mode = { "n", "t" }, desc = "Open Terminal" },
             {
-                "<leader>cg",
+                "<leader>zg",
                 function()
                     if gitui then
                         gitui:toggle()
