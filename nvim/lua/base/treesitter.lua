@@ -11,6 +11,11 @@ return {
                 'windwp/nvim-autopairs',
                 config = function() require('nvim-autopairs').setup() end,
             },
+            { "nvim-treesitter/nvim-treesitter-textobjects" },
+        },
+        keys = {
+            { "<c-space>", desc = "Increment selection" },
+            { "<bs>",      desc = "Decrement selection", mode = "x" },
         },
         opts = {
             autotag = { enable = true },
@@ -42,6 +47,15 @@ return {
                 "vim",
                 "vimdoc",
                 "yaml"
+            },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-space>",
+                    node_incremental = "<C-space>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>",
+                },
             },
         },
         config = function(_, opts)

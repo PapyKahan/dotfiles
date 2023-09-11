@@ -47,8 +47,7 @@ return {
             { "<leader>lgt", "<cmd>Lspsaga goto_type_definition<cr>",       desc = "Go to type definition" },
             { "<leader>lgr", "<cmd>Lspsaga finder<cr>",                     desc = "Find references" },
         },
-        config = function()
-            require('lspsaga').setup({
+        opts = {
                 ui = {
                     border = 'rounded',
                 },
@@ -63,8 +62,8 @@ return {
                 diagnostic = {
                     show_layout = 'normal',
                 },
-            })
-        end,
+
+        },
         dependencies = {
             'nvim-treesitter/nvim-treesitter',
             'nvim-tree/nvim-web-devicons'
@@ -72,7 +71,6 @@ return {
     },
     {
         'williamboman/mason.nvim',
-        --event = 'VeryLazy',
         cmd = { 'Mason', 'MasonUpdate', 'MasonInstall', 'MasonUninstall', 'MasonLog', 'MasonUninstallAll' },
         config = function()
             local options = {
@@ -88,7 +86,6 @@ return {
             require('mason').setup(options)
         end
     },
-    -- Lsp Progress bar
     {
         'j-hui/fidget.nvim',
         config = function()
