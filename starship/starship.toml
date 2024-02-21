@@ -26,6 +26,3 @@ disabled = false
 
 [os]
 disabled = false
-
-[os.symbols]
-Windows = "🏠 " # TODO remove this when migration to Windows 11 has been done at work
