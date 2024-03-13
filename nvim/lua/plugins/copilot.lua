@@ -1,15 +1,3 @@
-local function get_git_diff(staged)
-    local cmd = staged and "git diff --staged" or "git diff"
-    local handle = io.popen(cmd)
-    if not handle then
-        return ""
-    end
-
-    local result = handle:read("*a")
-    handle:close()
-    return result
-end
-
 local prompts = {
     -- Code related prompts
     Explain = "Please explain how the following code works.",
@@ -74,7 +62,7 @@ return {
     },
     {
         "CopilotC-Nvim/CopilotChat.nvim",
-        -- branch = "canary", -- It's working nicely on Neovim nightly
+        --branch = "canary", -- It's working nicely on Neovim nightly
         version = "2.0.0-1",
         dependencies = {
             { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions

@@ -91,7 +91,7 @@ set.showmatch = true
 set.laststatus = 2
 set.visualbell = false
 set.errorbells = false
-set.guioptions = 'ig'
+--set.guioptions = 'ig'
 set.background = 'dark'
 --cmd [[colorscheme tokyonight]]
 set.guifont = 'JetbrainsMono NF:h12'
