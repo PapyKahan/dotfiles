@@ -17,7 +17,7 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             'williamboman/mason.nvim',
-            'j-hui/fidget.nvim',
+            'folke/noice.nvim',
             'williamboman/mason-lspconfig.nvim',
 
         },
@@ -25,7 +25,6 @@ return {
             servers = {}
         },
         config = function(_, opts)
-            require 'base.lsp.handlers'.setup()
             require 'base.lsp.diagnostic'.setup()
             require 'base.lsp.config'.setup(_, opts)
         end
@@ -48,20 +47,20 @@ return {
             { "<leader>lgr", "<cmd>Lspsaga finder<cr>",                     desc = "Find references" },
         },
         opts = {
-                ui = {
-                    border = 'rounded',
-                },
-                finder = {
-                    layout = 'float',
-                },
-                outline = {
-                    detail = true,
-                    layout = 'float',
-                    max_height = 0.8,
-                },
-                diagnostic = {
-                    show_layout = 'normal',
-                },
+            ui = {
+                border = 'rounded',
+            },
+            finder = {
+                layout = 'float',
+            },
+            outline = {
+                detail = true,
+                layout = 'float',
+                max_height = 0.8,
+            },
+            diagnostic = {
+                show_layout = 'normal',
+            },
 
         },
         dependencies = {
@@ -84,16 +83,6 @@ return {
                 options.install_root_dir = vim.env['LSP_LANGUAGE_SERVERS']
             end
             require('mason').setup(options)
-        end
-    },
-    {
-        'j-hui/fidget.nvim',
-        config = function()
-            require 'fidget'.setup {
-                text = {
-                    spinner = 'circle_halves'
-                }
-            }
         end
     },
     {
