@@ -18,7 +18,7 @@ return {
             { "<bs>",      desc = "Decrement selection", mode = "x" },
         },
         opts = {
-            autotag = { enable = true },
+            --autotag = { enable = true },
             highlight = { enable = true, additional_vim_regex_highlighting = { "org", "markdown" } },
             indent = { enable = true },
             context_commentstring = { enable = true },

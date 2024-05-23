@@ -55,9 +55,23 @@ return {
                 server = {
                     settings = {
                         ["rust-analyzer"] = {
-                            enable = true,
+                            --enable = true,
+                            imports = {
+                                granularity = {
+                                    group = "module",
+                                },
+                                prefix = "self",
+                            },
                             cargo = {
                                 autoReload = true,
+                            },
+                            procMacro = {
+                                enable = true
+                            },
+                            diagnostics = {
+                                enable = true,
+                                disabled = { "unresolved-proc-macro" },
+                                --enableExperimental = true,
                             },
                         }
                     },
