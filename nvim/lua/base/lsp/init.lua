@@ -87,8 +87,9 @@ return {
     },
     {
         "folke/trouble.nvim",
+        event = "LspAttach",
         keys = {
-            { "<leader>lt", "<cmd>TroubleToggle<cr>", desc = "Show troubles" }
+            { "<leader>ltd", "<cmd>Trouble diagnostics toggle<cr>", desc = "Show diagnostics" },
         },
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
