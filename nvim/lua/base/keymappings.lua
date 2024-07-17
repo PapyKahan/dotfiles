@@ -2,26 +2,22 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        opts = { },
+        opts = {},
         init = function()
             local whichkey = require 'which-key'
-            whichkey.register({
-                ["<C-h>"] = { "<C-w>h", 'Move to left window' },
-                ["<C-j>"] = { "<C-w>j", "Move to downward window" },
-                ["<C-k>"] = { "<C-w>k", "Move to upward window" },
-                ["<C-l>"] = { "<C-w>l", "Move to right window" },
+            whichkey.add({
+                { "<C-h>",     "<C-w>h",                      desc = "Move to left window",               mode = "n", silent = true, remap = true },
+                { "<C-j>",     "<C-w>j",                      desc = "Move to downward window",           mode = "n", silent = true, remap = true },
+                { "<C-k>",     "<C-w>k",                      desc = "Move to upward window",             mode = "n", silent = true, remap = true },
+                { "<C-l>",     "<C-w>l",                      desc = "Move to right window",              mode = "n", silent = true, remap = true },
 
-                ["<C-Up>"] = { "<cmd>resize -2<cr>", "Horizontaly decrease windows size" },
-                ["<C-Down>"] = { "<cmd>resize +2<cr>", "Horizontaly increase windows size" },
-                ["<C-Left>"] = { "<cmd>vertical resize -2<cr>", "Verticaly decrease windows size" },
-                ["<C-Right>"] = { "<cmd>vertical resize +2<cr>", "Verticaly increase windows size" },
+                { "<C-Up>",    "<cmd>resize -2<cr>",          desc = "Horizontaly decrease windows size", mode = "n", silent = true, remap = true },
+                { "<C-Down>",  "<cmd>resize +2<cr>",          desc = "Horizontaly increase windows size", mode = "n", silent = true, remap = true },
+                { "<C-Left>",  "<cmd>vertical resize -2<cr>", desc = "Verticaly decrease windows size",   mode = "n", silent = true, remap = true },
+                { "<C-Right>", "<cmd>vertical resize +2<cr>", desc = "Verticaly increase windows size",   mode = "n", silent = true, remap = true },
 
-                ["<S-l>"] = { "<cmd>bn<cr>", "Select next buffer" },
-                ["<S-h>"] = { "<cmd>bp<cr>", "Select previous buffer" },
-            }, {
-                mode = "n",
-                silent = true,
-                noremap = false
+                { "<S-h>",     "<cmd>bp<cr>",                 desc = "Select previous buffer",            mode = "n", silent = true, remap = true },
+                { "<S-l>",     "<cmd>bn<cr>",                 desc = "Select next buffer",                mode = "n", silent = true, remap = true },
             })
         end,
         config = function(_, opts)

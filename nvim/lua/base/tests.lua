@@ -4,7 +4,7 @@ return {
         event = "VeryLazy",
         opts = {
             defaults = {
-                ["<leader>t"] = { name = "+Test" },
+                { "<leader>t", group = "Test" },
             },
         },
     },

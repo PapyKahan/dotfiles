@@ -4,8 +4,8 @@ return {
         lazy = false,
         opts = {
             defaults = {
-                ['<leader>l'] = { name = 'Code' },
-                ['<leader>lg'] = { name = 'Goto/Get/Find' },
+                { "<leader>l",  group = "Code" },
+                { "<leader>lg", group = "Goto/Get/Find" }
             },
         },
         config = function(_, opts)

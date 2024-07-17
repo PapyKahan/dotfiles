@@ -249,9 +249,6 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
-            --cmdline = {
-            --    view = "cmdline",
-            --},
             views = {
                 cmdline_popup = {
                     size = { width = "60%", height = "auto" },

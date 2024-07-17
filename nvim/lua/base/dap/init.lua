@@ -4,7 +4,7 @@ return {
         lazy = false,
         opts = {
             defaults = {
-                ['<leader>d'] = { name = 'Debugger' },
+                { '<leader>d', group = 'Debugger' },
             },
         },
         config = function(_, opts)

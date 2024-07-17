@@ -6,7 +6,7 @@ return {
         lazy = false,
         opts = {
             defaults = {
-                ['<leader>z'] = { name = 'Terminal' },
+                { '<leader>z', group = 'Terminal' },
             },
         },
         config = function(_, opts)

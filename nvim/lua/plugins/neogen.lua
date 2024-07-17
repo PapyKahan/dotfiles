@@ -4,21 +4,21 @@ return {
         lazy = false,
         opts = {
             defaults = {
-                ['<leader>g'] = { name = 'Docgen' },
+                { "<leader>g", group = "Docgen" },
             },
         },
-        config = function (_, opts)
-            require('which-key').register(opts.defaults)
+        config = function(_, opts)
+            require('which-key').add(opts.defaults)
         end
     },
     {
         "danymat/neogen",
         event = { 'BufReadPost', 'BufNewFile' },
         keys = {
-            { "<leader>gf", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'func' }) end, desc = "Generate function doc" },
+            { "<leader>gf", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'func' }) end,  desc = "Generate function doc" },
             { "<leader>gc", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'class' }) end, desc = "Generate class doc" },
-            { "<leader>gF", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'file' }) end, desc = "Generate file doc" },
-            { "<leader>gt", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'type' }) end, desc = "Generate type doc" },
+            { "<leader>gF", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'file' }) end,  desc = "Generate file doc" },
+            { "<leader>gt", function() require('neogen').generate({ snippet_engine = 'vsnip', type = 'type' }) end,  desc = "Generate type doc" },
         },
         dependencies = {
             "folke/which-key.nvim",
