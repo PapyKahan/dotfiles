@@ -3,9 +3,7 @@ return {
         "folke/which-key.nvim",
         event = "VeryLazy",
         opts = {},
-        init = function()
-            local whichkey = require 'which-key'
-            whichkey.add({
+        keys = {
                 { "<C-h>",     "<C-w>h",                      desc = "Move to left window",               mode = "n", silent = true, remap = true },
                 { "<C-j>",     "<C-w>j",                      desc = "Move to downward window",           mode = "n", silent = true, remap = true },
                 { "<C-k>",     "<C-w>k",                      desc = "Move to upward window",             mode = "n", silent = true, remap = true },
@@ -18,11 +16,7 @@ return {
 
                 { "<S-h>",     "<cmd>bp<cr>",                 desc = "Select previous buffer",            mode = "n", silent = true, remap = true },
                 { "<S-l>",     "<cmd>bn<cr>",                 desc = "Select next buffer",                mode = "n", silent = true, remap = true },
-            })
-        end,
-        config = function(_, opts)
-            require('which-key').register(opts.defaults)
-        end
+        },
     },
     {
         "folke/flash.nvim",
