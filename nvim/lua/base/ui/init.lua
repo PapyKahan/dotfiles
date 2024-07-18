@@ -1,17 +1,5 @@
 return {
     {
-        "folke/which-key.nvim",
-        lazy = false,
-        opts = {
-            defaults = {
-                ['<leader>f'] = { name = 'Find' },
-            },
-        },
-        config = function(_, opts)
-            require('which-key').register(opts.defaults)
-        end
-    },
-    {
         'nvim-lualine/lualine.nvim',
         event = "VeryLazy",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -167,6 +155,7 @@ return {
         cmd = { 'Telescope' },
         keys = {
             { "<leader>p",  ":Telescope<cr>",            desc = "Open Telescope" },
+            { "<leader>f",  group = "Find",              desc = "Find" },
             { "<leader>ff", ":Telescope find_files<cr>", desc = "Find files" },
             { "<leader>fg", ":Telescope live_grep<cr>",  desc = "Grep files" },
             { "<leader>fb", ":Telescope buffers<cr>",    desc = "Find buffers" },

@@ -2,21 +2,12 @@ local gitui = nil
 
 return {
     {
-        "folke/which-key.nvim",
-        lazy = false,
-        opts = {
-            defaults = {
-                { '<leader>z', group = 'Terminal' },
-            },
-        },
-        config = function(_, opts)
-            require('which-key').register(opts.defaults)
-        end
-    },
-    {
         'akinsho/nvim-toggleterm.lua',
         keys = {
-            { "<leader>zt", "<cmd>ToggleTerm<cr>", mode = { "n", "t" }, desc = "Open Terminal" },
+            group = 'Terminal',
+            desc = 'Terminal',
+            { '<leader>z', group = 'Terminal', desc = "Terminal", remap = false },
+            { "<leader>zt", "<cmd>ToggleTerm<cr>", desc = "Open Terminal" },
             {
                 "<leader>zg",
                 function()
@@ -24,15 +15,11 @@ return {
                         gitui:toggle()
                     end
                 end,
-                mode = { "n", "t" },
                 desc = "Open GitUI"
             }
 
         },
         branch = 'main',
-        dependencies = {
-            'folke/which-key.nvim',
-        },
         config = function()
             require('toggleterm').setup({})
             if vim.fn.executable "gitui" == 1 then

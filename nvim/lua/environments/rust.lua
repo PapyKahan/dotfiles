@@ -84,40 +84,29 @@ return {
     },
     {
         'saecki/crates.nvim',
-        event = 'BufRead Cargo.toml',
-        dependencies = { 'nvim-lua/plenary.nvim' },
+        event = { 'BufRead Cargo.toml' },
+        dependencies = 'nvim-lua/plenary.nvim',
+        keys = {
+            { "<leader>r",  group = "Rust",                                             desc = "Rust", ft = "Cargo.toml" },
+            { "<leader>rt", function() require('crates').toggle() end,                  desc = "Toggle" },
+            { "<leader>rr", function() require('crates').reload() end,                  desc = "Reload" },
+            { "<leader>rv", function() require('crates').show_versions_popup() end,     desc = "Show versions" },
+            { "<leader>rf", function() require('crates').show_features_popup() end,     desc = "Show features" },
+            { "<leader>rd", function() require('crates').show_dependencies_popup() end, desc = "Show dependencies" },
+            { "<leader>ru", function() require('crates').update_crate() end,            desc = "Update crates" },
+            { "<leader>ra", function() require('crates').update_all_crates() end,       desc = "Update all crates" },
+            { "<leader>rU", function() require('crates').upgrade_crates() end,          desc = "Upgrade crates" },
+            { "<leader>rA", function() require('crates').upgrade_all_crates() end,      desc = "Upgrade all crates" },
+            { "<leader>rH", function() require('crates').open_homepage() end,           desc = "Open homepage" },
+            { "<leader>rR", function() require('crates').open_repository() end,         desc = "Open repository" },
+            { "<leader>rD", function() require('crates').open_documentation() end,      desc = "Open documentation" },
+            { "<leader>rC", function() require('crates').open_crates_io() end,          desc = "Open Crates.io" },
+        },
         opts = {
             popup = {
                 style = "minimal",
                 border = "rounded",
             },
-            on_attach = function(bufnr)
-                require('which-key').register({
-                    c = {
-                        name = "Crates",
-                        t = { function() require('crates').toggle() end, "Toggle" },
-                        r = { function() require('crates').reload() end, "Reload" },
-                        v = { function() require('crates').show_versions_popup() end, "Show versions" },
-                        f = { function() require('crates').show_features_popup() end, "Show features" },
-                        d = { function() require('crates').show_dependencies_popup() end, "Show dependencies" },
-                        --u = { function() require('crates').update_crate() end, "Update crate" },
-                        u = { function() require('crates').update_crate() end, "Update crates" },
-                        a = { function() require('crates').update_all_crates() end, "Update all crates" },
-                        --U = { function() require('crates').upgrade_crate() end, "Upgrade crate" },
-                        U = { function() require('crates').upgrade_crates() end, "Upgrade crates" },
-                        A = { function() require('crates').upgrade_all_crates() end, "Upgrade all crates" },
-                        H = { function() require('crates').open_homepage() end, "Open homepage" },
-                        R = { function() require('crates').open_repository() end, "Open repository" },
-                        D = { function() require('crates').open_documentation() end, "Open documentation" },
-                        C = { function() require('crates').open_crates_io() end, "Open Crates.io" },
-                    }
-                }, {
-                    noremap = true,
-                    silent = true,
-                    buffer = bufnr,
-                    prefix = '<leader>'
-                })
-            end,
         }
     },
 }

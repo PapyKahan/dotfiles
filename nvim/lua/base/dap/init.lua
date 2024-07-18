@@ -1,16 +1,4 @@
 return {
-    {
-        "folke/which-key.nvim",
-        lazy = false,
-        opts = {
-            defaults = {
-                { '<leader>d', group = 'Debugger' },
-            },
-        },
-        config = function(_, opts)
-            require('which-key').register(opts.defaults)
-        end
-    },
     -- Note: Debugger
     {
         'mfussenegger/nvim-dap',
@@ -20,6 +8,7 @@ return {
 
         },
         keys = {
+            { '<leader>d', group = 'Debugger', desc = "Debugger" },
             {
                 "<leader>db",
                 function() require('dap').toggle_breakpoint() end,
