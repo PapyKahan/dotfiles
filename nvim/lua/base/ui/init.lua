@@ -39,8 +39,11 @@ return {
                     },
                     lualine_x = {
                         {
-                            require("noice").api.statusline.mode.get,
-                            cond = require("noice").api.statusline.mode.has,
+                            function()
+                                local register = vim.fn.reg_recording()
+                                if register == "" then return "" end
+                                return "@recording " .. register
+                            end,
                             color = { fg = "#ff9e64" },
                         },
                         'encoding',
