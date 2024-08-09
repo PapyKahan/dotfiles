@@ -87,7 +87,7 @@ return {
         event = { 'BufRead Cargo.toml' },
         dependencies = 'nvim-lua/plenary.nvim',
         keys = {
-            { "<leader>r",  group = "Rust",                                             desc = "Rust", ft = "Cargo.toml" },
+            { "<leader>r",  group = "Rust",                                             desc = "Rust",              ft = "Cargo.toml" },
             { "<leader>rt", function() require('crates').toggle() end,                  desc = "Toggle" },
             { "<leader>rr", function() require('crates').reload() end,                  desc = "Reload" },
             { "<leader>rv", function() require('crates').show_versions_popup() end,     desc = "Show versions" },

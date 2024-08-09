@@ -2,7 +2,7 @@ return {
     {
         "stevearc/overseer.nvim",
         keys = {
-            { "<leader>o", group = "Tasks", desc = "Tasks" },
+            { "<leader>o",  group = "Tasks",                 desc = "Tasks" },
             { "<leader>oR", "<cmd>OverseerRunCmd<cr>",       desc = "Run Command" },
             { "<leader>oa", "<cmd>OverseerTaskAction<cr>",   desc = "Task Action" },
             { "<leader>ob", "<cmd>OverseerBuild<cr>",        desc = "Build" },

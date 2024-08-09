@@ -4,9 +4,7 @@ return {
     {
         'akinsho/nvim-toggleterm.lua',
         keys = {
-            group = 'Terminal',
-            desc = 'Terminal',
-            { '<leader>z', group = 'Terminal', desc = "Terminal", remap = false },
+            { "<leader>z", group = "Terminal", desc = "Terminal" },
             { "<leader>zt", "<cmd>ToggleTerm<cr>", desc = "Open Terminal" },
             {
                 "<leader>zg",

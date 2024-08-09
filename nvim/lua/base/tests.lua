@@ -27,7 +27,7 @@ return {
             "stevearc/overseer.nvim",
         },
         keys = {
-            { "<leader>t",  group = "Tests", desc = "Tests" },
+            { "<leader>t",  group = "Tests",                                                                     desc = "Tests" },
             { "<leader>td", "<cmd>w|lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", desc = "Debug File" },
             { "<leader>tL", "<cmd>w|lua require('neotest').run.run_last({strategy = 'dap'})<cr>",                desc = "Debug Last" },
             { "<leader>ta", "<cmd>w|lua require('neotest').run.attach()<cr>",                                    desc = "Attach" },
