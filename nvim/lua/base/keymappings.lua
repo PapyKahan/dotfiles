@@ -4,18 +4,29 @@ return {
         event = "VeryLazy",
         opts = {},
         keys = {
-                { "<C-h>",     "<C-w>h",                      desc = "Move to left window",               mode = "n", silent = true, remap = true },
-                { "<C-j>",     "<C-w>j",                      desc = "Move to downward window",           mode = "n", silent = true, remap = true },
-                { "<C-k>",     "<C-w>k",                      desc = "Move to upward window",             mode = "n", silent = true, remap = true },
-                { "<C-l>",     "<C-w>l",                      desc = "Move to right window",              mode = "n", silent = true, remap = true },
+            { "<C-h>", "<C-w>h", desc = "Move to left window", mode = "n", silent = true, remap = true },
+            { "<C-j>", "<C-w>j", desc = "Move to downward window", mode = "n", silent = true, remap = true },
+            { "<C-k>", "<C-w>k", desc = "Move to upward window", mode = "n", silent = true, remap = true },
+            { "<C-l>", "<C-w>l", desc = "Move to right window", mode = "n", silent = true, remap = true },
 
-                { "<C-Up>",    "<cmd>resize -2<cr>",          desc = "Horizontaly decrease windows size", mode = "n", silent = true, remap = true },
-                { "<C-Down>",  "<cmd>resize +2<cr>",          desc = "Horizontaly increase windows size", mode = "n", silent = true, remap = true },
-                { "<C-Left>",  "<cmd>vertical resize -2<cr>", desc = "Verticaly decrease windows size",   mode = "n", silent = true, remap = true },
-                { "<C-Right>", "<cmd>vertical resize +2<cr>", desc = "Verticaly increase windows size",   mode = "n", silent = true, remap = true },
+            { "<C-Up>", "<cmd>resize -2<cr>", desc = "Horizontaly decrease windows size", mode = "n", silent = true, remap = true },
+            { "<C-Down>", "<cmd>resize +2<cr>", desc = "Horizontaly increase windows size", mode = "n", silent = true, remap = true },
+            { "<C-Left>", "<cmd>vertical resize -2<cr>", desc = "Verticaly decrease windows size", mode = "n", silent = true, remap = true },
+            { "<C-Right>", "<cmd>vertical resize +2<cr>", desc = "Verticaly increase windows size", mode = "n", silent = true, remap = true },
 
-                { "<S-h>",     "<cmd>bp<cr>",                 desc = "Select previous buffer",            mode = "n", silent = true, remap = true },
-                { "<S-l>",     "<cmd>bn<cr>",                 desc = "Select next buffer",                mode = "n", silent = true, remap = true },
+            { "<S-h>", "<cmd>bp<cr>", desc = "Select previous buffer", mode = "n", silent = true, remap = true },
+            { "<S-l>", "<cmd>bn<cr>", desc = "Select next buffer", mode = "n", silent = true, remap = true },
+            { "<leader>h", "<cmd>set list listchars=tab:\\ ,trail:-,space:.,nbsp:+,eol:$<cr>", desc = "Show/Hide special chars", mode = "n", silent = true, remap = true },
+            {
+                "<leader>h",
+                function()
+                    vim.opt.list = not vim.opt.list:get()
+                end,
+                desc = "Show/Hide special chars",
+                mode = "n",
+                silent = true,
+                remap = true
+            },
         },
     },
     {

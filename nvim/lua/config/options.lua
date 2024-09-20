@@ -134,3 +134,8 @@ set.writebackup = false
 -- Clipboard configuration
 -------------------------------------------------------------------
 set.clipboard = 'unnamedplus'
+
+-------------------------------------------------------------------
+-- Special characters
+-------------------------------------------------------------------
+set.listchars = { tab = " ", trail = "-", space = ".", nbsp = "+", eol = "↵" }
