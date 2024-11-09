@@ -104,3 +104,15 @@ mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
 $env.VIRTUAL_ENV_DISABLE_PROMPT = true
+
+def shutdown [] {
+    if (echo $env.OS | str downcase | str starts-with "windows") {
+        powershell -C "Stop-Computer"
+    }
+}
+
+def restart [] {
+    if (echo $env.OS | str downcase | str starts-with "windows") {
+        powershell -C "Restart-Computer"
+    }
+}
