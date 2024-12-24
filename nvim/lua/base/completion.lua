@@ -79,8 +79,9 @@ return {
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lsp_signature_help' },
+                    { name = 'render-markdown' },
                     { name = 'crates' },
-                    { name = 'vsnip' }
+                    { name = 'vsnip' },
                 }, {
                     { name = 'buffer' },
                     { name = 'path' }

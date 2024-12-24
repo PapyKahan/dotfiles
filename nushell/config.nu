@@ -907,3 +907,7 @@ use custom-completions/cargo/cargo-completions.nu *
 #     use ~/AppData/Roaming/nushell/scripts/custom-completions/winget/winget-completions.nu *
 # }
 use custom-completions/npm/npm-completions.nu *
+
+
+# Default editor
+$env.config.buffer_editor = "nvim"

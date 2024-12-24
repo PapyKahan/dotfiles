@@ -100,10 +100,16 @@ $env.NU_PLUGIN_DIRS = [
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
+# Starship configuration
+
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
+# Python environment variables
 $env.VIRTUAL_ENV_DISABLE_PROMPT = true
+
+
+# Shutdown alias
 
 def shutdown [] {
     if (echo $env.OS | str downcase | str starts-with "windows") {
@@ -111,8 +117,10 @@ def shutdown [] {
     }
 }
 
+# Restart alias
 def restart [] {
     if (echo $env.OS | str downcase | str starts-with "windows") {
         powershell -C "Restart-Computer"
     }
 }
+
