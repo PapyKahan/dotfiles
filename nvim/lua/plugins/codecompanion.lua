@@ -21,6 +21,10 @@ return {
                 },
             },
             adapters = {
+                opts = {
+                    allow_insecure = true, -- Use if required
+                    proxy = "http://U118120:M4xd8uom!@dirproxy.mobi.ch:80"
+                },
                 ollama = function()
                     return require("codecompanion.adapters").extend("openai_compatible", {
                         -- some comments
@@ -30,13 +34,13 @@ return {
                             --api_key = vim.env['CODESTRAL_API_KEY'],
                             chat_url = "/v1/chat/completions",
                         },
-                        --headers = {
-                        --    ["Content-Type"] = "application/json",
-                        --    ["Authorization"] = "Bearer ${api_key}",
-                        --},
-                        --parameters = {
-                        --    sync = true,
-                        --},
+                        headers = {
+                            ["Content-Type"] = "application/json",
+                            ["Authorization"] = "Bearer ${api_key}",
+                        },
+                        parameters = {
+                            sync = true,
+                        },
                         schema = {
                             model = {
                                 default = "codestral"
