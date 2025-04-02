@@ -7,12 +7,9 @@ return {
     },
     config = function()
         require("codecompanion").setup({
-            log_level = "TRACE", -- TRACE|DEBUG|ERROR|INFO
-            --strategies = {
-            --    chat = "ollama",
-            --    inline = "ollama",
-            --    --tool = "ollama"
-            --},
+            opts = {
+                log_level = "TRACE", -- TRACE|DEBUG|ERROR|INFO
+            },
             strategies = {
                 chat = {
                     adapter = "mistral",
@@ -25,12 +22,12 @@ return {
                 }
             },
             adapters = {
-                openai = function()
+               mistral = function()
                     return require("codecompanion.adapters").extend("mistral", {
                         env = {
-                            --url = "https://api.mistral.ai",
+                            url = "https://codestral.mistral.ai",
                             api_key = vim.env["MISTRAL_API_KEY"],
-                            --chat_url = "/v1/chat/completions"
+                            chat_url = "/v1/chat/completions"
                         },
                         --handlers = {
                         --    form_parameters = function(self, params, messages)
