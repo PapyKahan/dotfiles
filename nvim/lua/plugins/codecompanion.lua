@@ -1,14 +1,37 @@
 return {
     "olimorris/codecompanion.nvim",
+    keys = {
+        { "<leader>c", group = "CodeCompanion", desc = "CodeCompanion" },
+        {
+            "<leader>ch",
+            "<cmd>CodeCompanionChat Toggle<cr>",
+            desc = "CodeCompanion - Toggle chat",
+        },
+        {
+            "<leader>ca",
+            "<cmd>CodeCompanionActions<cr>",
+            desc = "CodeCompanion - Show actions",
+        },
+    },
     event = "BufEnter",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
+        "j-hui/fidget.nvim",
+        {
+            "MeanderingProgrammer/render-markdown.nvim",
+            ft = { "markdown", "codecompanion" }
+        },
     },
+    init = function()
+      --require("plugins.codecompanion.lualine"):init()
+      require("plugins.codecompanion.fidget-spinner"):init()
+    end,
     config = function()
         require("codecompanion").setup({
             opts = {
-                log_level = "TRACE", -- TRACE|DEBUG|ERROR|INFO
+                --log_level = "TRACE", -- TRACE|DEBUG|ERROR|INFO
+                language = "french",
             },
             strategies = {
                 chat = {
@@ -21,38 +44,45 @@ return {
                     adapter = "mistral",
                 }
             },
+            display = {
+                chat = {
+                    window = {
+                        layout = "vertical", -- float|vertical|horizontal|buffer
+                        position = "right",  -- left|right|top|bottom (nil will default depending on vim.opt.plitright|vim.opt.splitbelow)
+                        border = "single",
+                        --height = 0.8,
+                        width = 0.30,
+                        relative = "editor",
+                        full_height = true, -- when set to false, vsplit will be used to open the chat buffer vs. botright/topleft vsplit
+                        --opts = {
+                        --    breakindent = true,
+                        --    cursorcolumn = false,
+                        --    cursorline = false,
+                        --    foldcolumn = "0",
+                        --    linebreak = true,
+                        --    list = false,
+                        --    numberwidth = 1,
+                        --    signcolumn = "no",
+                        --    spell = false,
+                        --    wrap = true,
+                        --},
+                    },
+                },
+            },
             adapters = {
-               mistral = function()
+                mistral = function()
                     return require("codecompanion.adapters").extend("mistral", {
+
                         env = {
                             url = "https://codestral.mistral.ai",
-                            api_key = vim.env["MISTRAL_API_KEY"],
-                            chat_url = "/v1/chat/completions"
                         },
-                        --handlers = {
-                        --    form_parameters = function(self, params, messages)
-                        --        -- codestral doesn't support these in the body
-                        --        params.stream_options = nil
-                        --        params.options = nil
-
-                        --        return params
-                        --    end,
-                        --},
                         schema = {
                             model = {
                                 default = "codestral-latest",
                             },
-                            --temperature = {
-                            --    default = 0.2,
-                            --    mapping = "parameters", -- not supported in default parameters.options
-                            --},
                         },
                     })
                 end,
-                opts = {
-                    --allow_insecure = true,
-                    --proxy = vim.env["HTTPS_PROXY"] or nil,
-                },
             },
         })
     end,
