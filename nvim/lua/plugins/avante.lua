@@ -5,13 +5,21 @@ return {
     opts = {
         -- add any opts here
         -- for example
+        --provider = 'mistral',
+        --auto_suggestions_provider = 'mistral',
+        --cursor_applying_provider = 'mistral',
+        ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
         provider = 'mistral',
-        auto_suggestions_provider = 'mistral',
+        auto_suggestions_provider = 'copilot',
         cursor_applying_provider = 'mistral',
         behaviour = {
             --- ... existing behaviours
             enable_cursor_planning_mode = true, -- enable cursor planning mode!
             auto_suggestions = true,
+        },
+        claude = {
+            endpoint = "https://api.anthropic.com",
+            model = "claude-3-5-sonnet-20241022",
         },
         vendors = {
             mistral = {
