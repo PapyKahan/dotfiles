@@ -1,17 +1,31 @@
 local M =  {}
 
-local signs = require'base.ui.icons'.diagnostic_signs
 function M.setup()
-    for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-    end
-
+    local diagnostic_signs = require 'base.ui.icons'.diagnostic_signs
     vim.diagnostic.config {
         virtual_text = {
             prefix = "",
         },
-        signs = true,
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = diagnostic_signs.Error,
+                [vim.diagnostic.severity.WARN] = diagnostic_signs.Warn,
+                [vim.diagnostic.severity.INFO] = diagnostic_signs.Info,
+                [vim.diagnostic.severity.HINT] = diagnostic_signs.Hint,
+            },
+            linehl = {
+                [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+                [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+                [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+                [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+            },
+            numhl = {
+                [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+                [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+                [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+                [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+            },
+        },
         underline = true,
         update_in_insert = false,
         severity_sort = true,
