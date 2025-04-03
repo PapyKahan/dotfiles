@@ -5,7 +5,15 @@ return {
     opts = {
         -- add any opts here
         -- for example
-        provider = "copilot",
+        provider = "mistral",
+        vendors = {
+            mistral = {
+                endpoint = "https://codestral.mistral.ai/v1/",
+                model = "codestral-latest",
+                api_key_name = "MISTRAL_API_KEY",
+                __inherited_from = "openai",
+            },
+        },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     --build = "make",
