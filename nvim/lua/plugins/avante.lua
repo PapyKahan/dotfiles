@@ -5,9 +5,17 @@ return {
     opts = {
         -- add any opts here
         -- for example
-        provider = "mistral",
+        provider = 'mistral',
+        auto_suggestions_provider = 'mistral',
+        cursor_applying_provider = 'mistral',
+        behaviour = {
+            --- ... existing behaviours
+            enable_cursor_planning_mode = true, -- enable cursor planning mode!
+            auto_suggestions = true,
+        },
         vendors = {
             mistral = {
+                --endpoint = "https://api.mistral.ai/v1/",
                 endpoint = "https://codestral.mistral.ai/v1/",
                 model = "codestral-latest",
                 api_key_name = "MISTRAL_API_KEY",
@@ -16,8 +24,8 @@ return {
         },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    --build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    -- build = "make",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false", -- for windows
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
         "stevearc/dressing.nvim",
@@ -55,5 +63,19 @@ return {
             },
             ft = { "markdown", "Avante" },
         },
-    },
+        {
+            "ravitemer/mcphub.nvim",
+            dependencies = {
+                "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+            },
+            -- comment the following line to ensure hub will be ready at the earliest
+            cmd = "MCPHub",                          -- lazy load by default
+            build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+            -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+            -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+            config = function()
+                require("mcphub").setup()
+
+            end,
+        } },
 }
