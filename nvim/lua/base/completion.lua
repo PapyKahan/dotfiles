@@ -12,7 +12,6 @@ return {
             'petertriho/cmp-git',
             'hrsh7th/cmp-vsnip',
             'hrsh7th/vim-vsnip',
-            'danymat/neogen',
             'onsails/lspkind.nvim'
         },
         config = function()
@@ -48,11 +47,8 @@ return {
                         select = false,
                     },
                     ["<Tab>"] = cmp.mapping(function(fallback)
-                        local neogen = require("neogen")
                         if cmp.visible() then
                             cmp.select_next_item()
-                        elseif neogen.jumpable() then
-                            neogen.jump_next()
                         else
                             fallback()
                         end
@@ -62,11 +58,8 @@ return {
                         "c",
                     }),
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        local neogen = require("neogen")
                         if cmp.visible() then
                             cmp.select_prev_item()
-                        elseif neogen.jumpable() then
-                            neogen.jump_prev()
                         else
                             fallback()
                         end
