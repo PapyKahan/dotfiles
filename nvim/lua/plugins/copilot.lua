@@ -50,10 +50,6 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         event = "VeryLazy",
-        keys = {
-            { "<leader>cc", "<cmd>CopilotChat<CR>", desc = "Open Copilot Chat" },
-            { "<leader>ce", "<cmd>CopilotChatExplain<CR>", desc = "Explain code" },
-        },
         dependencies = {
             "nvim-telescope/telescope.nvim",
             "zbirenbaum/copilot.lua",
