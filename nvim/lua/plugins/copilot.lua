@@ -50,6 +50,14 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         event = "VeryLazy",
+        keys = {
+            { "<leader>cc", "<cmd>:CopilotChatToggle<cr>",  desc = "Toggle Copilot Chat" },
+            { "<leader>cs", "<cmd>:CopilotChatStop<cr>",    desc = "Stop Copilot Chat" },
+            { "<leader>cr", "<cmd>:CopilotChatReset<cr>",   desc = "Reset Copilot Chat" },
+            { "<leader>ca", "<cmd>:CopilotChatAgents<cr>",  desc = "Select Copilot Chat Agent" },
+            { "<leader>cm", "<cmd>:CopilotChatModels<cr>",  desc = "Select Copilot Chat Model" },
+            { "<leader>cp", "<cmd>:CopilotChatPrompts<cr>", desc = "Select Copilot Chat Prompt" },
+        },
         dependencies = {
             "nvim-telescope/telescope.nvim",
             "zbirenbaum/copilot.lua",
@@ -64,8 +72,68 @@ return {
                 full_diff = true
             },
             highlight_headers = false,
-            separator = '---',
+            --separator = '---',
             error_header = '> [!ERROR] Error',
+            --providers = {
+            --    mistral = {
+            --        prepare_input = require('CopilotChat.config.providers').copilot.prepare_input,
+            --        prepare_output = require('CopilotChat.config.providers').copilot.prepare_output,
+
+            --        get_headers = function()
+            --            local api_key = assert(os.getenv('MISTRAL_API_KEY'), 'MISTRAL_API_KEY env not set')
+            --            return {
+            --                Authorization = 'Bearer ' .. api_key,
+            --                ['Content-Type'] = 'application/json',
+            --            }
+            --        end,
+
+            --        get_models = function(headers)
+            --            local response, err = require('CopilotChat.utils').curl_get('https://api.mistral.ai/v1/models', {
+            --                headers = headers,
+            --                json_response = true,
+            --            })
+
+            --            if err then
+            --                error(err)
+            --            end
+
+            --            return vim.iter(response.body.data)
+            --                :filter(function(model)
+            --                    return model.capabilities.completion_chat
+            --                end)
+            --                :map(function(model)
+            --                    return {
+            --                        id = model.id,
+            --                        name = model.name,
+            --                    }
+            --                end)
+            --                :totable()
+            --        end,
+
+            --        embed = function(inputs, headers)
+            --            local response, err = require('CopilotChat.utils').curl_post(
+            --            'https://codestral.mistral.ai/v1/embeddings', {
+            --                headers = headers,
+            --                json_request = true,
+            --                json_response = true,
+            --                body = {
+            --                    model = 'mistral-embed',
+            --                    input = inputs,
+            --                },
+            --            })
+
+            --            if err then
+            --                error(err)
+            --            end
+
+            --            return response.body.data
+            --        end,
+
+            --        get_url = function()
+            --            return 'https://codestral.mistral.ai/v1/chat/completions'
+            --        end,
+            --    },
+            --},
             contexts = {
                 vectorspace = {
                     description =
