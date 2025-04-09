@@ -19,6 +19,7 @@ return {
         config = function()
             local copilot = require("copilot")
             copilot.setup({
+                --copilot_model = "claude-3.7-sonnet-thought",
                 panel = { enabled = false, },
                 suggestion = {
                     enabled = true,
