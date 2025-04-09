@@ -29,10 +29,12 @@ return {
         },
         vendors = {
             mistral = {
+                __inherited_from = "openai",
+                --endpoint = "https://api.mistral.ai/v1/",
                 endpoint = "https://codestral.mistral.ai/v1/",
                 model = "codestral-latest",
                 api_key_name = "MISTRAL_API_KEY",
-                __inherited_from = "openai",
+                max_tokens = 8192
             },
         },
     },
