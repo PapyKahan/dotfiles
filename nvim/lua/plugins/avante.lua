@@ -1,7 +1,7 @@
 local build_command = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 local this_os = vim.loop.os_uname().sysname;
 if this_os:find "Windows" then
-    build_command = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"         -- for windows
+    build_command = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 else
     build_command = "make"
 end
@@ -23,6 +23,7 @@ return {
             --- ... existing behaviours
             enable_cursor_planning_mode = true, -- enable cursor planning mode!
             auto_suggestions = true,
+            enable_claude_text_editor_tool_mode = true,
         },
         claude = {
             endpoint = "https://api.anthropic.com",
