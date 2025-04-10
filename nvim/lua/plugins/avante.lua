@@ -19,9 +19,10 @@ return {
 
         -- Core behavior settings
         behaviour = {
-            enable_cursor_planning_mode = true,
-            auto_suggestions = true,
-            enable_claude_text_editor_tool_mode = true,
+            enable_cursor_planning_mode = false,
+            auto_suggestions = false,
+            enable_claude_text_editor_tool_mode = false,
+            auto_apply_diff_after_generation = false,
         },
 
         -- Model-specific configurations
