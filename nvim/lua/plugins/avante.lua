@@ -1,3 +1,11 @@
+local build_command = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+local this_os = vim.loop.os_uname().sysname;
+if this_os:find "Windows" then
+    build_command = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"         -- for windows
+else
+    build_command = "make"
+end
+
 return {
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -62,14 +70,7 @@ return {
         end,
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = function()
-        local this_os = vim.loop.os_uname().sysname;
-        if this_os:find "Windows" then
-            return "make"
-        else
-            return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-        end
-    end,
+    build = build_command,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
         "stevearc/dressing.nvim",
