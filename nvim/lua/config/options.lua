@@ -7,6 +7,20 @@ local set = vim.opt
 -------------------------------------------------------------------
 vim.g.mapleader = " "
 
+
+-------------------------------------------------------------------
+-- Enable faster module loading
+-------------------------------------------------------------------
+vim.loader.enable()
+
+-------------------------------------------------------------------
+-- Disable unused language providers
+-------------------------------------------------------------------
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
 -------------------------------------------------------------------
 -- shell configuration
 -------------------------------------------------------------------
@@ -46,7 +60,6 @@ set.backspace = 'indent,eol,start'
 set.autoread = true
 set.mouse = 'a'
 set.encoding = 'utf-8'
---set.lazyredraw = true
 set.number = true
 set.numberwidth = 4
 set.signcolumn = 'yes'
@@ -91,7 +104,6 @@ set.showmatch = true
 set.laststatus = 2
 set.visualbell = false
 set.errorbells = false
---set.guioptions = 'ig'
 set.background = 'dark'
 --cmd [[colorscheme tokyonight]]
 set.guifont = 'JetbrainsMono NF:h12'
