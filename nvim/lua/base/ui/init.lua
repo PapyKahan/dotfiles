@@ -70,6 +70,7 @@ return {
                             end,
                             icon = ''
                         },
+                        { require('mcphub.extensions.lualine') },
                     },
                     lualine_y = {
                         {
