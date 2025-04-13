@@ -9,4 +9,5 @@ mklink /D "%USERPROFILE%\AppData\Roaming\nushell" "%SCRIPT_DIR%\nushell"
 REM create .config directory if it doesn't exist with your current user not as an administrator
 mklink /D "%USERPROFILE%\.config\wezterm" "%SCRIPT_DIR%\wezterm"
 mklink /D "%USERPROFILE%\.config\zellij" "%SCRIPT_DIR%\zellij"
+mklink /D "%USERPROFILE%\.config\mcphub" "%SCRIPT_DIR%\mcphub"
 mklink  "%USERPROFILE%\.config\starship.toml" "%SCRIPT_DIR%\starship\starship.toml"

@@ -1,0 +1,19 @@
+{
+    "mcpServers": {
+        "github.com/modelcontextprotocol/servers/tree/main/src/git": {
+            "command": "mcp-server-git"
+        },
+        "github.com/modelcontextprotocol/servers/tree/main/src/filesystem": {
+            "command": "mcp-server-filesystem",
+            "args": [
+                "$HOME",
+                "${HOME}",
+                "$USERPROFILE",
+                "${USERPROFILE}",
+                "$env:USERPROFILE",
+                "$env:HOME",
+                "$nu.home-path"
+            ]
+        }
+    }
+}
