@@ -1,3 +1,7 @@
+local build_command = vim.env['HTTPS_PROXY']
+    and "bundled_build.lua"
+    or "npm install -g mcp-hub@latest"
+
 return {
     "ravitemer/mcphub.nvim",
     dependencies = {
@@ -10,6 +14,7 @@ return {
     build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
     config = function()
         require("mcphub").setup({
+            use_bundled_binary = true, -- Set to true if you want to use the bundled binary instead of the global one
             auto_approve = true,
             extensions = {
                 avante = {
