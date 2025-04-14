@@ -1,7 +1,10 @@
 {
     "mcpServers": {
         "github.com/modelcontextprotocol/servers/tree/main/src/git": {
-            "command": "mcp-server-git"
+            "command": "uvx",
+            "args": [
+                "mcp-server-git"
+            ]
         },
         "github.com/modelcontextprotocol/servers/tree/main/src/filesystem": {
             "command": "npx",
