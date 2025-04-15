@@ -1,19 +1,31 @@
 {
     "mcpServers": {
-        "github.com/modelcontextprotocol/servers/tree/main/src/git": {
+        "git-server": {
             "command": "uvx",
             "args": [
                 "mcp-server-git"
-            ]
+            ],
+            "env": {
+                "HTTP_PROXY": null,
+                "HTTPS_PROXY": null,
+                "NO_PROXY": null,
+                "NODE_TLS_REJECT_UNAUTHORIZED": null
+            }
         },
-        "github.com/modelcontextprotocol/servers/tree/main/src/filesystem": {
+        "file-server": {
             "command": "npx",
             "args": [
                 "-y",
                 "@modelcontextprotocol/server-filesystem",
                 "~/",
                 "."
-            ]
+            ],
+            "env": {
+                "HTTP_PROXY": null,
+                "HTTPS_PROXY": null,
+                "NO_PROXY": null,
+                "UV_NATIVE_TLS": null
+            }
         }
     }
 }
