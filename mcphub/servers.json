@@ -1,5 +1,18 @@
 {
     "mcpServers": {
+        "browsermcp": {
+            "command": "npx",
+            "env": {
+                "HTTP_PROXY": null,
+                "HTTPS_PROXY": null,
+                "NO_PROXY": null,
+                "NODE_TLS_REJECT_UNAUTHORIZED": null
+            },
+            "args": [
+                "-y",
+                "@browsermcp/mcp@latest"
+            ]
+        },
         "git-server": {
             "command": "uvx",
             "args": [
