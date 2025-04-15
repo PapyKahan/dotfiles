@@ -7,7 +7,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
     },
-    tag = "v4.8.0",
+    -- tag = "v4.8.0",
     -- comment the following line to ensure hub will be ready at the earliest
     cmd = "MCPHub",                          -- lazy load by default
     -- build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
