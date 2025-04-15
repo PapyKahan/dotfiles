@@ -1,6 +1,6 @@
 {
     "mcpServers": {
-        "browsermcp": {
+        "browser-server": {
             "command": "npx",
             "env": {
                 "HTTP_PROXY": null,
