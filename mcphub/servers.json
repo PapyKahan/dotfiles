@@ -39,6 +39,18 @@
                 "NO_PROXY": null,
                 "UV_NATIVE_TLS": null
             }
+        },
+        "fetch-server": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-fetch"
+            ],
+            "env": {
+                "HTTP_PROXY": null,
+                "HTTPS_PROXY": null,
+                "NO_PROXY": null,
+                "UV_NATIVE_TLS": null
+            }
         }
     }
 }
