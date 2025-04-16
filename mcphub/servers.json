@@ -3,6 +3,8 @@
         "browser-server": {
             "command": "npx",
             "env": {
+                "Path": null,
+                "PATH": null,
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
                 "NO_PROXY": null,
@@ -19,6 +21,8 @@
                 "mcp-server-git"
             ],
             "env": {
+                "Path": null,
+                "PATH": null,
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
                 "NO_PROXY": null,
@@ -34,6 +38,8 @@
                 "."
             ],
             "env": {
+                "Path": null,
+                "PATH": null,
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
                 "NO_PROXY": null,
@@ -46,6 +52,8 @@
                 "mcp-server-fetch"
             ],
             "env": {
+                "Path": null,
+                "PATH": null,
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
                 "NO_PROXY": null,
