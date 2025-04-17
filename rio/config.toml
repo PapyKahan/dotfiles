@@ -90,9 +90,9 @@
 #
 # blinking-interval - Cursor update on milliseconds interval
 #
-# [cursor]
-# shape = 'block'
-# blinking = false
+[cursor]
+shape = 'block'
+# blinking = true
 # blinking-interval = 800
 
 # Editor
@@ -105,6 +105,11 @@
 # [editor]
 # program = "vi"
 # args = []
+
+[editor]
+program = "nvim"
+args = []
+
 
 # Window configuration
 #
@@ -186,7 +191,7 @@
 #
 # You can also set family on root to overwrite all fonts.
 # [fonts]
-# family = "cascadiamono"
+# family = "RobotoMono Nerd Font Mono"
 #
 # You can also specify extra fonts to load
 # [fonts]
@@ -232,6 +237,11 @@
 # family = "cascadiamono"
 # style = "Italic"
 # weight = 800
+
+[fonts]
+family = "RobotoMono Nerd Font Mono"
+size = 16
+style = "Normal"
 
 # Scroll
 #
@@ -321,6 +331,18 @@ args = ["-e \"cd ~\""]
 # red = '#ED203D'
 # blue = '#12B5E5'
 # yellow = '#FCBA28'
+
+[colors]
+# background = '#0F0D0E'
+# foreground = '#F9F4DA'
+cursor = '#DDDDDD'
+# tabs = '#443d40'
+# tabs-active = '#F38BA3'
+# green = '#0BA95B'
+# red = '#ED203D'
+# blue = '#12B5E5'
+# yellow = '#FCBA28'
+
 
 # Bindings
 #
