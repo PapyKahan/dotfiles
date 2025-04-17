@@ -91,7 +91,7 @@
 # blinking-interval - Cursor update on milliseconds interval
 #
 [cursor]
-shape = 'block'
+shape = 'beam'
 # blinking = true
 # blinking-interval = 800
 
