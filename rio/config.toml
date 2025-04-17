@@ -239,8 +239,8 @@ args = []
 # weight = 800
 
 [fonts]
-family = "RobotoMono Nerd Font Mono"
-size = 16
+family = "UbuntuMono Nerd Font Mono"
+size = 18
 style = "Normal"
 
 # Scroll
