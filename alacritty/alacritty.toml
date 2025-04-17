@@ -4,17 +4,16 @@ working_directory = "None"
 TERM = "alacritty"
 
 [font]
-size = 10
-normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
+size = 12
+normal = { family = "RobotoMono Nerd Font Mono", style = "Medium" }
 builtin_box_drawing = false
 
 [selection]
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 
-[shell]
-args = ["-e \"cd ~/\""]
-program = "nu"
+[terminal]
+shell = { program = "nu", args = ["-e \"cd ~/\""] }
 
 [window]
 dynamic_title = true
