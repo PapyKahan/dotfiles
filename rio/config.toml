@@ -239,8 +239,9 @@ args = []
 # weight = 800
 
 [fonts]
-family = "UbuntuMono Nerd Font Mono"
-size = 18
+--family = "UbuntuMono Nerd Font Mono"
+family="RobotoMono Nerd Font Mono"
+size = 16
 style = "Normal"
 
 # Scroll
@@ -294,8 +295,10 @@ style = "Normal"
 # Example 1 using fish shell from bin path:
 #
 [shell]
-program = "nu"
-args = ["-e \"cd ~\""]
+program = "wsl"
+args = ["-d archlinux", "--cd ~"]
+# program = "nu"
+# args = ["-e \"cd ~\""]
 #
 # Example 2 for Windows using powershell
 #
