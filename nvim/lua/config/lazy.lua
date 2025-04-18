@@ -21,8 +21,7 @@ require('lazy').setup({
     },
     defaults = { lazy = true, version = nil },
     concurrency = vim.loop.available_parallelism() or 8,
-    --install = { missing = true, colorscheme = { 'tokyonight' } },
-    install = { missing = true, colorscheme = { 'catppuccin' } },
+    install = { missing = true, colorscheme = { 'onedark' } },
     checker = { enabled = false }, -- Disable automatic update checking
     ui = {
         border = "rounded",

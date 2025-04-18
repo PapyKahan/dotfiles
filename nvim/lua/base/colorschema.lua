@@ -1,24 +1,29 @@
 return {
+    -- Colorscheme
+    {
+        "olimorris/onedarkpro.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- Ensure it loads first
+        config = function()
+            require("onedarkpro").setup({})
+            vim.cmd.colorscheme "onedark"
+        end,
+
+    },
     {
         "catppuccin/nvim",
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
         name = "catppuccin",
-        priority = 1000,
         config = function()
-            require("catppuccin").setup({
-                -- Your configuration here
-            })
-            vim.cmd.colorscheme "catppuccin"
+            --require("catppuccin").laod()
+            --vim.cmd.colorscheme "catppuccin"
         end,
     },
     {
         "folke/tokyonight.nvim",
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 999, -- slightly lower priority than catppuccin
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
         config = function()
-            require("tokyonight").setup({
-                -- Your configuration here
-            })
+            --require("tokyonight").load()
             --vim.cmd.colorscheme "tokyonight"
         end,
     }
