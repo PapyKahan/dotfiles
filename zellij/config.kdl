@@ -73,26 +73,250 @@ default_shell "nu"
 // For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 //
+
 themes {
-    tokyo-night {
-        fg 169 177 214
-        bg 26 27 38
-        black 56 62 90
-        red 249 51 87
-        green 158 206 106
-        yellow 224 175 104
-        blue 122 162 247
-        magenta 187 154 247
-        cyan 42 195 222
-        white 192 202 245
-        orange 255 158 100
+    onedark {
+        text_unselected {
+            base 204 204 204
+            background 29 32 37
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        text_selected {
+            base 204 204 204
+            background 29 32 37
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        ribbon_selected {
+            base 29 32 37
+            background 152 195 121
+            emphasis_0 190 80 70
+            emphasis_1 209 154 102
+            emphasis_2 198 120 221
+            emphasis_3 97 175 239
+        }
+        ribbon_unselected {
+            base 29 32 37
+            background 171 178 191
+            emphasis_0 190 80 70
+            emphasis_1 204 204 204
+            emphasis_2 97 175 239
+            emphasis_3 198 120 221
+        }
+        table_title {
+            base 152 195 121
+            background 0
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        table_cell_selected {
+            base 204 204 204
+            background 40 44 52
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        table_cell_unselected {
+            base 204 204 204
+            background 29 32 37
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        list_selected {
+            base 204 204 204
+            background 40 44 52
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        list_unselected {
+            base 204 204 204
+            background 29 32 37
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 152 195 121
+            emphasis_3 198 120 221
+        }
+        frame_selected {
+            base 152 195 121
+            background 0
+            emphasis_0 209 154 102
+            emphasis_1 86 182 194
+            emphasis_2 198 120 221
+            emphasis_3 0
+        }
+        frame_highlight {
+            base 209 154 102
+            background 0
+            emphasis_0 209 154 102
+            emphasis_1 209 154 102
+            emphasis_2 209 154 102
+            emphasis_3 209 154 102
+        }
+        exit_code_success {
+            base 152 195 121
+            background 0
+            emphasis_0 86 182 194
+            emphasis_1 29 32 37
+            emphasis_2 198 120 221
+            emphasis_3 97 175 239
+        }
+        exit_code_error {
+            base 190 80 70
+            background 0
+            emphasis_0 229 192 123
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 198 120 221
+            player_2 97 175 239
+            player_3 0
+            player_4 229 192 123
+            player_5 86 182 194
+            player_6 0
+            player_7 190 80 70
+            player_8 0
+            player_9 0
+            player_10 0
+        }
+    }
+    catppuccin-mocha {
+        text_unselected {
+            base 205 214 244
+            background 24 24 37
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        text_selected {
+            base 205 214 244
+            background 88 91 112
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        ribbon_selected {
+            base 24 24 37
+            background 166 227 161
+            emphasis_0 243 139 168
+            emphasis_1 250 179 135
+            emphasis_2 245 194 231
+            emphasis_3 137 180 250
+        }
+        ribbon_unselected {
+            base 24 24 37
+            background 205 214 244
+            emphasis_0 243 139 168
+            emphasis_1 205 214 244
+            emphasis_2 137 180 250
+            emphasis_3 245 194 231
+        }
+        table_title {
+            base 166 227 161
+            background 0
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        table_cell_selected {
+            base 205 214 244
+            background 88 91 112
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        table_cell_unselected {
+            base 205 214 244
+            background 24 24 37
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        list_selected {
+            base 205 214 244
+            background 88 91 112
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        list_unselected {
+            base 205 214 244
+            background 24 24 37
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 166 227 161
+            emphasis_3 245 194 231
+        }
+        frame_selected {
+            base 166 227 161
+            background 0
+            emphasis_0 250 179 135
+            emphasis_1 137 220 235
+            emphasis_2 245 194 231
+            emphasis_3 0
+        }
+        frame_highlight {
+            base 250 179 135
+            background 0
+            emphasis_0 250 179 135
+            emphasis_1 250 179 135
+            emphasis_2 250 179 135
+            emphasis_3 250 179 135
+        }
+        exit_code_success {
+            base 166 227 161
+            background 0
+            emphasis_0 137 220 235
+            emphasis_1 24 24 37
+            emphasis_2 245 194 231
+            emphasis_3 137 180 250
+        }
+        exit_code_error {
+            base 243 139 168
+            background 0
+            emphasis_0 249 226 175
+            emphasis_1 0
+            emphasis_2 0
+            emphasis_3 0
+        }
+        multiplayer_user_colors {
+            player_1 245 194 231
+            player_2 137 180 250
+            player_3 0
+            player_4 249 226 175
+            player_5 137 220 235
+            player_6 0
+            player_7 243 139 168
+            player_8 0
+            player_9 0
+            player_10 0
+        }
     }
 }
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "tokyo-night"
+theme "onedark"
 
 // The name of the default layout to load on startup
 // Default: "default"
