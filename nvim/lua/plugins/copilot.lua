@@ -1,11 +1,5 @@
 return {
     {
-        "nvim-treesitter/nvim-treesitter",
-        opts = function(_, opts)
-            vim.list_extend(opts.ensure_installed, { "diff", "markdown" })
-        end,
-    },
-    {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = { "InsertEnter", "CmdlineEnter" }, -- Load on command line too
