@@ -7,8 +7,7 @@
                 "PATH": null,
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
-                "NO_PROXY": null,
-                "NODE_TLS_REJECT_UNAUTHORIZED": null
+                "NO_PROXY": null
             },
             "args": [
                 "-y",
@@ -26,7 +25,7 @@
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
                 "NO_PROXY": null,
-                "NODE_TLS_REJECT_UNAUTHORIZED": null
+                "UV_NATIVE_TLS": null
             }
         },
         "file-server": {
@@ -42,8 +41,7 @@
                 "PATH": null,
                 "HTTP_PROXY": null,
                 "HTTPS_PROXY": null,
-                "NO_PROXY": null,
-                "UV_NATIVE_TLS": null
+                "NO_PROXY": null
             }
         },
         "fetch-server": {
