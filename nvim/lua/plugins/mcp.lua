@@ -1,7 +1,3 @@
-local build_command = vim.env['HTTPS_PROXY']
-    and "bundled_build.lua"
-    or "npm install -g mcp-hub@latest"
-
 return {
     "ravitemer/mcphub.nvim",
     dependencies = {
