@@ -1,62 +1,71 @@
 {
-    "mcpServers": {
-        "browser-server": {
-            "command": "npx",
-            "env": {
-                "Path": null,
-                "PATH": null,
-                "HTTP_PROXY": null,
-                "HTTPS_PROXY": null,
-                "NO_PROXY": null
-            },
-            "args": [
-                "-y",
-                "@browsermcp/mcp@latest"
-            ]
-        },
-        "git-server": {
-            "command": "uvx",
-            "args": [
-                "mcp-server-git"
-            ],
-            "env": {
-                "Path": null,
-                "PATH": null,
-                "HTTP_PROXY": null,
-                "HTTPS_PROXY": null,
-                "NO_PROXY": null,
-                "UV_NATIVE_TLS": null
-            }
-        },
-        "file-server": {
-            "command": "npx",
-            "args": [
-                "-y",
-                "@modelcontextprotocol/server-filesystem",
-                "~/",
-                "."
-            ],
-            "env": {
-                "Path": null,
-                "PATH": null,
-                "HTTP_PROXY": null,
-                "HTTPS_PROXY": null,
-                "NO_PROXY": null
-            }
-        },
-        "fetch-server": {
-            "command": "uvx",
-            "args": [
-                "mcp-server-fetch"
-            ],
-            "env": {
-                "Path": null,
-                "PATH": null,
-                "HTTP_PROXY": null,
-                "HTTPS_PROXY": null,
-                "NO_PROXY": null,
-                "UV_NATIVE_TLS": null
-            }
-        }
+  "mcpServers": {
+    "browser-server": {
+      "args": [
+        "-y",
+        "@browsermcp/mcp@latest"
+      ],
+      "env": {
+        "PATH": null,
+        "Path": null,
+        "HTTP_PROXY": null,
+        "NO_PROXY": null,
+        "HTTPS_PROXY": null
+      },
+      "command": "npx"
+    },
+    "git-server": {
+      "args": [
+        "mcp-server-git"
+      ],
+      "env": {
+        "PATH": null,
+        "Path": null,
+        "HTTP_PROXY": null,
+        "NO_PROXY": null,
+        "HTTPS_PROXY": null,
+        "UV_NATIVE_TLS": null
+      },
+      "command": "uvx"
+    },
+    "fetch-server": {
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "env": {
+        "PATH": null,
+        "Path": null,
+        "HTTP_PROXY": null,
+        "NO_PROXY": null,
+        "HTTPS_PROXY": null,
+        "UV_NATIVE_TLS": null
+      },
+      "command": "uvx"
+    },
+    "file-server": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "~/",
+        "."
+      ],
+      "env": {
+        "PATH": null,
+        "Path": null,
+        "HTTP_PROXY": null,
+        "NO_PROXY": null,
+        "HTTPS_PROXY": null
+      },
+      "disabled_tools": [
+        "create_directory",
+        "write_file",
+        "move_file",
+        "edit_file"
+      ],
+      "command": "npx"
     }
+  },
+  "nativeMCPServers": [
+    
+  ]
 }
