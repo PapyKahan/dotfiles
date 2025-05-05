@@ -125,7 +125,6 @@ return {
     {
         'akinsho/bufferline.nvim',
         event = "VeryLazy",
-        --version = "v3.*",
         dependencies = 'nvim-tree/nvim-web-devicons',
         opts = {
             options = {
@@ -144,7 +143,7 @@ return {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
+        --branch = "v3.x",
         keys = {
             { '<leader>x', "<cmd>Neotree toggle<CR>", desc = "Open Nvim-Tree" },
         },
@@ -153,6 +152,40 @@ return {
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
         },
+        config = function()
+            require('neo-tree').setup({
+                filesystem = {
+                    commands = {
+                        avante_add_files = function(state)
+                            local node = state.tree:get_node()
+                            local filepath = node:get_id()
+                            local relative_path = require('avante.utils').relative_path(filepath)
+
+                            local sidebar = require('avante').get()
+
+                            local open = sidebar:is_open()
+                            -- ensure avante sidebar is open
+                            if not open then
+                                require('avante.api').ask()
+                                sidebar = require('avante').get()
+                            end
+
+                            sidebar.file_selector:add_selected_file(relative_path)
+
+                            -- remove neo tree buffer
+                            if not open then
+                                sidebar.file_selector:remove_selected_file('neo-tree filesystem [1]')
+                            end
+                        end,
+                    },
+                    window = {
+                        mappings = {
+                            ['oa'] = 'avante_add_files',
+                        },
+                    },
+                },
+            })
+        end,
     },
     {
         'nvim-telescope/telescope.nvim',
