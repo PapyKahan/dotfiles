@@ -26,12 +26,6 @@ return {
             require_manual_confirmation_for_edits = true, -- Always require manual confirmation
         },
 
-        -- Model-specific configurations
-        claude = {
-            endpoint = "https://api.anthropic.com",
-            model = "claude-3-5-sonnet-20241022",
-        },
-
         copilot = {
             model = "claude-3.7-sonnet",
         },
