@@ -22,7 +22,7 @@ return {
             auto_suggestions = false,
             auto_apply_diff_after_generation = false, -- Never automatically apply diffs
             enable_claude_text_editor_tool_mode = false,
-            enable_cursor_planning_mode = false,
+            enable_cursor_planning_mode = true,
             require_manual_confirmation_for_edits = true, -- Always require manual confirmation
         },
 
