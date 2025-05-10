@@ -7,8 +7,8 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
-        opts = function(_, opts)
-            opts.servers.clangd = {
+        opts = function()
+            vim.lsp.config('clangd', {
                 capabilities  = {
                     textDocument = {
                         completion = {
@@ -17,7 +17,7 @@ return {
                     },
                     offsetEncoding = 'utf-8',
                 },
-            }
+            })
         end,
     },
 }

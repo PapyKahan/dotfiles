@@ -11,14 +11,14 @@ return {
             { "b0o/schemastore.nvim" },
         },
         opts = function(_, opts)
-            opts.servers.jsonls = {
+            vim.lsp.config('jsonls', {
                 settings = {
                     json = {
                         schemas = require('schemastore').json.schemas(),
                         validate = { enable = true }
                     }
                 }
-            }
+            })
         end,
     },
 }

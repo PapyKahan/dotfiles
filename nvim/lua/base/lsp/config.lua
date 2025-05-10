@@ -98,23 +98,8 @@ local function setup_lspconfig()
     end
 end
 
-local function setup_servers(opts)
-    local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup_handlers({
-        function(servername)
-            if opts.servers[servername] then
-                lspconfig[servername].setup(opts.servers[servername])
-            else
-                lspconfig[servername].setup({})
-            end
-        end
-    })
-    mason_lspconfig.setup({})
-end
-
-function M.setup(_, opts)
+function M.setup()
     setup_lspconfig()
-    setup_servers(opts)
 end
 
 return M

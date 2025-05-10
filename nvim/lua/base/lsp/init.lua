@@ -4,16 +4,14 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             'williamboman/mason.nvim',
-            'folke/noice.nvim',
             'williamboman/mason-lspconfig.nvim',
+            'folke/noice.nvim',
 
-        },
-        opts = {
-            servers = {}
         },
         config = function(_, opts)
             require 'base.lsp.diagnostic'.setup()
-            require 'base.lsp.config'.setup(_, opts)
+            require 'base.lsp.config'.setup()
+            require("mason-lspconfig").setup()
         end
     },
     {
@@ -65,7 +63,6 @@ return {
                 ui = {
                     border = "rounded"
                 },
-                automatic_installation = true,
                 max_concurrent_installers = 10,
             }
             if vim.env['LSP_LANGUAGE_SERVERS'] then

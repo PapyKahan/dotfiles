@@ -9,7 +9,7 @@ return {
         "neovim/nvim-lspconfig",
         dependencies = { "Hoffs/omnisharp-extended-lsp.nvim" },
         opts = function(_, opts)
-            opts.servers.omnisharp = {
+            vim.lsp.config('omnisharp', {
                 on_attach = function(client, bufnr)
                     -- There's on issue with Ominisharp and neovim 0.9.0's semantic highlighting
                     --client.server_capabilities.semanticTokensProvider = nil
@@ -34,7 +34,7 @@ return {
                 handlers = {
                     ["textDocument/definition"] = require 'omnisharp_extended'.handler,
                 },
-            }
+            })
         end,
     },
     {
