@@ -27,7 +27,7 @@ return {
         },
 
         copilot = {
-            model = "claude-3.7-sonnet",
+            model = "gpt-4.1",
         },
 
         -- Additional vendor configurations
