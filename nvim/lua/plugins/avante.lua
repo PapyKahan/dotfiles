@@ -15,15 +15,11 @@ return {
         mode = "agentic",
         auto_suggestions_provider = 'copilot',
         cursor_applying_provider = 'copilot',
-        auto_approve = false, -- Ensure changes require manual approval
+        memory_summary_provider = 'copilot',
 
         -- Core behavior settings
         behaviour = {
-            auto_suggestions = false,
-            auto_apply_diff_after_generation = false, -- Never automatically apply diffs
-            enable_claude_text_editor_tool_mode = false,
             enable_cursor_planning_mode = true,
-            require_manual_confirmation_for_edits = true, -- Always require manual confirmation
         },
 
         copilot = {
@@ -97,3 +93,4 @@ return {
         },
     },
 }
+
