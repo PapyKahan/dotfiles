@@ -3,3 +3,4 @@ filebackup
 bundle
 plugin
 nushell/history.txt
+nvim/lazy-lock.json
