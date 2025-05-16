@@ -22,10 +22,9 @@ return {
         end,
         config = function()
             local registry = require 'mason-registry'
-            local codelldb = registry.get_package('codelldb')
             local dap_config = {}
-            if codelldb then
-                local install_path = codelldb:get_install_path()
+            if registry.is_installed('codelldb') then
+                local install_path = vim.fn.exepath('codelldb')
                 local extension_path = install_path .. '/extension/'
                 local codelldb_path = extension_path .. 'adapter/codelldb'
                 local liblldb_path = extension_path .. 'lldb/lib/liblldb'

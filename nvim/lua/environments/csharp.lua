@@ -46,12 +46,13 @@ return {
 
                     local function get_debugger()
                         local mason_registry = require "mason-registry"
-                        local debugger = mason_registry.get_package "netcoredbg"
-                        local this_os = vim.loop.os_uname().sysname;
-                        if this_os:find "Windows" then
-                            return debugger:get_install_path() .. "/netcoredbg.cmd"
-                        else
-                            return debugger:get_install_path() .. "/netcoredbg"
+                        if not mason_registry.is_installed "netcoredbg" then
+                            local this_os = vim.loop.os_uname().sysname;
+                            if this_os:find "Windows" then
+                                return vim.fn.exepath "netcoredbg.cmd" .. "/netcoredbg.cmd"
+                            else
+                                return vim.fn.exepath "netcoredbg" .. "/netcoredbg"
+                            end
                         end
                     end
 

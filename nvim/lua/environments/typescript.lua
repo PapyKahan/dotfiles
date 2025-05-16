@@ -35,7 +35,10 @@ return {
         opts = {
             setup = {
                 vscode_js_debug = function()
-                    local adapter_path = require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+                    if not require("mason-registry").is_installed("js-debug-adapter") then
+                        return
+                    end
+                    local adapter_path = vim.fn.exepath("js-debug-adapter")
                     adapter_path = adapter_path .. "/js-debug/src/dapDebugServer.js"
                     for _, adapter in ipairs { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" } do
                         require("dap").adapters[adapter] = {
