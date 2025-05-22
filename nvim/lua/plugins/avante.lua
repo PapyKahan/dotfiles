@@ -19,7 +19,9 @@ return {
         behaviour = {
             auto_suggestions = false,
             enable_cursor_planning_mode = true,
-            auto_apply_diff_after_generation = false,
+            auto_apply_diff_after_generation = true,
+            jump_result_buffer_on_finish = true,
+            support_paste_from_clipboard = true,
         },
 
         -- Additional vendor configurations
@@ -35,21 +37,25 @@ return {
                 __inherited_from = "copilot",
                 display_name = "copilot/claude-3.7",
                 model = "claude-3.7-sonnet",
+                max_completion_tokens = 32768
             },
             ["claude-3.7-sonnet-thought"] = {
                 __inherited_from = "copilot",
                 model = "claude-3.7-sonnet-thought",
                 display_name = "claude-3.7-sonnet-thought",
+                max_completion_tokens = 32768
             },
             ["gpt-o3-mini"] = {
                 __inherited_from = "copilot",
                 display_name = "copilot/gpt-o3-mini",
                 model = "o3-mini",
+                max_completion_tokens = 32768
             },
             ["gpt-4.1"] = {
                 __inherited_from = "copilot",
                 display_name = "copilot/gpt-4.1",
                 model = "gpt-4.1",
+                max_completion_tokens = 32768
             },
         },
 
