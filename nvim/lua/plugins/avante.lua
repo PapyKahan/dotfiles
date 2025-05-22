@@ -14,12 +14,12 @@ return {
         provider = 'gpt-4.1',
         mode = "agentic",
         auto_suggestions_provider = 'gpt-4.1',
-        cursor_applying_provider = 'gpt-4.1',
-        memory_summary_provider = 'gpt-4.1',
 
         -- Core behavior settings
         behaviour = {
+            auto_suggestions = false,
             enable_cursor_planning_mode = true,
+            auto_apply_diff_after_generation = false,
         },
 
         -- Additional vendor configurations
