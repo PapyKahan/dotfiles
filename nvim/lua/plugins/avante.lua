@@ -11,29 +11,45 @@ return {
     opts = {
         ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
         -- Main provider configuration
-        provider = 'copilot',
+        provider = 'gpt-4.1',
         mode = "agentic",
-        auto_suggestions_provider = 'copilot',
-        cursor_applying_provider = 'copilot',
-        memory_summary_provider = 'copilot',
+        auto_suggestions_provider = 'gpt-4.1',
+        cursor_applying_provider = 'gpt-4.1',
+        memory_summary_provider = 'gpt-4.1',
 
         -- Core behavior settings
         behaviour = {
             enable_cursor_planning_mode = true,
         },
 
-        copilot = {
-            model = "gpt-4.1",
-        },
-
         -- Additional vendor configurations
         vendors = {
-            mistral = {
+            ['mistral'] = {
                 __inherited_from = "openai",
                 endpoint = "https://codestral.mistral.ai/v1/",
                 model = "codestral-latest",
                 api_key_name = "MISTRAL_API_KEY",
                 max_tokens = 8192
+            },
+            ["claude-3.7"] = {
+                __inherited_from = "copilot",
+                display_name = "copilot/claude-3.7",
+                model = "claude-3.7-sonnet",
+            },
+            ["claude-3.7-sonnet-thought"] = {
+                __inherited_from = "copilot",
+                model = "claude-3.7-sonnet-thought",
+                display_name = "claude-3.7-sonnet-thought",
+            },
+            ["gpt-o3-mini"] = {
+                __inherited_from = "copilot",
+                display_name = "copilot/gpt-o3-mini",
+                model = "o3-mini",
+            },
+            ["gpt-4.1"] = {
+                __inherited_from = "copilot",
+                display_name = "copilot/gpt-4.1",
+                model = "gpt-4.1",
             },
         },
 
@@ -93,4 +109,3 @@ return {
         },
     },
 }
-
