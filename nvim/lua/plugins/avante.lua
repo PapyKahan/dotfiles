@@ -37,6 +37,12 @@ return {
                 model = "claude-3.7-sonnet",
                 max_completion_tokens = 32768
             },
+            ["claude-4.0-sonnet"] = {
+                __inherited_from = "copilot",
+                display_name = "copilot/claude-sonnet-4",
+                model = "claude-sonnet-4",
+                max_completion_tokens = 32768
+            },
             ["claude-3.7-sonnet-thought"] = {
                 __inherited_from = "copilot",
                 model = "claude-3.7-sonnet-thought",
