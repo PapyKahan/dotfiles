@@ -23,7 +23,7 @@ return {
                 endpoint = "https://codestral.mistral.ai/v1/",
                 model = "codestral-latest",
                 api_key_name = "MISTRAL_API_KEY",
-                max_tokens = 32768,
+                max_tokens = 8192,
             },
             ["claude-3.5-sonnet"] = {
                 __inherited_from = "copilot",
