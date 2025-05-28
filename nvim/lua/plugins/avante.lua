@@ -8,7 +8,7 @@ return {
     version = false,
     build = build_command,
     opts = {
-        provider = 'gpt-4.1',
+        provider = 'claude-4.0-sonnet',
         mode = "legacy",
         behaviour = {
             auto_suggestions = false,
