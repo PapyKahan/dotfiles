@@ -23,7 +23,7 @@ return {
                 local diff = require("mini.diff")
                 diff.setup({
                     -- Disabled by default
-                    source = diff.gen_source.none(),
+                    source = diff.gen_source.git(),
                 })
             end,
         }
@@ -83,6 +83,10 @@ return {
                         wrap = true,
                     },
                 },
+            },
+            diff = {
+                enabled = true,
+                provider = "mini_diff",
             },
             -- Options to customize the UI of the chat buffer
             action_palette = {
