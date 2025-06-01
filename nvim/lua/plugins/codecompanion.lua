@@ -28,6 +28,14 @@ return {
             end,
         }
     },
+    keys = {
+        -- Open chat buffer
+        { "<leader>cc", "<cmd>CodeCompanionChat<cr>", desc = "Open CodeCompanion Chat" },
+        -- Open action palette
+        { "<leader>ca", "<cmd>CodeCompanionActions<cr>", desc = "Open CodeCompanion Action Palette" },
+        -- Open history
+        { "<leader>ch", "<cmd>CodeCompanionHistory<cr>", desc = "Open CodeCompanion History" },
+    },
     opts = {
         strategies = {
             chat = {
