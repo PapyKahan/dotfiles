@@ -14,7 +14,19 @@ return {
         "ravitemer/mcphub.nvim",
 
         -- Extentions
-        "ravitemer/codecompanion-history.nvim"
+        "ravitemer/codecompanion-history.nvim",
+
+        -- better diff
+        {
+            "echasnovski/mini.diff",
+            config = function()
+                local diff = require("mini.diff")
+                diff.setup({
+                    -- Disabled by default
+                    source = diff.gen_source.none(),
+                })
+            end,
+        }
     },
     opts = {
         strategies = {
@@ -44,7 +56,7 @@ return {
             chat = {
                 window = {
                     layout = "vertical", -- float|vertical|horizontal|buffer
-                    position = "right", -- left|right|top|bottom (nil will default depending on vim.opt.plitright|vim.opt.splitbelow)
+                    position = "right",  -- left|right|top|bottom (nil will default depending on vim.opt.plitright|vim.opt.splitbelow)
                     border = "single",
                     height = 0.8,
                     width = 0.30,
@@ -78,7 +90,7 @@ return {
         },
         extensions = {
             history = {
-                enabled = false,
+                enabled = true,
                 opts = {
                     -- Keymap to open history from chat buffer (default: gh)
                     keymap = "gh",
@@ -87,15 +99,15 @@ return {
                     -- Save all chats by default (disable to save only manually using 'sc')
                     auto_save = true,
                     -- Number of days after which chats are automatically deleted (0 to disable)
-                    expiration_days = 0,
+                    expiration_days = 30,
                     -- Picker interface ("telescope" or "snacks" or "default")
                     picker = "telescope",
                     -- Automatically generate titles for new chats
                     auto_generate_title = true,
                     ---On exiting and entering neovim, loads the last chat on opening chat
-                    continue_last_chat = false,
+                    continue_last_chat = true,
                     ---When chat is cleared with `gx` delete the chat from history
-                    delete_on_clearing_chat = false,
+                    delete_on_clearing_chat = true,
                     ---Directory path to save the chats
                     dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
                     ---Enable detailed logging for history extension
