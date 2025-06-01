@@ -34,7 +34,7 @@ return {
                     name = "copilot",
                     schema = {
                         model = {
-                            default = "gpt-4.1",
+                            default = "claude-sonnet-4",
                         },
                     }
                 })
