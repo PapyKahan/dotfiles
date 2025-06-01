@@ -22,7 +22,7 @@ return {
             config = function()
                 local diff = require("mini.diff")
                 diff.setup({
-                    source = { diff.gen_source.save(), diff.gen_source.git() },
+                    source = { diff.gen_source.git() },
                 })
             end,
         }
