@@ -1,9 +1,90 @@
 return {
+    ["IDEAL promblem solving - workflow"] = {
+        strategy = "workflow",
+        description = "IDEAL problem-solving framework for developers",
+        opts = {
+            user_prompt = true,
+        },
+        prompts = {
+            {
+                {
+                    role = "system",
+                    content =  [[
+You are an experienced developer gather information of each steap in the IDEAL problem-solving framework.
+You will gather information from the user step by step, and then provide a solution based on the information.
+don't provide a solution or any code until you have all the information you need.]],
+                },
+                {
+                    role = "user",
+                    opts = {
+                        auto_submit = false,
+                    },
+                    content = function(_)
+                        return [[
+Approach this problem using the IDEAL problem-solving framework:
+
+1. Identify the problem precisely: ]]
+                    end,
+                },
+            },
+            {
+                {
+                    role = "user",
+                    opts = {
+                        auto_submit = false,
+                    },
+                    content = function(_)
+                        return [[
+2. Define the constraints and requirements: ]]
+                    end,
+                }
+            },
+            {
+                {
+                    role = "user",
+                    opts = {
+                        auto_submit = false,
+                    },
+                    content = function(_)
+                        return [[
+3. Explore potential strategies: Generate at least three different approaches
+]]
+                    end,
+                }
+            },
+            {
+                {
+                    role = "user",
+                    opts = {
+                        auto_submit = false,
+                    },
+                    content = function(_)
+                        return [[
+4. Act on the best strategy: Implement the solution with clean, documented code
+]]
+                    end,
+                }
+            },
+            {
+                {
+                    role = "user",
+                    opts = {
+                        auto_submit = false,
+                    },
+                    content = function(_)
+                        return [[
+5. Look back and learn: Evaluate the solution's efficiency, edge cases, and potential improvements
+
+Problem to solve: ]]
+                    end,
+                }
+            }
+        },
+    },
     ["Test Workflow"] = {
         strategy = "workflow",
         description = "test",
         opts = {
-            index = 8,
             short_name = "ct",
         },
         prompts = {
