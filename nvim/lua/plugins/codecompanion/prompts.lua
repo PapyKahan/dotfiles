@@ -8,7 +8,9 @@ return {
         prompts = {
             {
                 role = "system",
-                content = "You are an experienced developer",
+                content = "You are an experienced developer using the IDEAL problem-solving framework. " ..
+                         "You will gather information from the user step by step, and then provide a solution based on the information. " ..
+                         "Do not provide a solution or any code until you have all the information you need."
             },
             {
                 role = "user",
@@ -16,41 +18,9 @@ return {
                     return [[
 Approach this problem using the IDEAL problem-solving framework:
 
-1. Identify the problem precisely: ]]
+The problem: ]]
                 end,
             },
-            {
-                role = "user",
-                content = function(_)
-                    return [[
-2. Define the constraints and requirements: ]]
-                end,
-            },
-            {
-                role = "user",
-                content = function(_)
-                    return [[
-3. Explore potential strategies: Generate at least three different approaches
-]]
-                end,
-            },
-            {
-                role = "user",
-                content = function(_)
-                    return [[
-4. Act on the best strategy: Implement the solution with clean, documented code
-]]
-                end,
-            },
-            {
-                role = "user",
-                content = function(_)
-                    return [[
-5. Look back and learn: Evaluate the solution's efficiency, edge cases, and potential improvements
-
-Problem to solve: ]]
-                end,
-            }
         },
     },
 }
