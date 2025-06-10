@@ -1,1 +1,3 @@
-return vim.list_extend(require("plugins/codecompanion.workflows"), require("plugins/codecompanion.prompts"))
+local workflows = require("plugins/codecompanion.workflows")
+local prompts = require("plugins/codecompanion.prompts")
+return vim.tbl_deep_extend("keep", prompts, workflows)

@@ -1,5 +1,5 @@
 return {
-    ["IDEL promblem solving"] = {
+    ["IDEAL promblem solving"] = {
         strategy = "chat",
         description = "IDEAL problem-solving framework for developers",
         opts = {
@@ -52,5 +52,5 @@ Problem to solve: ]]
                 end,
             }
         },
-    }
+    },
 }
