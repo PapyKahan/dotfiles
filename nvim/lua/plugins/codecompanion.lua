@@ -15,6 +15,7 @@ return {
 
         -- Extentions
         "ravitemer/codecompanion-history.nvim",
+        "j-hui/fidget.nvim",
 
         -- better diff
         {
@@ -35,6 +36,9 @@ return {
         -- Open history
         { "<leader>ch", "<cmd>CodeCompanionHistory<cr>", desc = "Open CodeCompanion History" },
     },
+    init = function()
+        require("plugins.codecompanion.fidget-spinner"):init()
+    end,
     opts = {
         strategies = {
             chat = {
