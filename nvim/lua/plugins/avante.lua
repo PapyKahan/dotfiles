@@ -17,7 +17,7 @@ return {
             jump_result_buffer_on_finish = true,
             support_paste_from_clipboard = true,
         },
-        vendors = {
+        providers = {
             ['mistral'] = {
                 __inherited_from = "openai",
                 endpoint = "https://codestral.mistral.ai/v1/",
