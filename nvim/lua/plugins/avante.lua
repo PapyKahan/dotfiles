@@ -14,7 +14,7 @@ return {
         behaviour = {
             auto_suggestions = false,
             auto_approve_tool_permissions = true,
-            enable_cursor_planning_mode = false,
+            enable_cursor_planning_mode = true,
             auto_apply_diff_after_generation = false,
             jump_result_buffer_on_finish = true,
             support_paste_from_clipboard = true,
