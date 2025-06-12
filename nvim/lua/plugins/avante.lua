@@ -19,6 +19,14 @@ return {
             jump_result_buffer_on_finish = true,
             support_paste_from_clipboard = true,
         },
+        mappings = {
+            confirm = {
+                focus_window = "<C-w>f",
+                code = "c",
+                resp = "r",
+                input = "i",
+            },
+        },
         providers = {
             ['mistral'] = {
                 __inherited_from = "openai",
