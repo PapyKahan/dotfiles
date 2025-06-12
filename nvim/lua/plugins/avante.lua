@@ -1,5 +1,5 @@
 local build_command = vim.loop.os_uname().sysname:find("Windows")
-    and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource true"
     or "make"
 
 return {
