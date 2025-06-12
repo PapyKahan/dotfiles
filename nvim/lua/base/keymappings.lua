@@ -4,15 +4,15 @@ return {
         event = "VeryLazy",
         opts = {},
         keys = {
-            { "<C-h>", "<C-w>h", desc = "Move to left window", mode = "n", silent = true, remap = true },
-            { "<C-j>", "<C-w>j", desc = "Move to downward window", mode = "n", silent = true, remap = true },
-            { "<C-k>", "<C-w>k", desc = "Move to upward window", mode = "n", silent = true, remap = true },
-            { "<C-l>", "<C-w>l", desc = "Move to right window", mode = "n", silent = true, remap = true },
+            { "<M-h>", "<C-w>h", desc = "Move to left window", mode = "n", silent = true, remap = true },
+            { "<M-j>", "<C-w>j", desc = "Move to downward window", mode = "n", silent = true, remap = true },
+            { "<M-k>", "<C-w>k", desc = "Move to upward window", mode = "n", silent = true, remap = true },
+            { "<M-l>", "<C-w>l", desc = "Move to right window", mode = "n", silent = true, remap = true },
 
-            { "<C-Up>", "<cmd>resize -2<cr>", desc = "Horizontaly decrease windows size", mode = "n", silent = true, remap = true },
-            { "<C-Down>", "<cmd>resize +2<cr>", desc = "Horizontaly increase windows size", mode = "n", silent = true, remap = true },
-            { "<C-Left>", "<cmd>vertical resize -2<cr>", desc = "Verticaly decrease windows size", mode = "n", silent = true, remap = true },
-            { "<C-Right>", "<cmd>vertical resize +2<cr>", desc = "Verticaly increase windows size", mode = "n", silent = true, remap = true },
+            { "<M-Up>", "<cmd>resize -2<cr>", desc = "Horizontaly decrease windows size", mode = "n", silent = true, remap = true },
+            { "<M-Down>", "<cmd>resize +2<cr>", desc = "Horizontaly increase windows size", mode = "n", silent = true, remap = true },
+            { "<M-Left>", "<cmd>vertical resize -2<cr>", desc = "Verticaly decrease windows size", mode = "n", silent = true, remap = true },
+            { "<M-Right>", "<cmd>vertical resize +2<cr>", desc = "Verticaly increase windows size", mode = "n", silent = true, remap = true },
 
             { "<S-h>", "<cmd>bp<cr>", desc = "Select previous buffer", mode = "n", silent = true, remap = true },
             { "<S-l>", "<cmd>bn<cr>", desc = "Select next buffer", mode = "n", silent = true, remap = true },
