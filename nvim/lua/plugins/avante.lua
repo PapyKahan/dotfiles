@@ -6,7 +6,7 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false,
-    enabled = false,
+    enabled = true,
     build = build_command,
     opts = {
         provider = 'claude-4.0-sonnet',
