@@ -2,92 +2,70 @@
   "nativeMCPServers": {
     "neovim": {
       "autoApprove": [
-        "execute_lua",
-        "execute_command",
-        "read_file",
-        "delete_item",
-        "move_item",
-        "find_files",
-        "list_directory",
-        "write_file",
-        "replace_in_file"
+        
       ]
     }
   },
   "mcpServers": {
+    "fetch-server": {
+      "command": "uvx",
+      "env": {
+        "HTTP_PROXY": null,
+        "PATH": null,
+        "HTTPS_PROXY": null,
+        "UV_NATIVE_TLS": null,
+        "NO_PROXY": null
+      },
+      "args": [
+        "mcp-server-fetch"
+      ]
+    },
+    "git-server": {
+      "command": "uvx",
+      "env": {
+        "HTTP_PROXY": null,
+        "PATH": null,
+        "HTTPS_PROXY": null,
+        "UV_NATIVE_TLS": null,
+        "NO_PROXY": null
+      },
+      "args": [
+        "mcp-server-git"
+      ]
+    },
+    "browser-server": {
+      "command": "npx",
+      "env": {
+        "HTTP_PROXY": null,
+        "HTTPS_PROXY": null,
+        "PATH": null,
+        "NO_PROXY": null
+      },
+      "args": [
+        "-y",
+        "@browsermcp/mcp@latest"
+      ]
+    },
     "file-server": {
-      "disabled_tools": [
+      "env": {
+        "HTTP_PROXY": null,
+        "HTTPS_PROXY": null,
+        "PATH": null,
+        "NO_PROXY": null
+      },
+      "command": "npx",
+      "autoApprove": [
         
       ],
-      "env": {
-        "Path": null,
-        "PATH": null,
-        "NO_PROXY": null,
-        "HTTP_PROXY": null,
-        "HTTPS_PROXY": null
-      },
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
         "~/",
         "."
       ],
-      "autoApprove": [
-        "read_file",
-        "read_multiple_files",
-        "write_file",
-        "edit_file",
-        "create_directory",
-        "list_directory",
-        "directory_tree",
-        "move_file",
-        "search_files",
-        "get_file_info",
-        "list_allowed_directories"
-      ],
-      "command": "npx"
-    },
-    "git-server": {
-      "env": {
-        "UV_NATIVE_TLS": null,
-        "Path": null,
-        "PATH": null,
-        "NO_PROXY": null,
-        "HTTP_PROXY": null,
-        "HTTPS_PROXY": null
-      },
-      "args": [
-        "mcp-server-git"
-      ],
-      "command": "uvx"
-    },
-    "fetch-server": {
-      "env": {
-        "UV_NATIVE_TLS": null,
-        "Path": null,
-        "PATH": null,
-        "NO_PROXY": null,
-        "HTTP_PROXY": null,
-        "HTTPS_PROXY": null
-      },
-      "args": [
-        "mcp-server-fetch"
-      ],
-      "command": "uvx"
-    },
-    "browser-server": {
-      "env": {
-        "Path": null,
-        "PATH": null,
-        "NO_PROXY": null,
-        "HTTP_PROXY": null,
-        "HTTPS_PROXY": null
-      },
-      "args": [
-        "-y",
-        "@browsermcp/mcp@latest"
-      ],
-      "command": "npx"
+      "disabled_tools": [
+        
+      ]
     }
   }
 }
