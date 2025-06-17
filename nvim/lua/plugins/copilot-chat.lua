@@ -2,6 +2,7 @@ return {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
         event = "VeryLazy",
+        enabled = false,
         dependencies = {
             "zbirenbaum/copilot.lua",
             "nvim-telescope/telescope.nvim",
@@ -26,7 +27,7 @@ return {
             -- default window options
             window = {
                 layout = 'vertical', -- 'vertical', 'horizontal', 'float', 'replace', or a function that returns the layout
-                width = 0.3, -- fractional width of parent, or absolute width in columns when > 1
+                width = 0.3,         -- fractional width of parent, or absolute width in columns when > 1
             },
         },
         -- See Commands section for default commands if you want to lazy load on them
