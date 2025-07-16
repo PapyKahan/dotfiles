@@ -27,6 +27,12 @@ return {
                 input = "i",
             },
         },
+        windows = {
+            input = {
+                prefix = "> ",
+                height = 15, -- Height of the input window in vertical layout
+            },
+        },
         providers = {
             ['mistral'] = {
                 __inherited_from = "openai",
