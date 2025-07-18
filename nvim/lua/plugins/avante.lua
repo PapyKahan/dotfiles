@@ -9,7 +9,7 @@ return {
     enabled = true,
     build = build_command,
     opts = {
-        provider = 'copilot-gpt-4.1',
+        provider = 'copilot',
         mode = "agentic",
         behaviour = {
             auto_suggestions = false,
@@ -41,7 +41,7 @@ return {
                 api_key_name = "MISTRAL_API_KEY",
                 max_tokens = 8192,
             },
-            ['copilot-gpt-4.1'] = {
+            ['copilot'] = {
                 __inherited_from = "copilot",
                 model = "gpt-4.1",
             },
