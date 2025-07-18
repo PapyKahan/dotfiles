@@ -9,7 +9,7 @@ return {
     enabled = true,
     build = build_command,
     opts = {
-        provider = 'claude-4.0-sonnet',
+        provider = 'copilot-gpt-4.1',
         mode = "agentic",
         behaviour = {
             auto_suggestions = false,
@@ -41,66 +41,10 @@ return {
                 api_key_name = "MISTRAL_API_KEY",
                 max_tokens = 8192,
             },
-            ["claude-3.5-sonnet"] = {
+            ['copilot-gpt-4.1'] = {
                 __inherited_from = "copilot",
-                display_name = "copilot/claude-3.5-sonnet",
-                model = "claude-3.5-sonnet",
-                max_completion_tokens = 32768
-            },
-            ["claude-3.7-sonnet"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/claude-3.7-sonnet",
-                model = "claude-3.7-sonnet",
-                max_completion_tokens = 32768
-            },
-            ["claude-4.0-sonnet"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/claude-sonnet-4",
-                model = "claude-sonnet-4",
-                max_completion_tokens = 32768
-            },
-            ["claude-3.7-sonnet-thought"] = {
-                __inherited_from = "copilot",
-                model = "claude-3.7-sonnet-thought",
-                display_name = "copilot/claude-3.7-sonnet-thought",
-                max_completion_tokens = 32768
-            },
-            ["gemini-2.0-flash"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/gemini-2.0-flash",
-                model = "gemini-2.0-flash",
-                max_completion_tokens = 32768
-            },
-            ["gemini-2.5-pro"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/gemini-2.5-pro",
-                model = "gemini-2.5-pro",
-                max_completion_tokens = 32768
-            },
-            ["gpt-4.1"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/gpt-4.1",
                 model = "gpt-4.1",
-                max_completion_tokens = 32768
             },
-            ["gpt-4o"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/gpt-4o",
-                model = "gpt-4-turbo",
-                max_completion_tokens = 32768
-            },
-            ["o3-mini"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/o3-mini",
-                model = "o3-mini",
-                max_completion_tokens = 32768
-            },
-            ["o4-mini"] = {
-                __inherited_from = "copilot",
-                display_name = "copilot/o4-mini",
-                model = "o4-mini",
-                max_completion_tokens = 32768
-            }
         },
 
         disabled_tools = {
