@@ -9,50 +9,28 @@
   "mcpServers": {
     "fetch-server": {
       "command": "uvx",
-      "env": {
-        "HTTP_PROXY": null,
-        "PATH": null,
-        "HTTPS_PROXY": null,
-        "UV_NATIVE_TLS": null,
-        "NO_PROXY": null
-      },
+      "env": {},
       "args": [
         "mcp-server-fetch"
       ]
     },
     "git-server": {
       "command": "uvx",
-      "env": {
-        "HTTP_PROXY": null,
-        "PATH": null,
-        "HTTPS_PROXY": null,
-        "UV_NATIVE_TLS": null,
-        "NO_PROXY": null
-      },
+      "env": {},
       "args": [
         "mcp-server-git"
       ]
     },
     "browser-server": {
       "command": "npx",
-      "env": {
-        "HTTP_PROXY": null,
-        "HTTPS_PROXY": null,
-        "PATH": null,
-        "NO_PROXY": null
-      },
+      "env": {},
       "args": [
         "-y",
         "@browsermcp/mcp@latest"
       ]
     },
     "file-server": {
-      "env": {
-        "HTTP_PROXY": null,
-        "HTTPS_PROXY": null,
-        "PATH": null,
-        "NO_PROXY": null
-      },
+      "env": {},
       "command": "npx",
       "autoApprove": [
         
