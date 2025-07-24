@@ -12,6 +12,16 @@ return {
     opts = {
         use_bundled_binary = true, -- Set to true if you want to use the bundled binary instead of the global one
         auto_approve = true,
+        -- Set global environment variables for MCPHub and all MCP servers
+        global_env = {
+            HTTP_PROXY = os.getenv("HTTP_PROXY") or os.getenv("http_proxy"),
+            HTTPS_PROXY = os.getenv("HTTPS_PROXY") or os.getenv("https_proxy"),
+            http_proxy = os.getenv("HTTP_PROXY") or os.getenv("http_proxy"),
+            https_proxy = os.getenv("HTTPS_PROXY") or os.getenv("https_proxy"),
+            PATH = os.getenv("PATH") or os.getenv("Path"),
+            Path = os.getenv("PATH") or os.getenv("Path"),
+            UV_NATIVE_TLS = os.getenv("UV_NATIVE_TLS")
+        },
         extensions = {
             avante = {
                 make_slash_commands = true, -- make /slash commands from MCP server prompts
