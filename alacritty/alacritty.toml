@@ -4,9 +4,9 @@ working_directory = "None"
 TERM = "alacritty"
 #
 [font]
-size = 12
-#normal = { family = "RobotoMono Nerd Font Mono", style = "Medium" }
-#builtin_box_drawing = false
+size = 14
+normal = { family = "CaskaydiaMono NFM", style = "Medium" }
+builtin_box_drawing = false
 
 [selection]
 save_to_clipboard = true
