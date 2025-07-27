@@ -5,7 +5,7 @@ TERM = "alacritty"
 #
 [font]
 size = 14
-normal = { family = "CaskaydiaMono NFM", style = "Medium" }
+normal = { family = "CaskaydiaMono Nerd Font Mono", style = "Medium" }
 builtin_box_drawing = false
 
 [selection]
