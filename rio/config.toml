@@ -239,8 +239,7 @@ args = []
 # weight = 800
 
 [fonts]
---family = "UbuntuMono Nerd Font Mono"
-family="RobotoMono Nerd Font Mono"
+family="CaskaydiaMono Nerd Font Mono"
 size = 16
 style = "Normal"
 
